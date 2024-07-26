@@ -5,25 +5,39 @@
 }
 
 body {
+  background: url("../images/dark_space.jpg") no-repeat center center/cover
+    fixed;
+  background-color: #0a0f2f;
   color: #ffffff;
 }
 
-header {
+header,
+main,
+footer {
+  width: 110vw;
+}
+
+header,
+footer {
+  padding: 5vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   background: linear-gradient(135deg, #0a0f2f, #1f2c40);
   animation: gradient 5s ease infinite;
-  background-size: 400%;
-  padding: 50px 0;
+  background-size: 400% 400%;
+  font-size: 1.5em;
   color: #ffffff;
-  text-align: center;
 }
 
 .profile-picture {
-  width: 150px;
-  height: 150px;
+  width: 13vmax;
+  height: 13vmax;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 20px;
-  border: 5px solid #ffffff;
+  border: 0.5vmax solid #ffffff;
 }
 
 @keyframes gradient {
@@ -40,35 +54,18 @@ header {
 
 header h1 {
   font-size: 3rem;
-  margin-bottom: 0;
-}
-
-header p {
-  margin-top: 0;
-  font-size: 1.2rem;
-}
-
-main {
-  border-top: 0.02px solid #0a0f2f;
-  border-bottom: 0.02px solid #0a0f2f;
-  background: url("../images/dark_space.jpg") no-repeat center center/cover
-    fixed;
-}
-
-.social-links {
-  margin-top: 2rem;
 }
 
 .social-links a {
   color: #ffffff;
-  margin: 0 10px;
+  margin: -5px 10px;
   padding: 0.5rem;
   text-decoration: none;
   font-size: 1.8rem;
 }
 
 .social-links a:hover {
-  padding: 1rem;
+  color: navy;
 }
 
 .highlight {
@@ -98,7 +95,7 @@ main {
 
 .timeline-item {
   margin-top: 4rem;
-  padding: 0.2em 1.5em;
+  padding: 0.2em 1.7em;
   position: relative;
   width: 100%;
 }
@@ -139,6 +136,10 @@ main {
   width: 45%;
 }
 
+.timeline-title,
+.timeline-timestamp {
+  text-align: center;
+}
 .timeline-item.timeline-inverted .timeline-content {
   margin-right: 30px;
   margin-left: auto;
@@ -168,10 +169,10 @@ main {
 }
 
 .arrow {
-	transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 .arrow:hover {
-	transform: translate(.5vw, -.5vw);
+  transform: translate(0.5vw, -0.5vw);
 }
 
 /* Responsive Adjustments */
@@ -266,15 +267,4 @@ main {
 .icon i {
   font-size: 24px;
   color: #007bff;
-}
-
-/* Footer */
-
-footer {
-  background: linear-gradient(135deg, #0a0f2f, #1f2c40);
-  animation: gradient 5s ease infinite;
-  background-size: 400% 400%;
-  color: #ffffff;
-  text-align: center;
-  padding: 20px 0;
 }

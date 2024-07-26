@@ -7,18 +7,14 @@
 body {
   background: url("../images/dark_space.jpg") no-repeat center center/cover
     fixed;
+  padding: 0;
   background-color: #0a0f2f;
   color: #ffffff;
 }
 
 header,
-main,
 footer {
-  width: 110vw;
-}
-
-header,
-footer {
+  margin: 0;
   padding: 5vh 0;
   display: flex;
   flex-direction: column;
@@ -48,7 +44,7 @@ footer {
   height: 13vh;
   object-fit: cover;
   border-radius: 50%;
-	margin-bottom: 4vh;
+  margin-bottom: 4vh;
   border: 0.5vh solid #ffffff;
 }
 
@@ -136,6 +132,12 @@ header h1 {
   width: 45%;
 }
 
+.timeline-item .timeline-content img {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
 .timeline-title,
 .timeline-timestamp {
   text-align: center;

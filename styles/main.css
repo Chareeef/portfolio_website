@@ -12,6 +12,10 @@ body {
   color: #ffffff;
 }
 
+section {
+	overflow: hidden;
+}
+
 p, .list-group-item {
 	font-size: 1.5rem;
 }

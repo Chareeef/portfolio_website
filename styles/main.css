@@ -12,6 +12,10 @@ body {
   color: #ffffff;
 }
 
+p, .list-group-item {
+	font-size: 1.5rem;
+}
+
 header,
 footer {
   margin: 0;
@@ -23,8 +27,11 @@ footer {
   background: linear-gradient(135deg, #0a0f2f, #1f2c40);
   animation: gradient 5s ease infinite;
   background-size: 400% 400%;
-  font-size: 4vh;
   color: #ffffff;
+}
+
+header {
+  font-size: 4vh;
 }
 
 @keyframes gradient {
@@ -63,6 +70,8 @@ header h1 {
 .social-links a:hover {
   color: navy;
 }
+
+/* Bio */
 
 .highlight {
   font-weight: bold;
@@ -153,6 +162,13 @@ header h1 {
   margin-top: 10px;
 }
 
+/* Education */ 
+
+.sub-section {
+	font-family: cursive;
+	font-size: 2em;
+}
+
 .post-link {
   color: lightblue;
   font-weight: bold;
@@ -184,9 +200,95 @@ header h1 {
   }
 }
 
-/* Skill Cards */
+/* Top Soft Skills */
 
-.skill-card {
+.soft-skills-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.soft-skills-section h2 {
+	align-self: flex-start;
+}
+
+.soft-skills-cross {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 80vw;
+  height: 70vmin;
+  margin-top: 2rem;
+}
+
+.soft-skill-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: absolute;
+}
+
+.soft-skill-item:nth-child(1) {
+  top: 0;
+}
+
+.soft-skill-item:nth-child(2) {
+  right: 0;
+}
+
+.soft-skill-item:nth-child(3) {
+	bottom: 0;
+}
+
+.soft-skill-item:nth-child(4) {
+	left: 0;
+}
+
+.soft-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vmin;
+  height: 20vmin;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .soft-skills-cross {
+    height: 300px;
+  }
+
+  .soft-circle {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .soft-skills-cross {
+    height: 200px;
+  }
+
+  .soft-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+}
+
+/* Top Technical Skills */
+
+.tc-skill-card {
   background: rgba(31, 28, 44, 0.8);
   color: #ffffff;
   border-radius: 8px;
@@ -194,22 +296,22 @@ header h1 {
   transition: transform 0.3s ease;
 }
 
-.skill-card:hover {
+.tc-skill-card:hover {
   transform: translateY(-10px);
 }
 
-.skill-card .icon {
+.tc-skill-card .icon {
   font-size: 3rem;
   color: #ffffff;
 }
 
-.skill-card h5 {
+.tc-skill-card h5 {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 1.5rem;
 }
 
-.skill-item {
+.tc-skill-item {
   background-color: #ffffff;
   margin: 10px;
   border-radius: 15px;
@@ -224,7 +326,7 @@ header h1 {
   align-items: center;
 }
 
-.skill-item i {
+.tc-skill-item i {
   color: #28a745;
   margin-right: 10px;
   font-size: 18px;
@@ -233,4 +335,9 @@ header h1 {
 .icon i {
   font-size: 24px;
   color: #007bff;
+}
+
+/* Footer */
+footer {
+	font-size: 1.5em;
 }

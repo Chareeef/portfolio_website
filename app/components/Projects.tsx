@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const projects = [
   {
     name: "MemFlip",
+    logo: "/memflip_logo.png",
     description:
       "An AI-powered flashcard app that enhances learning through intelligent flashcard generation and real-time review.",
     technologies: ["Next.js", "Tailwind CSS", "Clerk", "Firestore"],
@@ -22,6 +23,7 @@ const projects = [
   },
   {
     name: "Sadim AI",
+    logo: "/sadim_logo.png",
     description:
       "An AI-powered chatbot designed for natural, human-like conversations with rapid inference capabilities.",
     technologies: ["Next.js", "Tailwind CSS", "Groq API", "NextAuth"],
@@ -36,6 +38,7 @@ const projects = [
   },
   {
     name: "Rate My Professor",
+    logo: "/ratemyprofessor_logo.png",
     description:
       "An AI-powered platform for professor recommendations and conversational interactions.",
     technologies: ["Next.js", "Tailwind CSS", "Cohere", "Pinecone", "Groq API"],
@@ -64,13 +67,29 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl"
+            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer"
             onClick={() =>
               setActiveProject(activeProject === index ? null : index)
             }
           >
             <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center space-x-4">
+                  <Image
+                    src={project.logo}
+                    alt={`${project.name} logo`}
+                    width={64}
+                    height={64}
+                    className="rounded-lg"
+                  />
+                  <h3 className="text-2xl font-bold">{project.name}</h3>
+                </div>
+                <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                  <ChevronDown
+                    className={`w-6 h-6 transition-transform duration-300 ${activeProject === index ? "transform rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
               <p className="mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, techIndex) => (
@@ -120,7 +139,7 @@ const Projects = () => {
                         alt={`${project.name} screenshot ${imgIndex + 1}`}
                         width={400}
                         height={300}
-                        className="w-full h-auto rounded-lg shadow-md object-contain"
+                        className="w-full h-auto rounded-lg shadow-md"
                       />
                     ))}
                   </div>

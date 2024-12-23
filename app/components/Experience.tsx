@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
+import { ChevronDown } from "lucide-react";
 
 const experiences = [
   {
     title: "Co-Founder & Full-Stack Engineer",
     company: "RemoteOtter",
+    logo: "/remoteotter_logo.png",
     description:
       "RemoteOtter is a modern job board platform that connects users with remote work opportunities worldwide. As Co-Founder and Full-Stack Engineer, I collaborated with Abdulrhman Metawei to design and implement the platform's architecture, ensuring scalability and performance. Built under the mentorship of Julien Barbier, Co-Founder of Holberton School, the platform features advanced search capabilities, personalized email notifications, and seamless user experience, powered by state-of-the-art technologies and AI integrations.",
     technologies: [
@@ -28,7 +30,7 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [activeExperience, setActiveExperience] = useState<number>(0);
+  const [activeExperience, setActiveExperience] = useState<number | null>(null);
 
   return (
     <section id="experience" className="py-20">
@@ -37,15 +39,33 @@ const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl"
+            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer"
             onClick={() =>
               setActiveExperience(activeExperience === index ? null : index)
             }
           >
-            <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
-            <h4 className="text-xl text-purple-600 dark:text-purple-400 mb-4">
-              {exp.company}
-            </h4>
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center space-x-4">
+                <Image
+                  src={exp.logo}
+                  alt={`${exp.company} logo`}
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
+                  <h4 className="text-xl text-purple-600 dark:text-purple-400">
+                    {exp.company}
+                  </h4>
+                </div>
+              </div>
+              <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                <ChevronDown
+                  className={`w-6 h-6 transition-transform duration-300 ${activeExperience === index ? "transform rotate-180" : ""}`}
+                />
+              </button>
+            </div>
             <p className="mb-4">{exp.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {exp.technologies.map((tech, techIndex) => (
@@ -76,7 +96,7 @@ const Experience = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {exp.images.map((image, imgIndex) => (
                     <Image
                       key={imgIndex}

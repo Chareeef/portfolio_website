@@ -20,7 +20,7 @@ import {
   SiFirebase,
   SiOpenai,
 } from "react-icons/si";
-import { Rocket, Cpu } from "lucide-react";
+import { Rocket, Telescope, Gem } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const skillSections = [
@@ -54,8 +54,8 @@ const skillSections = [
     title: "AI Tools",
     skills: [
       { name: "OpenAI API", icon: SiOpenai },
-      { name: "Groq", icon: Rocket },
-      { name: "Cohere", icon: Cpu },
+      { name: "Groq", icon: Telescope },
+      { name: "Cohere", icon: Gem },
       { name: "Pinecone", icon: Rocket },
     ],
   },
@@ -73,7 +73,6 @@ const ContinuousFeed = ({
     if (!scrollContainer) return;
 
     const scrollWidth = scrollContainer.scrollWidth;
-    //const clientWidth = scrollContainer.clientWidth;
 
     let scrollPosition = 0;
     const scroll = () => {

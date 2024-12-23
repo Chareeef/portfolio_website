@@ -30,6 +30,10 @@ body {
   .animate-fade-in-up {
     animation: fade-in-up 0.5s ease-out forwards;
   }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
 }
 
 @keyframes fade-in-up {
@@ -43,3 +47,25 @@ body {
   }
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.light {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

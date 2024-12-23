@@ -15,6 +15,7 @@ const exportable = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };
 
 export default exportable;

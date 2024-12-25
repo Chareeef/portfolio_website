@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="fixed z-50 w-full bg-white/10 backdrop-blur-md dark:bg-black/10">
-      <div className="container relative mx-auto flex items-center justify-between gap-4 px-2 py-4">
+      <div className="container relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
         <Link className="relative flex items-center gap-2" href="">
           <Image
             src="/my_picture.png"

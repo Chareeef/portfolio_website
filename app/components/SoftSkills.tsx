@@ -35,13 +35,7 @@ const SoftSkills = () => {
     if (!orbitElement) return;
 
     let angle = 0;
-    const baseRadius = 150; // Minimum radius
-    const scaleFactor = 0.35; // Scaling factor
-    const radius = Math.max(
-      baseRadius,
-      Math.min(orbitElement.offsetWidth, orbitElement.offsetHeight) *
-        scaleFactor,
-    );
+    const radius = orbitElement.offsetHeight * 0.35;
     const center = {
       x: orbitElement.offsetWidth / 2,
       y: orbitElement.offsetHeight / 2,

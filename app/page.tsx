@@ -9,7 +9,7 @@ import SpaceBackground from "./components/SpaceBackground";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <main className="min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <SpaceBackground />
       <div className="container mx-auto px-4 py-20">
         <Introduction />
@@ -24,7 +24,7 @@ export default function Home() {
           ].map((Section, index) => (
             <div
               key={index}
-              className="bg-white/[.25] dark:bg-black/[.25] backdrop-blur-md rounded-lg p-8 animate-fade-in"
+              className="animate-fade-in mx-4 rounded-lg bg-white/[.25] p-8 backdrop-blur-md dark:bg-black/[.25] md:mx-8 lg:mx-12"
             >
               <Section />
             </div>

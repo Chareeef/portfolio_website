@@ -22,7 +22,7 @@ const experiences = [
     website: "https://remoteotter.com",
     images: ["/remoteotter1.png", "/remoteotter2.png", "/remoteotter3.png"],
     accomplishments: [
-      "Built and scaled a remote job board platform with a database of 18,000+ job listings and 1,500 registered users in less than three months",
+      "Built and scaled a remote job board platform with a database of 30,000+ job listings and 1,500 registered users in less than three months",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",
       "Developed the platform using Next.js, TypeScript, Prisma, PostgreSQL and OpenAI API, ensuring robust performance and seamless user experience.",
     ],
@@ -39,12 +39,12 @@ const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer"
+            className="cursor-pointer rounded-lg bg-white/5 p-6 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
             onClick={() =>
               setActiveExperience(activeExperience === index ? null : index)
             }
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <Image
                   src={exp.logo}
@@ -54,7 +54,7 @@ const Experience = () => {
                   className="rounded-full"
                 />
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
+                  <h3 className="mb-2 text-2xl font-bold">{exp.title}</h3>
                   <h4 className="text-xl text-purple-600 dark:text-purple-400">
                     {exp.company}
                   </h4>
@@ -62,16 +62,16 @@ const Experience = () => {
               </div>
               <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                 <ChevronDown
-                  className={`w-6 h-6 transition-transform duration-300 ${activeExperience === index ? "transform rotate-180" : ""}`}
+                  className={`h-6 w-6 transition-transform duration-300 ${activeExperience === index ? "rotate-180 transform" : ""}`}
                 />
               </button>
             </div>
             <p className="mb-4">{exp.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="mb-4 flex flex-wrap gap-2">
               {exp.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm"
+                  className="rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
                 >
                   {tech}
                 </span>
@@ -81,16 +81,16 @@ const Experience = () => {
               href={exp.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
               onClick={(e) => e.stopPropagation()}
             >
               View Website
             </a>
             {activeExperience === index && (
               <div className="mt-4 space-y-4">
-                <div className="p-4 bg-gray-100/10 dark:bg-gray-800/10 rounded-lg">
-                  <h5 className="font-bold mb-2">Key Accomplishments:</h5>
-                  <ul className="list-disc list-inside">
+                <div className="rounded-lg bg-gray-100/10 p-4 dark:bg-gray-800/10">
+                  <h5 className="mb-2 font-bold">Key Accomplishments:</h5>
+                  <ul className="list-inside list-disc">
                     {exp.accomplishments.map((accomplishment, accIndex) => (
                       <li key={accIndex}>{accomplishment}</li>
                     ))}
@@ -104,7 +104,7 @@ const Experience = () => {
                       alt={`${exp.company} experience ${imgIndex + 1}`}
                       width={400}
                       height={300}
-                      className="w-full h-auto rounded-lg shadow-md"
+                      className="h-auto w-full rounded-lg shadow-md"
                     />
                   ))}
                 </div>

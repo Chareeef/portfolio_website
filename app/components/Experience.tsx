@@ -21,7 +21,7 @@ const experiences = [
       "Memcached",
     ],
     website: "https://remoteotter.com",
-    images: ["/remoteotter1.png", "/remoteotter2.png", "/remoteotter3.png"],
+    images: ["/remoteotter1.jpg", "/remoteotter2.jpg", "/remoteotter3.jpg"],
     accomplishments: [
       "Built and scaled a remote job board platform with a database of 30,000+ job listings and 1,500 registered users in less than three months",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",

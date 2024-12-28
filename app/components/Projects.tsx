@@ -55,6 +55,42 @@ const projects = [
       "Designed a responsive user interface for seamless interaction across all devices.",
     ],
   },
+  {
+    name: "Archer",
+    logo: "/archer_logo.png",
+    description:
+      "An education app tailored for children with autism, enhancing literacy, math, and science skills through interactive tools and activities. Always under development to better meet user needs.",
+    technologies: [
+      "Next.js",
+      "Django Rest Framework",
+      "PostgreSQL",
+      "Supabase",
+    ],
+    github: "https://github.com/Chareeef/Archer",
+    demo: "https://archer-edu.vercel.app",
+    images: ["/archer1.jpg", "/archer2.jpg", "/archer3.jpg"],
+    bulletPoints: [
+      "Provides engaging and accessible learning experiences for children with autism.",
+      "Focuses on enhancing literacy, math, and science skills with interactive activities.",
+      "Promotes inclusivity by tailoring education to meet diverse cognitive needs.",
+    ],
+  },
+  {
+    name: "Pantry Tracker",
+    logo: "/pantry_logo.png", // Add the logo path if available
+    description:
+      "A Next.js application to manage pantry inventory, track essentials, and generate ideas using AI. Always evolving to improve user experience.",
+    technologies: ["Next.js", "Tailwind CSS", "Firestore", "Auth0", "Groq AI"],
+    github: "https://github.com/Chareeef/pantry_tracker",
+    demo: "https://pantry-tracker-self-one.vercel.app/",
+    images: ["/pantry1.jpg", "/pantry2.jpg", "/pantry3.jpg"],
+    bulletPoints: [
+      "Secure user authentication using Auth0.",
+      "Real-time inventory management with Firestore.",
+      "Responsive interface for seamless cross-device use.",
+      "AI-powered idea generation based on pantry inventory.",
+    ],
+  },
 ];
 
 const Projects = () => {
@@ -67,13 +103,13 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer"
+            className="cursor-pointer overflow-hidden rounded-lg bg-white/5 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
             onClick={() =>
               setActiveProject(activeProject === index ? null : index)
             }
           >
             <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
+              <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <Image
                     src={project.logo}
@@ -86,27 +122,27 @@ const Projects = () => {
                 </div>
                 <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                   <ChevronDown
-                    className={`w-6 h-6 transition-transform duration-300 ${activeProject === index ? "transform rotate-180" : ""}`}
+                    className={`h-6 w-6 transition-transform duration-300 ${activeProject === index ? "rotate-180 transform" : ""}`}
                   />
                 </button>
               </div>
               <p className="mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="mb-4 flex flex-wrap gap-2">
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm"
+                    className="rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex space-x-4 mb-4">
+              <div className="mb-4 flex space-x-4">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-blue-500 hover:text-blue-700 transition-colors"
+                  className="flex items-center text-blue-500 transition-colors hover:text-blue-700"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="mr-2" /> GitHub
@@ -115,7 +151,7 @@ const Projects = () => {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-green-500 hover:text-green-700 transition-colors"
+                  className="flex items-center text-green-500 transition-colors hover:text-green-700"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ExternalLink className="mr-2" /> Live Demo
@@ -123,9 +159,9 @@ const Projects = () => {
               </div>
               {activeProject === index && (
                 <div className="mt-4 space-y-4">
-                  <div className="p-4 bg-gray-100/10 dark:bg-gray-800/10 rounded-lg">
-                    <h4 className="font-bold mb-2">Key Features:</h4>
-                    <ul className="list-disc list-inside">
+                  <div className="rounded-lg bg-gray-100/10 p-4 dark:bg-gray-800/10">
+                    <h4 className="mb-2 font-bold">Key Features:</h4>
+                    <ul className="list-inside list-disc">
                       {project.bulletPoints.map((point, pointIndex) => (
                         <li key={pointIndex}>{point}</li>
                       ))}
@@ -139,7 +175,7 @@ const Projects = () => {
                         alt={`${project.name} screenshot ${imgIndex + 1}`}
                         width={400}
                         height={300}
-                        className="w-full h-auto rounded-lg shadow-md"
+                        className="h-auto w-full rounded-lg shadow-md"
                       />
                     ))}
                   </div>

@@ -44,6 +44,12 @@ const Header = () => {
             Projects
           </Link>
           <Link
+            href="/#certificates"
+            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
+          >
+            Certificates
+          </Link>
+          <Link
             href="/#skills"
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >

@@ -2,6 +2,7 @@ import Introduction from "./components/Introduction";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Projects from "./components/Projects";
+import Certificates from "./components/Certificates";
 import TechnicalSkills from "./components/TechnicalSkills";
 import SoftSkills from "./components/SoftSkills";
 import Contact from "./components/Contact";
@@ -18,6 +19,7 @@ export default function Home() {
             Experience,
             Education,
             Projects,
+            Certificates,
             TechnicalSkills,
             SoftSkills,
             Contact,

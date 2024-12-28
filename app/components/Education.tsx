@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import SectionHeader from "./SectionHeader";
 import { BadgeIcon as Certificate, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const education = {
   program: "ALX Software Engineering Program",
+  logo: "/alx_logo.png",
   duration: "2023 - 2024",
   description: `The prestigious ALX Software Engineering Program, in partnership with Mastercard, is an intense 12-month program designed to equip participants with essential skills and knowledge for the tech industry through hands-on learning and real-world applications. During the 9-month Foundations phase, I mastered low-level programming with C, learned high-level programming with Python and Flask, and managed databases with MySQL. In the 3-month Specialization phase, I focused on backend development, learning modern technologies like MongoDB, Redis, and Express.js. This hands-on, project-based approach emphasized problem-solving and critical thinking. With the support of a vibrant community of peers and mentors, I am now well-prepared to enter the tech industry.`,
   certificateLink: "https://intranet.alxswe.com/certificates/R7yGXPhxcs",
@@ -68,7 +70,21 @@ const Education = () => {
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl font-bold">{education.program}</h3>
+          <div className="flex items-center space-x-4">
+            <Image
+              src={education.logo}
+              alt="ALX Software Engineering Program logo"
+              width={64}
+              height={64}
+              className="rounded-full"
+            />
+            <div>
+              <h3 className="text-2xl font-bold">{education.program}</h3>
+              <p className="text-purple-600 dark:text-purple-400">
+                {education.duration}
+              </p>
+            </div>
+          </div>
           <div className="flex items-center space-x-2">
             <a
               href={education.certificateLink}
@@ -87,9 +103,6 @@ const Education = () => {
             </button>
           </div>
         </div>
-        <p className="mb-4 text-purple-600 dark:text-purple-400">
-          {education.duration}
-        </p>
         <p className="mb-6">{education.description}</p>
         {isExpanded && (
           <>

@@ -9,6 +9,7 @@ const experiences = [
   {
     title: "Co-Founder & Full-Stack Engineer",
     company: "RemoteOtter",
+    date: "October 2024 - Present",
     logo: "/remoteotter_logo.png",
     description:
       "RemoteOtter is a modern job board platform that connects users with remote work opportunities worldwide. As Co-Founder and Full-Stack Engineer, I collaborated with Abdulrhman Metawei to design and implement the platform's architecture, ensuring scalability and performance. Built under the mentorship of Julien Barbier, Co-Founder of Holberton School, the platform features advanced search capabilities, personalized email notifications, and seamless user experience, powered by state-of-the-art technologies and AI integrations.",
@@ -30,6 +31,7 @@ const experiences = [
   {
     title: "Fellow",
     company: "Headstarter AI Fellowship",
+    date: "July - August 2024",
     logo: "/headstarter_logo.png",
     description:
       "The Headstarter AI Fellowship is an intensive program designed to equip participants with advanced skills in software engineering and AI integrations. During the fellowship, I built AI-powered websites, collaborated with a global team, and gained hands-on experience with Retrieval-Augmented Generation (RAG). The program also included mock technical interviews with AI, workshops, and tech talks on software development, entrepreneurship, and industry trends.",
@@ -78,10 +80,13 @@ const Experience = () => {
                   className="rounded-full"
                 />
                 <div>
-                  <h3 className="mb-2 text-2xl font-bold">{exp.title}</h3>
+                  <h3 className="mb-1 text-2xl font-bold">{exp.title}</h3>
                   <h4 className="text-xl text-purple-600 dark:text-purple-400">
                     {exp.company}
                   </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {exp.date}
+                  </p>
                 </div>
               </div>
               <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">

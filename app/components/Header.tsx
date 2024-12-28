@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="fixed z-50 w-full bg-white/10 backdrop-blur-md dark:bg-black/10">
-      <div className="container relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
+      <div className="relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
         <Link className="relative flex items-center gap-2" href="">
           <Image
             src="/my_picture.png"
@@ -36,6 +36,12 @@ const Header = () => {
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Experience
+          </Link>
+          <Link
+            href="/#education"
+            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
+          >
+            Education
           </Link>
           <Link
             href="/#projects"
@@ -106,11 +112,25 @@ const Header = () => {
             Experience
           </Link>
           <Link
+            href="/#education"
+            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
+            onClick={toggleMenu}
+          >
+            Education
+          </Link>
+          <Link
             href="/#projects"
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
             onClick={toggleMenu}
           >
             Projects
+          </Link>
+          <Link
+            href="/#certificates"
+            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
+            onClick={toggleMenu}
+          >
+            Certificates
           </Link>
           <Link
             href="/#skills"

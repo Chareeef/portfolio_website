@@ -27,6 +27,30 @@ const experiences = [
       "Developed the platform using Next.js, TypeScript, Prisma, PostgreSQL and OpenAI API, ensuring robust performance and seamless user experience.",
     ],
   },
+  {
+    title: "Fellow",
+    company: "Headstarter AI Fellowship",
+    logo: "/headstarter_logo.png",
+    description:
+      "The Headstarter AI Fellowship is an intensive program designed to equip participants with advanced skills in software engineering and AI integrations. During the fellowship, I built AI-powered websites, collaborated with a global team, and gained hands-on experience with Retrieval-Augmented Generation (RAG). The program also included mock technical interviews with AI, workshops, and tech talks on software development, entrepreneurship, and industry trends.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "0Auth",
+      "Clerk",
+      "Firestore",
+      "Groq API",
+      "Cohere",
+      "Pinecone",
+    ],
+    accomplishments: [
+      "Developed 5 AI-powered websites with features like personalized flashcards, intelligent chatbots, and professor recommendations.",
+      "Collaborated with international teams to deliver high-quality projects within tight deadlines.",
+      "Attended workshops on Retrieval-Augmented Generation (RAG) and gained hands-on experience with AI tools like Groq API and Pinecone.",
+      "Passed mock technical interviews with an AI interviewer, sharpening problem-solving and coding skills.",
+      "Participated in tech talks on software engineering, entrepreneurship, and emerging industry trends.",
+    ],
+  },
 ];
 
 const Experience = () => {
@@ -77,15 +101,17 @@ const Experience = () => {
                 </span>
               ))}
             </div>
-            <a
-              href={exp.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-              onClick={(e) => e.stopPropagation()}
-            >
-              View Website
-            </a>
+            {exp.website && (
+              <a
+                href={exp.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                View Website
+              </a>
+            )}
             {activeExperience === index && (
               <div className="mt-4 space-y-4">
                 <div className="rounded-lg bg-gray-100/10 p-4 dark:bg-gray-800/10">
@@ -96,18 +122,20 @@ const Experience = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="grid grid-cols-1 gap-4">
-                  {exp.images.map((image, imgIndex) => (
-                    <Image
-                      key={imgIndex}
-                      src={image}
-                      alt={`${exp.company} experience ${imgIndex + 1}`}
-                      width={400}
-                      height={300}
-                      className="h-auto w-full rounded-lg shadow-md"
-                    />
-                  ))}
-                </div>
+                {exp.images && (
+                  <div className="grid grid-cols-1 gap-4">
+                    {exp.images.map((image, imgIndex) => (
+                      <Image
+                        key={imgIndex}
+                        src={image}
+                        alt={`${exp.company} experience ${imgIndex + 1}`}
+                        width={400}
+                        height={300}
+                        className="h-auto w-full rounded-lg shadow-md"
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>

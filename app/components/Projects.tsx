@@ -97,7 +97,7 @@ const projects = [
 
 const Projects = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

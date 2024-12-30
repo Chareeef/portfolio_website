@@ -1,17 +1,16 @@
-import { Star as Planet } from 'lucide-react'
+import { Star as Planet } from "lucide-react";
 
 interface SectionHeaderProps {
-  title: string
+  title: string;
 }
 
 const SectionHeader = ({ title }: SectionHeaderProps) => {
   return (
-    <h2 className="text-3xl md:text-4xl font-bold mb-10 flex items-center">
-      <Planet className="mr-4 text-purple-600 dark:text-purple-400" />
-      {title}
-    </h2>
-  )
-}
+    <div className="mb-10 flex items-center text-2xl font-bold md:text-4xl">
+      <Planet className="mr-4 size-8 text-xl text-purple-600 dark:text-purple-400" />
+      <h2>{title}</h2>
+    </div>
+  );
+};
 
-export default SectionHeader
-
+export default SectionHeader;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import SectionHeader from "./SectionHeader";
-import { BadgeIcon as Certificate, ChevronDown } from "lucide-react";
+import { Award, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { scrollToSection } from "../../utils";
@@ -96,24 +96,22 @@ const Education = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:inline-flex"
-                onClick={(e) => e.stopPropagation()}
               >
-                <Certificate className="mr-2 h-4 w-4" />
+                <Award className="mr-2" />
                 View Certificate
               </a>
             </div>
           </div>
           <p className="mb-4 text-sm md:text-base">{education.description}</p>
-          <a
+          <Link
             href={education.certificateLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-4 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:hidden"
-            onClick={(e) => e.stopPropagation()}
+            className="mx-auto mb-4 flex w-fit items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:hidden"
           >
-            <Certificate className="mr-2 h-4 w-4" />
+            <Award className="mr-2" />
             View Certificate
-          </a>
+          </Link>
           {isExpanded && (
             <>
               <h4 className="mb-4 text-center text-lg font-semibold md:text-left md:text-xl">

@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <SpaceBackground />
-      <div className="container mx-auto px-4 py-20">
+      <div className="py-20">
         <Introduction />
         <div className="space-y-20">
           {[
@@ -26,7 +26,7 @@ export default function Home() {
           ].map((Section, index) => (
             <div
               key={index}
-              className="animate-fade-in mx-4 rounded-lg bg-white/[.25] p-8 backdrop-blur-md dark:bg-black/[.25] md:mx-8 lg:mx-12"
+              className="animate-fade-in mx-4 rounded-lg bg-white/[.25] p-4 backdrop-blur-md dark:bg-black/[.25] md:mx-8 md:p-8 lg:mx-12"
             >
               <Section />
             </div>

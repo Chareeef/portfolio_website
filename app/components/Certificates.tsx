@@ -5,6 +5,8 @@ import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import { ChevronDown, Award } from "lucide-react";
 import AudioPlayer from "./AudioPlayer";
+import { scrollToSection } from "../../utils";
+import Link from "next/link";
 
 const certificates = [
   {
@@ -40,75 +42,90 @@ const Certificates = () => {
         {certificates.map((cert, index) => (
           <div
             key={index}
-            className="cursor-pointer rounded-lg bg-white/5 p-6 shadow-lg backdrop-blur-md dark:bg-black/5"
-            onClick={() =>
-              setExpandedCertificate(
-                expandedCertificate === index ? null : index,
-              )
-            }
+            id={`certificate-${index}`}
+            className="rounded-lg bg-white/5 shadow-lg backdrop-blur-md dark:bg-black/5"
           >
-            <div className="mb-4 flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <Image
-                  src={cert.logo}
-                  alt={`${cert.title} logo`}
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-                <div>
-                  <h3 className="text-2xl font-bold">{cert.title}</h3>
-                  <p className="text-purple-600 dark:text-purple-400">
-                    {cert.date}
-                  </p>
-                </div>
-              </div>
-              <ChevronDown
-                className={`h-6 w-6 transition-transform duration-300 ${
-                  expandedCertificate === index ? "rotate-180 transform" : ""
-                }`}
-              />
-            </div>
-            <p className="mb-4">{cert.description}</p>
-            {expandedCertificate === index && (
-              <div className="mt-4 space-y-4">
-                <div>
-                  <h4 className="mb-2 font-bold">Key Learnings:</h4>
-                  <ul className="list-inside list-disc">
-                    {cert.keyLearnings.map((learning, i) => (
-                      <li key={i}>{learning}</li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="italic">
-                  This certification is a testament to my commitment to staying
-                  at the forefront of technology and continuously evolving as a
-                  software engineer.
-                </p>
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Award className="mr-2" />
-                  View Certificate
-                </a>
-                {cert.aiProject && (
-                  <div className="mt-6 rounded-lg bg-white/5 p-4 backdrop-blur-md dark:bg-black/5">
-                    <h4 className="mb-2 text-xl font-bold">
-                      AI Project: {cert.aiProject.title}
-                    </h4>
-                    <p className="mb-4">{cert.aiProject.description}</p>
-                    <AudioPlayer
-                      audioSrc={cert.aiProject.audioSrc}
-                      title={cert.aiProject.title}
-                    />
+            <div className="p-6">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex flex-col items-center gap-4 break-words text-center md:flex-row md:text-left">
+                  <Image
+                    src={cert.logo}
+                    alt={`${cert.title} logo`}
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                  <div>
+                    <h3 className="mb-1 text-lg font-bold md:text-2xl">
+                      {cert.title}
+                    </h3>
+                    <p className="text-sm text-purple-600 dark:text-purple-400">
+                      {cert.date}
+                    </p>
                   </div>
-                )}
+                </div>
               </div>
-            )}
+              <p className="mb-4">{cert.description}</p>
+              <Link
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-auto flex w-fit items-center rounded bg-blue-600 px-4 py-2 text-center text-white transition-colors hover:bg-blue-700 md:mx-0"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Award className="mr-2" />
+                View Certificate
+              </Link>
+              {expandedCertificate === index && (
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <h3 className="mb-2 text-lg font-bold md:text-xl">
+                      Key Learnings:
+                    </h3>
+                    <ul className="list-inside list-disc text-sm md:text-base">
+                      {cert.keyLearnings.map((learning, i) => (
+                        <li key={i}>{learning}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p className="text-sm italic md:text-base">
+                    This certification is a testament to my commitment to
+                    staying at the forefront of technology and continuously
+                    evolving as a software engineer.
+                  </p>
+                  {cert.aiProject && (
+                    <div className="mt-6 rounded-lg bg-white/5 p-4 text-center backdrop-blur-md dark:bg-black/5 md:text-left">
+                      <h3 className="mb-2 text-lg font-bold md:text-xl">
+                        AI Project:
+                      </h3>
+                      <p className="mb-4">{cert.aiProject.description}</p>
+                      <AudioPlayer
+                        audioSrc={cert.aiProject.audioSrc}
+                        title={cert.aiProject.title}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <div
+              className="flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
+              onClick={(e) => {
+                if (expandedCertificate === index) {
+                  scrollToSection(e, `#certificate-${index}`, 28);
+                }
+
+                setExpandedCertificate(
+                  expandedCertificate === index ? null : index,
+                );
+              }}
+            >
+              <button>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-300 ${expandedCertificate === index ? "rotate-180 transform" : ""}`}
+                />
+              </button>
+            </div>
           </div>
         ))}
       </div>

@@ -8,7 +8,7 @@ const Introduction = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-20 text-center">
+    <section className="px-4 py-20 text-center">
       <div className="relative mb-8">
         <Image
           src="/my_picture.png"

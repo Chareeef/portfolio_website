@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import SectionHeader from "./SectionHeader";
+import Link from "next/link";
 
 const projects = [
   {
@@ -95,6 +96,13 @@ const projects = [
 
 const Projects = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section id="projects" className="py-20">
@@ -131,14 +139,16 @@ const Projects = () => {
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="rounded-full bg-gray-200 px-3 py-1 text-center text-sm dark:bg-gray-700"
+                    className="h-fit rounded-full bg-gray-200 px-3 py-1 text-center text-sm dark:bg-gray-700"
                   >
-                    {tech}
+                    {tech === "Django Rest Framework" && windowWidth < 768
+                      ? "DRF"
+                      : tech}
                   </span>
                 ))}
               </div>
-              <div className="mb-4 flex space-x-4">
-                <a
+              <div className="mb-4 flex flex-col items-center gap-4 md:flex-row md:items-start">
+                <Link
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -146,8 +156,8 @@ const Projects = () => {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="mr-2" /> GitHub
-                </a>
-                <a
+                </Link>
+                <Link
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -155,7 +165,7 @@ const Projects = () => {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ExternalLink className="mr-2" /> Live Demo
-                </a>
+                </Link>
               </div>
               {activeProject === index && (
                 <div className="mt-4 space-y-4">

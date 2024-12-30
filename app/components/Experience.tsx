@@ -96,7 +96,7 @@ const Experience = () => {
               </button>
             </div>
             <p className="mb-4">{exp.description}</p>
-            <div className="mb-4 flex flex-wrap gap-2">
+            <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
               {exp.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
@@ -107,15 +107,17 @@ const Experience = () => {
               ))}
             </div>
             {exp.website && (
-              <a
-                href={exp.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-                onClick={(e) => e.stopPropagation()}
-              >
-                View Website
-              </a>
+              <div className="flex w-full justify-center md:justify-start">
+                <a
+                  href={exp.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  View Website
+                </a>
+              </div>
             )}
             {activeExperience === index && (
               <div className="mt-4 space-y-4">

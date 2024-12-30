@@ -92,12 +92,12 @@ const ContinuousFeed = ({
   return (
     <div
       ref={scrollRef}
-      className="flex overflow-hidden space-x-8 py-4 max-w-4xl mx-auto"
+      className="mx-auto flex max-w-4xl space-x-8 overflow-hidden py-4"
     >
       {[...skills, ...skills].map((skill, index) => (
-        <div key={index} className="flex flex-col items-center flex-shrink-0">
-          <skill.icon className="text-4xl mb-2 text-purple-600 dark:text-purple-400" />
-          <span className="text-sm font-semibold whitespace-nowrap">
+        <div key={index} className="flex flex-shrink-0 flex-col items-center">
+          <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />
+          <span className="whitespace-nowrap text-sm font-semibold">
             {skill.name}
           </span>
         </div>
@@ -122,7 +122,7 @@ const CircularOrbit = ({
   }, []);
 
   return (
-    <div className="relative w-80 h-80 mx-auto">
+    <div className="relative mx-auto h-80 w-80">
       {skills.map((skill, index) => {
         const angle =
           (index / skills.length) * 2 * Math.PI + (rotation * Math.PI) / 180;
@@ -131,15 +131,15 @@ const CircularOrbit = ({
         return (
           <div
             key={index}
-            className="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out"
+            className="absolute -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
             style={{
               left: `calc(50% + ${x}px)`,
               top: `calc(50% + ${y}px)`,
             }}
           >
             <div className="flex flex-col items-center">
-              <skill.icon className="text-4xl mb-2 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-semibold whitespace-nowrap">
+              <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />
+              <span className="whitespace-nowrap text-sm font-semibold">
                 {skill.name}
               </span>
             </div>
@@ -166,9 +166,9 @@ const HeartbeatingSquare = ({
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-40">
+    <div className="flex h-40 items-center justify-center">
       <div
-        className="grid grid-cols-2 gap-4 p-4 rounded-lg"
+        className="grid grid-cols-2 gap-4 rounded-lg p-4"
         style={{
           transform: `scale(${scale})`,
           transition: "transform 0.5s ease-in-out",
@@ -176,8 +176,8 @@ const HeartbeatingSquare = ({
       >
         {skills.map((skill, index) => (
           <div key={index} className="flex flex-col items-center">
-            <skill.icon className="text-4xl mb-2 size-8 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm font-semibold whitespace-nowrap">
+            <skill.icon className="mb-2 size-8 text-4xl text-purple-600 dark:text-purple-400" />
+            <span className="whitespace-nowrap text-sm font-semibold">
               {skill.name}
             </span>
           </div>
@@ -192,20 +192,26 @@ const TechnicalSkills = () => {
     <section id="skills" className="py-20">
       <SectionHeader title="Technical Constellations" />
       <div className="space-y-12">
-        <div className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg p-6">
-          <h3 className="text-2xl font-bold mb-4 text-center">
+        <div className="rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5">
+          <h3 className="mb-4 text-center text-2xl font-bold">
             {skillSections[0].title}
           </h3>
           <ContinuousFeed skills={skillSections[0].skills} />
         </div>
-        <div className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg p-6">
-          <h3 className="text-2xl font-bold mb-4 text-center">
+        <div className="block rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5 md:hidden">
+          <h3 className="mb-4 text-center text-2xl font-bold">
+            {skillSections[1].title}
+          </h3>
+          <ContinuousFeed skills={skillSections[1].skills} />
+        </div>
+        <div className="hidden rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5 md:block">
+          <h3 className="mb-4 text-center text-2xl font-bold">
             {skillSections[1].title}
           </h3>
           <CircularOrbit skills={skillSections[1].skills} />
         </div>
-        <div className="bg-white/5 dark:bg-black/5 backdrop-blur-md rounded-lg p-6">
-          <h3 className="text-2xl font-bold mb-4 text-center">
+        <div className="rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5">
+          <h3 className="mb-4 text-center text-2xl font-bold">
             {skillSections[2].title}
           </h3>
           <HeartbeatingSquare skills={skillSections[2].skills} />

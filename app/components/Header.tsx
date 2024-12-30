@@ -30,7 +30,7 @@ const Header = () => {
             Youssef Charif Hamidi
           </h1>
         </Link>
-        <nav className="mx-4 hidden items-center gap-4 md:flex">
+        <nav className="mx-4 hidden items-center gap-4 lg:flex">
           <Link
             href="/#experience"
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
@@ -84,7 +84,7 @@ const Header = () => {
               ))}
           </button>
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -103,7 +103,7 @@ const Header = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="bg-white/10 backdrop-blur-md dark:bg-black/10 md:hidden">
+        <div className="bg-white/10 backdrop-blur-md dark:bg-black/10 lg:hidden">
           <Link
             href="/#experience"
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"

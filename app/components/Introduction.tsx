@@ -28,7 +28,7 @@ const Introduction = () => {
           className={`ml-2 inline-block transition-transform duration-300 ${isHovered ? "-translate-y-2 translate-x-2 transform" : ""}`}
         />
       </h2>
-      <p className="mx-auto max-w-3xl text-xl md:text-2xl">
+      <p className="mx-auto max-w-3xl text-center text-xl md:text-2xl">
         Greetings, fellow space traveler! I am a passionate software engineer
         and co-founder of RemoteOtter, a platform connecting professionals with
         remote job opportunities. My journey, marked by resilience and creative

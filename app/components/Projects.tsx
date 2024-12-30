@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Link from "next/link";
+import { scrollToSection } from "../../utils";
 
 const projects = [
   {
@@ -111,10 +112,8 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="cursor-pointer overflow-hidden rounded-lg bg-white/5 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
-            onClick={() =>
-              setActiveProject(activeProject === index ? null : index)
-            }
+            id={`project-${index}`}
+            className="overflow-hidden rounded-lg bg-white/5 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
           >
             <div className="p-6">
               <div className="mb-4 flex items-center justify-between">
@@ -128,11 +127,6 @@ const Projects = () => {
                   />
                   <h3 className="text-2xl font-bold">{project.name}</h3>
                 </div>
-                <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                  <ChevronDown
-                    className={`h-6 w-6 transition-transform duration-300 ${activeProject === index ? "rotate-180 transform" : ""}`}
-                  />
-                </button>
               </div>
               <p className="mb-4">{project.description}</p>
               <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
@@ -191,6 +185,21 @@ const Projects = () => {
                   </div>
                 </div>
               )}
+            </div>
+            <div
+              className="mt-4 flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
+              onClick={(e) => {
+                if (activeProject === index) {
+                  scrollToSection(e, `#project-${index}`, 32);
+                }
+                setActiveProject(activeProject === index ? null : index);
+              }}
+            >
+              <button>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-300 ${activeProject === index ? "rotate-180 transform" : ""}`}
+                />
+              </button>
             </div>
           </div>
         ))}

@@ -10,7 +10,7 @@ import SpaceBackground from "./components/SpaceBackground";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <main className="min-h-screen bg-gray-100 pt-20 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <SpaceBackground />
       <div className="container mx-auto px-4 py-20">
         <Introduction />

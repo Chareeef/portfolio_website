@@ -15,6 +15,23 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const headerHeight = 80; // Adjust this value based on your header's height
+      const elementPosition =
+        target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - headerHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <header className="fixed z-50 w-full bg-white/10 backdrop-blur-md dark:bg-black/10">
       <div className="relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
@@ -33,36 +50,42 @@ const Header = () => {
         <nav className="mx-4 hidden items-center gap-4 lg:flex">
           <Link
             href="/#experience"
+            onClick={(e) => scrollToSection(e, "#experience")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Experience
           </Link>
           <Link
             href="/#education"
+            onClick={(e) => scrollToSection(e, "#education")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Education
           </Link>
           <Link
             href="/#projects"
+            onClick={(e) => scrollToSection(e, "#projects")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Projects
           </Link>
           <Link
             href="/#certificates"
+            onClick={(e) => scrollToSection(e, "#certificates")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Certificates
           </Link>
           <Link
             href="/#skills"
+            onClick={(e) => scrollToSection(e, "#skills")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Skills
           </Link>
           <Link
             href="/#contact"
+            onClick={(e) => scrollToSection(e, "#contact")}
             className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
           >
             Contact
@@ -106,43 +129,61 @@ const Header = () => {
         <div className="bg-white/10 backdrop-blur-md dark:bg-black/10 lg:hidden">
           <Link
             href="/#experience"
+            onClick={(e) => {
+              scrollToSection(e, "#experience");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Experience
           </Link>
           <Link
             href="/#education"
+            onClick={(e) => {
+              scrollToSection(e, "#education");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Education
           </Link>
           <Link
             href="/#projects"
+            onClick={(e) => {
+              scrollToSection(e, "#projects");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Projects
           </Link>
           <Link
             href="/#certificates"
+            onClick={(e) => {
+              scrollToSection(e, "#certificates");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Certificates
           </Link>
           <Link
             href="/#skills"
+            onClick={(e) => {
+              scrollToSection(e, "#skills");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Skills
           </Link>
           <Link
             href="/#contact"
+            onClick={(e) => {
+              scrollToSection(e, "#contact");
+              toggleMenu();
+            }}
             className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-            onClick={toggleMenu}
           >
             Contact
           </Link>

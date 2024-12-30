@@ -24,6 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  padding-top: 80px; /* Adjust this value to match your header height */
 }
 
 @layer utilities {
@@ -62,12 +63,27 @@ body {
   transition-duration: 300ms;
 }
 
+/* Add this to ensure smooth theme transitions */
 .light {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Adjust the header to be fixed */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 p {

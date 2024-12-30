@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import SectionHeader from "./SectionHeader";
 import { BadgeIcon as Certificate, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const education = {
   program: "ALX Software Engineering Program",
@@ -128,14 +129,15 @@ const Education = () => {
                     {achievement.title}
                   </h5>
                   <p className="mb-3">{achievement.description}</p>
-                  <a
+                  <Link
+                    onClick={(e) => e.stopPropagation()}
                     href={achievement.link}
                     className="inline-block rounded bg-purple-600 px-4 py-2 text-white transition-colors hover:bg-purple-700"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {achievement.linkText}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

@@ -56,11 +56,6 @@ const SoftSkills = () => {
       >
         <div className="absolute inset-0 flex h-full items-center justify-center">
           <div className="h-4 w-4 animate-pulse rounded-full bg-yellow-400" />
-          {activeSkill === null && (
-            <div className="absolute bottom-6 left-0 right-0 text-center text-sm text-gray-500 dark:text-gray-400">
-              Click on a skill to learn more
-            </div>
-          )}
         </div>
         <div className="relative h-full w-full">
           {skills.map((skill, index) => {
@@ -98,6 +93,11 @@ const SoftSkills = () => {
             );
           })}
         </div>
+        {activeSkill === null && (
+          <div className="absolute left-0 right-0 text-center text-sm text-gray-500 dark:text-gray-400">
+            Click on a skill to learn more
+          </div>
+        )}
       </div>
     </section>
   );

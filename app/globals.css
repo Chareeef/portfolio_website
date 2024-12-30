@@ -24,7 +24,6 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  padding-top: 80px; /* Adjust this value to match your header height */
 }
 
 @layer utilities {

@@ -64,14 +64,24 @@ const Certificates = () => {
                     </p>
                   </div>
                 </div>
+                <div className="flex items-center space-x-2">
+                  <Link
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:inline-flex"
+                  >
+                    <Award className="mr-2" />
+                    View Certificate
+                  </Link>
+                </div>
               </div>
               <p className="mb-4">{cert.description}</p>
               <Link
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-auto flex w-fit items-center rounded bg-blue-600 px-4 py-2 text-center text-white transition-colors hover:bg-blue-700 md:mx-0"
-                onClick={(e) => e.stopPropagation()}
+                className="mx-auto flex w-fit items-center rounded bg-blue-600 px-4 py-2 text-center text-white transition-colors hover:bg-blue-700 md:mx-0 md:hidden"
               >
                 <Award className="mr-2" />
                 View Certificate

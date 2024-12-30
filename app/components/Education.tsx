@@ -91,7 +91,7 @@ const Education = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <a
+              <Link
                 href={education.certificateLink}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -99,7 +99,7 @@ const Education = () => {
               >
                 <Award className="mr-2" />
                 View Certificate
-              </a>
+              </Link>
             </div>
           </div>
           <p className="mb-4 text-sm md:text-base">{education.description}</p>

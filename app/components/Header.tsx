@@ -17,7 +17,7 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="fixed z-50 w-full bg-white/10 backdrop-blur-md dark:bg-black/10">
+    <header className="fixed z-50 w-full bg-white/75 backdrop-blur-lg dark:bg-black/75">
       <div className="relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
         <Link className="relative flex items-center gap-2" href="">
           <Image

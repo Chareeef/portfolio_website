@@ -67,82 +67,84 @@ const Experience = () => {
           <div
             key={index}
             id={`experience-${index}`}
-            className="rounded-lg bg-white/5 p-6 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
+            className="rounded-lg bg-white/5 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
           >
-            <div className="mb-4 flex items-center justify-between">
-              <div className="flex flex-col items-center gap-4 break-words md:flex-row">
-                <Image
-                  src={exp.logo}
-                  alt={`${exp.company} logo`}
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-                <div className="text-center md:text-left">
-                  <h3 className="mb-1 text-lg font-bold md:text-2xl">
-                    {exp.title}
-                  </h3>
-                  <h4 className="text-base text-purple-600 dark:text-purple-400 md:text-xl">
-                    {exp.company}
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {exp.date}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="mb-4 text-sm md:text-base">{exp.description}</p>
-            <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
-              {exp.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="w-fit rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            {exp.website && (
-              <div className="flex w-full justify-center md:justify-start">
-                <a
-                  href={exp.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  View Website
-                </a>
-              </div>
-            )}
-            {activeExperience === index && (
-              <div className="mt-4 space-y-4">
-                <div className="rounded-lg bg-gray-100/10 p-4 dark:bg-gray-800/10">
-                  <h5 className="mb-2 font-bold">Key Accomplishments:</h5>
-                  <ul className="list-inside list-disc">
-                    {exp.accomplishments.map((accomplishment, accIndex) => (
-                      <li key={accIndex}>{accomplishment}</li>
-                    ))}
-                  </ul>
-                </div>
-                {exp.images && (
-                  <div className="grid grid-cols-1 gap-4">
-                    {exp.images.map((image, imgIndex) => (
-                      <Image
-                        key={imgIndex}
-                        src={image}
-                        alt={`${exp.company} experience ${imgIndex + 1}`}
-                        width={400}
-                        height={300}
-                        className="h-auto w-full rounded-lg shadow-md"
-                      />
-                    ))}
+            <div className="p-6">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex flex-col items-center gap-4 break-words md:flex-row">
+                  <Image
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                  <div className="text-center md:text-left">
+                    <h3 className="mb-1 text-lg font-bold md:text-2xl">
+                      {exp.title}
+                    </h3>
+                    <h4 className="text-base text-purple-600 dark:text-purple-400 md:text-xl">
+                      {exp.company}
+                    </h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {exp.date}
+                    </p>
                   </div>
-                )}
+                </div>
               </div>
-            )}
+              <p className="mb-4 text-sm md:text-base">{exp.description}</p>
+              <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
+                {exp.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="w-fit rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              {exp.website && (
+                <div className="flex w-full justify-center md:justify-start">
+                  <a
+                    href={exp.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Website
+                  </a>
+                </div>
+              )}
+              {activeExperience === index && (
+                <div className="mt-4 space-y-4">
+                  <div className="rounded-lg bg-gray-100/10 p-4 dark:bg-gray-800/10">
+                    <h5 className="mb-2 font-bold">Key Accomplishments:</h5>
+                    <ul className="list-inside list-disc">
+                      {exp.accomplishments.map((accomplishment, accIndex) => (
+                        <li key={accIndex}>{accomplishment}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  {exp.images && (
+                    <div className="grid grid-cols-1 gap-4">
+                      {exp.images.map((image, imgIndex) => (
+                        <Image
+                          key={imgIndex}
+                          src={image}
+                          alt={`${exp.company} experience ${imgIndex + 1}`}
+                          width={400}
+                          height={300}
+                          className="h-auto w-full rounded-lg shadow-md"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             <div
-              className="mt-4 flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
+              className="flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
               onClick={(e) => {
                 if (activeExperience === index) {
                   scrollToSection(e, `#experience-${index}`, 28);

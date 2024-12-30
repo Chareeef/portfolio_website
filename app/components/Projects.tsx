@@ -117,7 +117,7 @@ const Projects = () => {
           >
             <div className="p-6">
               <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+                <div className="flex w-full flex-col items-center justify-center gap-4 break-words text-center md:flex-row md:items-start md:justify-start md:text-left">
                   <Image
                     src={project.logo}
                     alt={`${project.name} logo`}
@@ -125,10 +125,12 @@ const Projects = () => {
                     height={64}
                     className="rounded-lg"
                   />
-                  <h3 className="text-2xl font-bold">{project.name}</h3>
+                  <h3 className="mb-1 text-lg font-bold md:text-2xl">
+                    {project.name}
+                  </h3>
                 </div>
               </div>
-              <p className="mb-4">{project.description}</p>
+              <p className="mb-4 text-sm md:text-base">{project.description}</p>
               <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
                 {project.technologies.map((tech, techIndex) => (
                   <span

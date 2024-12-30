@@ -71,7 +71,7 @@ const Experience = () => {
           >
             <div className="p-6">
               <div className="mb-4 flex items-center justify-between">
-                <div className="flex flex-col items-center gap-4 break-words md:flex-row">
+                <div className="flex w-full flex-col items-center gap-4 break-words md:flex-row">
                   <Image
                     src={exp.logo}
                     alt={`${exp.company} logo`}

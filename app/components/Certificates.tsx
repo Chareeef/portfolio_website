@@ -47,7 +47,7 @@ const Certificates = () => {
           >
             <div className="p-6">
               <div className="mb-4 flex items-center justify-between">
-                <div className="flex flex-col items-center gap-4 break-words text-center md:flex-row md:text-left">
+                <div className="flex w-full flex-col items-center gap-4 break-words text-center md:flex-row md:text-left">
                   <Image
                     src={cert.logo}
                     alt={`${cert.title} logo`}

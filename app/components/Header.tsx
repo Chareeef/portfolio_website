@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
+import { scrollToSection } from "../../utils";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -14,23 +15,6 @@ const Header = () => {
   useEffect(() => setMounted(true), []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      const headerHeight = 80; // Adjust this value based on your header's height
-      const elementPosition =
-        target.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - headerHeight,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <header className="fixed z-50 w-full bg-white/10 backdrop-blur-md dark:bg-black/10">

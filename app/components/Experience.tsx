@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import { ChevronDown } from "lucide-react";
+import { scrollToSection } from "../../utils";
 
 const experiences = [
   {
@@ -65,13 +66,11 @@ const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="cursor-pointer rounded-lg bg-white/5 p-6 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
-            onClick={() =>
-              setActiveExperience(activeExperience === index ? null : index)
-            }
+            id={`experience-${index}`}
+            className="rounded-lg bg-white/5 p-6 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:shadow-xl dark:bg-black/5"
           >
             <div className="mb-4 flex items-center justify-between">
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col items-center gap-4 break-words md:flex-row">
                 <Image
                   src={exp.logo}
                   alt={`${exp.company} logo`}
@@ -79,9 +78,11 @@ const Experience = () => {
                   height={64}
                   className="rounded-full"
                 />
-                <div>
-                  <h3 className="mb-1 text-2xl font-bold">{exp.title}</h3>
-                  <h4 className="text-xl text-purple-600 dark:text-purple-400">
+                <div className="text-center md:text-left">
+                  <h3 className="mb-1 text-lg font-bold md:text-2xl">
+                    {exp.title}
+                  </h3>
+                  <h4 className="text-base text-purple-600 dark:text-purple-400 md:text-xl">
                     {exp.company}
                   </h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -89,18 +90,13 @@ const Experience = () => {
                   </p>
                 </div>
               </div>
-              <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-300 ${activeExperience === index ? "rotate-180 transform" : ""}`}
-                />
-              </button>
             </div>
-            <p className="mb-4">{exp.description}</p>
+            <p className="mb-4 text-sm md:text-base">{exp.description}</p>
             <div className="mb-4 flex flex-wrap justify-center gap-2 md:justify-start">
               {exp.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
+                  className="w-fit rounded-full bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700"
                 >
                   {tech}
                 </span>
@@ -145,6 +141,21 @@ const Experience = () => {
                 )}
               </div>
             )}
+            <div
+              className="mt-4 flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
+              onClick={(e) => {
+                if (activeExperience === index) {
+                  scrollToSection(e, `#experience-${index}`, 28);
+                }
+                setActiveExperience(activeExperience === index ? null : index);
+              }}
+            >
+              <button>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-300 ${activeExperience === index ? "rotate-180 transform" : ""}`}
+                />
+              </button>
+            </div>
           </div>
         ))}
       </div>

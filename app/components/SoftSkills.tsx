@@ -74,7 +74,7 @@ const SoftSkills = () => {
               >
                 <div className="relative">
                   {activeSkill === index && (
-                    <div className="absolute bottom-full left-1/2 z-20 mb-4 w-64 -translate-x-1/2 transform rounded-lg bg-white/10 p-4 shadow-lg backdrop-blur-md dark:bg-black/10">
+                    <div className="absolute bottom-full left-1/2 mb-4 w-64 -translate-x-1/2 transform rounded-lg bg-white/75 p-4 shadow-lg backdrop-blur-lg dark:bg-black/75">
                       <p className="text-center text-sm">{skill.description}</p>
                     </div>
                   )}

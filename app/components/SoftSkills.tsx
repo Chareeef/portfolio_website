@@ -40,10 +40,20 @@ const SoftSkills = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () =>
+      setRadius(Math.min(window.innerWidth, window.innerHeight) * 0.22);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className="py-20">
       <SectionHeader title="Cosmic Soft Skills" />
-      <div className="relative h-[400px] md:h-[500px] lg:h-[600px]">
+      <div
+        className="relative h-[400px] md:h-[500px] lg:h-[600px]"
+        onClick={() => setActiveSkill(null)}
+      >
         <div className="absolute inset-0 flex h-full items-center justify-center">
           <div className="h-4 w-4 animate-pulse rounded-full bg-yellow-400" />
           {activeSkill === null && (
@@ -74,9 +84,10 @@ const SoftSkills = () => {
                     </div>
                   )}
                   <button
-                    onClick={() =>
-                      setActiveSkill(activeSkill === index ? null : index)
-                    }
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveSkill(activeSkill === index ? null : index);
+                    }}
                     className="flex flex-col items-center text-center"
                   >
                     <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />

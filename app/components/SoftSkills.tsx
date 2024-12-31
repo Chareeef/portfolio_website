@@ -67,14 +67,16 @@ const SoftSkills = () => {
             return (
               <div
                 key={index}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out ${
+                  activeSkill === index ? "z-30" : "z-0"
+                }`}
                 style={{
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                 }}
               >
                 <div className="relative">
                   {activeSkill === index && (
-                    <div className="absolute bottom-full left-1/2 mb-4 w-64 -translate-x-1/2 transform rounded-lg bg-white/75 p-4 shadow-lg backdrop-blur-lg dark:bg-black/75">
+                    <div className="absolute bottom-full left-1/2 z-10 mb-4 w-64 -translate-x-1/2 transform rounded-lg bg-white/75 p-4 shadow-lg backdrop-blur-lg dark:bg-black/75">
                       <p className="text-center text-sm">{skill.description}</p>
                     </div>
                   )}
@@ -83,7 +85,7 @@ const SoftSkills = () => {
                       e.stopPropagation();
                       setActiveSkill(activeSkill === index ? null : index);
                     }}
-                    className="flex flex-col items-center text-center"
+                    className="relative z-20 flex flex-col items-center text-center"
                   >
                     <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />
                     <span className="text-sm font-semibold">{skill.name}</span>

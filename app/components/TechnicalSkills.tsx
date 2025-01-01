@@ -19,6 +19,7 @@ import {
   SiRedis,
   SiFirebase,
   SiOpenai,
+  SiPrisma,
 } from "react-icons/si";
 import { Rocket, Telescope, Gem } from "lucide-react";
 import SectionHeader from "./SectionHeader";
@@ -48,6 +49,7 @@ const skillSections = [
       { name: "MongoDB", icon: SiMongodb },
       { name: "Redis", icon: SiRedis },
       { name: "Cloud Firestore", icon: SiFirebase },
+      { name: "Prisma", icon: SiPrisma },
     ],
   },
   {
@@ -92,12 +94,12 @@ const ContinuousFeed = ({
   return (
     <div
       ref={scrollRef}
-      className="mx-auto flex max-w-4xl space-x-8 overflow-hidden py-4"
+      className="mx-auto flex max-w-4xl space-x-4 overflow-hidden py-4 md:space-x-8"
     >
       {[...skills, ...skills].map((skill, index) => (
         <div key={index} className="flex flex-shrink-0 flex-col items-center">
-          <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />
-          <span className="whitespace-nowrap text-sm font-semibold">
+          <skill.icon className="mb-2 text-2xl text-purple-600 dark:text-purple-400 md:text-4xl" />
+          <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
             {skill.name}
           </span>
         </div>
@@ -122,7 +124,7 @@ const CircularOrbit = ({
   }, []);
 
   return (
-    <div className="relative mx-auto h-80 w-80">
+    <div className="relative mx-auto h-60 w-60 md:h-80 md:w-80">
       {skills.map((skill, index) => {
         const angle =
           (index / skills.length) * 2 * Math.PI + (rotation * Math.PI) / 180;
@@ -138,8 +140,8 @@ const CircularOrbit = ({
             }}
           >
             <div className="flex flex-col items-center">
-              <skill.icon className="mb-2 text-4xl text-purple-600 dark:text-purple-400" />
-              <span className="whitespace-nowrap text-sm font-semibold">
+              <skill.icon className="mb-1 text-2xl text-purple-600 dark:text-purple-400 md:mb-2 md:text-4xl" />
+              <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
                 {skill.name}
               </span>
             </div>
@@ -166,9 +168,9 @@ const HeartbeatingSquare = ({
   }, []);
 
   return (
-    <div className="flex h-40 items-center justify-center">
+    <div className="flex h-40 items-center justify-center md:h-60">
       <div
-        className="grid grid-cols-2 gap-4 rounded-lg p-4"
+        className="grid grid-cols-2 gap-2 rounded-lg p-2 md:gap-4 md:p-4"
         style={{
           transform: `scale(${scale})`,
           transition: "transform 0.5s ease-in-out",
@@ -176,8 +178,8 @@ const HeartbeatingSquare = ({
       >
         {skills.map((skill, index) => (
           <div key={index} className="flex flex-col items-center">
-            <skill.icon className="mb-2 size-8 text-4xl text-purple-600 dark:text-purple-400" />
-            <span className="whitespace-nowrap text-sm font-semibold">
+            <skill.icon className="mb-1 text-2xl text-purple-600 dark:text-purple-400 md:mb-2 md:text-4xl" />
+            <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
               {skill.name}
             </span>
           </div>

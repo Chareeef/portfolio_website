@@ -25,9 +25,9 @@ const Header = () => {
             width={450}
             height={450}
             alt="Youssef Charif Hamidi"
-            className="h-12 w-12 rounded-full object-cover md:h-16 md:w-16"
+            className="h-8 w-8 rounded-full object-cover md:h-16 md:w-16"
           />
-          <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
+          <h1 className="text-center text-lg font-bold text-gray-900 dark:text-white md:text-3xl">
             Youssef Charif Hamidi
           </h1>
         </Link>

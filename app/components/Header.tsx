@@ -18,85 +18,60 @@ const Header = () => {
 
   return (
     <header className="fixed z-50 w-full bg-white/75 backdrop-blur-lg dark:bg-black/75">
-      <div className="relative mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
+      <div className="relative mx-auto flex items-center justify-between gap-2 px-2 py-2 sm:px-4 sm:py-3 md:py-4">
         <Link className="relative flex items-center gap-2" href="">
           <Image
             src="/my_picture.png"
             width={450}
             height={450}
             alt="Youssef Charif Hamidi"
-            className="h-8 w-8 rounded-full object-cover md:h-16 md:w-16"
+            className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-16 lg:w-16"
           />
-          <h1 className="text-center text-lg font-bold text-gray-900 dark:text-white md:text-3xl">
+          <h1 className="text-center text-sm font-bold text-gray-900 dark:text-white sm:text-base md:text-lg lg:text-2xl xl:text-3xl">
             Youssef Charif Hamidi
           </h1>
         </Link>
-        <nav className="mx-4 hidden items-center gap-4 lg:flex">
-          <Link
-            href="/#experience"
-            onClick={(e) => scrollToSection(e, "#experience")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Experience
-          </Link>
-          <Link
-            href="/#education"
-            onClick={(e) => scrollToSection(e, "#education")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Education
-          </Link>
-          <Link
-            href="/#projects"
-            onClick={(e) => scrollToSection(e, "#projects")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/#certificates"
-            onClick={(e) => scrollToSection(e, "#certificates")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Certificates
-          </Link>
-          <Link
-            href="/#skills"
-            onClick={(e) => scrollToSection(e, "#skills")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Skills
-          </Link>
-          <Link
-            href="/#contact"
-            onClick={(e) => scrollToSection(e, "#contact")}
-            className="text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          >
-            Contact
-          </Link>
+        <nav className="hidden items-center gap-2 sm:gap-3 md:gap-4 lg:flex">
+          {[
+            "Experience",
+            "Education",
+            "Projects",
+            "Certificates",
+            "Skills",
+            "Contact",
+          ].map((item) => (
+            <Link
+              key={item}
+              href={`/#${item.toLowerCase()}`}
+              onClick={(e) => scrollToSection(e, `#${item.toLowerCase()}`)}
+              className="text-xs text-gray-900 transition-colors hover:text-purple-600 dark:text-white dark:hover:text-purple-400 sm:text-sm md:text-base lg:text-lg"
+            >
+              {item}
+            </Link>
+          ))}
         </nav>
-        <div className="ml-4 flex items-center space-x-2">
+        <div className="flex items-center space-x-2">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full bg-gray-200 p-2 dark:bg-gray-800"
+            className="rounded-full bg-gray-200 p-1 dark:bg-gray-800 sm:p-2"
             aria-label="Toggle theme"
           >
             {mounted &&
               (theme === "dark" ||
               (theme === "system" &&
                 window.matchMedia("(prefers-color-scheme: dark)").matches) ? (
-                <Sun className="h-5 w-5 text-yellow-500" />
+                <Sun className="h-4 w-4 text-yellow-500 sm:h-5 sm:w-5 md:h-7 md:w-7" />
               ) : (
-                <Moon className="h-5 w-5 text-gray-900" />
+                <Moon className="h-4 w-4 text-gray-900 sm:h-5 sm:w-5 md:h-7 md:w-7" />
               ))}
           </button>
           <button
-            className="lg:hidden"
+            className="p-1 sm:p-2 lg:hidden"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
             <svg
-              className="h-6 w-6 text-gray-900 dark:text-white"
+              className="h-5 w-5 text-gray-900 dark:text-white sm:h-6 sm:w-6"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -111,66 +86,26 @@ const Header = () => {
       </div>
       {isMenuOpen && (
         <div className="bg-white/10 backdrop-blur-md dark:bg-black/10 lg:hidden">
-          <Link
-            href="/#experience"
-            onClick={(e) => {
-              scrollToSection(e, "#experience");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Experience
-          </Link>
-          <Link
-            href="/#education"
-            onClick={(e) => {
-              scrollToSection(e, "#education");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Education
-          </Link>
-          <Link
-            href="/#projects"
-            onClick={(e) => {
-              scrollToSection(e, "#projects");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/#certificates"
-            onClick={(e) => {
-              scrollToSection(e, "#certificates");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Certificates
-          </Link>
-          <Link
-            href="/#skills"
-            onClick={(e) => {
-              scrollToSection(e, "#skills");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Skills
-          </Link>
-          <Link
-            href="/#contact"
-            onClick={(e) => {
-              scrollToSection(e, "#contact");
-              toggleMenu();
-            }}
-            className="block px-4 py-2 text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800"
-          >
-            Contact
-          </Link>
+          {[
+            "Experience",
+            "Education",
+            "Projects",
+            "Certificates",
+            "Skills",
+            "Contact",
+          ].map((item) => (
+            <Link
+              key={item}
+              href={`/#${item.toLowerCase()}`}
+              onClick={(e) => {
+                scrollToSection(e, `#${item.toLowerCase()}`);
+                toggleMenu();
+              }}
+              className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800 sm:text-base"
+            >
+              {item}
+            </Link>
+          ))}
         </div>
       )}
     </header>

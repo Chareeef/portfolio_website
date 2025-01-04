@@ -9,11 +9,26 @@ import { scrollToSection } from "../../utils";
 
 const projects = [
   {
+    name: "Get A Gig",
+    logo: "/getagig_logo.png",
+    description:
+      "A foundational project for RemoteOtter, built collaboratively with Abdulrhman Metawei. This remote job board platform is tailored for software engineers, offering curated job listings and AI-powered cover letter generation.",
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Groq AI"],
+    github: "https://github.com/Chareeef/get-a-gig",
+    demo: "https://get-a-gig.vercel.app",
+    images: ["/getagig1.png", "/getagig2.png", "/getagig3.png"],
+    bulletPoints: [
+      "Integrated an AI-powered cover letter generator for personalized job applications.",
+      "Designed a responsive, modern interface for seamless use across devices.",
+      "Used Prisma and PostgreSQL for efficient data handling and scalability.",
+    ],
+  },
+  {
     name: "MemFlip",
     logo: "/memflip_logo.png",
     description:
       "An AI-powered flashcard app that enhances learning through intelligent flashcard generation and real-time review.",
-    technologies: ["Next.js", "Tailwind CSS", "Clerk", "Firestore"],
+    technologies: ["Next.js", "Tailwind CSS", "Clerk", "Firestore", "Groq AI"],
     github: "https://github.com/Chareeef/MemFlip",
     demo: "https://mem-flip.live",
     images: ["/memflip1.png", "/memflip2.png", "/memflip3.png"],
@@ -28,7 +43,7 @@ const projects = [
     logo: "/sadim_logo.png",
     description:
       "An AI-powered chatbot designed for natural, human-like conversations with rapid inference capabilities.",
-    technologies: ["Next.js", "Tailwind CSS", "Groq API", "NextAuth"],
+    technologies: ["Next.js", "Tailwind CSS", "NextAuth", "Groq AI"],
     github: "https://github.com/Chareeef/SadimAI",
     demo: "https://sadim-ai.com",
     images: ["/sadim1.png", "/sadim2.png", "/sadim3.png"],
@@ -43,7 +58,7 @@ const projects = [
     logo: "/ratemyprofessor_logo.png",
     description:
       "An AI-powered platform for professor recommendations and conversational interactions.",
-    technologies: ["Next.js", "Tailwind CSS", "Cohere", "Pinecone", "Groq API"],
+    technologies: ["Next.js", "Tailwind CSS", "Cohere", "Pinecone", "Groq AI"],
     github: "https://github.com/Chareeef/RateMyProfessor",
     demo: "https://rate-my-professor-murex.vercel.app",
     images: [
@@ -79,7 +94,7 @@ const projects = [
   },
   {
     name: "Pantry Tracker",
-    logo: "/pantry_logo.png", // Add the logo path if available
+    logo: "/pantry_logo.png",
     description:
       "A Next.js application to manage pantry inventory, track essentials, and generate ideas using AI. Always evolving to improve user experience.",
     technologies: ["Next.js", "Tailwind CSS", "Firestore", "Auth0", "Groq AI"],

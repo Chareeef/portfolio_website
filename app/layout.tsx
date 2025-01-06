@@ -16,7 +16,7 @@ export const metadata = {
       "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
     images: [
       {
-        url: "https://youssefcharifhamidi.com/my_picture.png",
+        url: "https://youssefcharifhamidi.com/og_my_picture.png",
         width: 1200,
         height: 630,
       },
@@ -29,7 +29,7 @@ export const metadata = {
       "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
     images: [
       {
-        url: "https://youssefcharifhamidi.com/my_picture.png",
+        url: "https://youssefcharifhamidi.com/og_my_picture.png",
         width: 1200,
         height: 630,
       },

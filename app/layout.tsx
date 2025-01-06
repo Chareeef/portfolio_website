@@ -10,6 +10,31 @@ export const metadata = {
   title: "Youssef Charif Hamidi - Full-Stack Engineer",
   description:
     "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
+  openGraph: {
+    title: "Youssef Charif Hamidi - Full-Stack Engineer",
+    description:
+      "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
+    images: [
+      {
+        url: "https://youssefcharifhamidi.com/my_picture.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Youssef Charif Hamidi - Full-Stack Engineer",
+    description:
+      "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
+    images: [
+      {
+        url: "https://youssefcharifhamidi.com/my_picture.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

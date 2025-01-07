@@ -30,7 +30,7 @@ const experiences = [
     ],
   },
   {
-    title: "Fellow",
+    title: "Software Engineer",
     company: "Headstarter AI Fellowship",
     date: "July - August 2024",
     logo: "/headstarter_logo.png",

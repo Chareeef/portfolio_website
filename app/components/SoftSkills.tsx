@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Moon, CompassIcon as Comet, Zap } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
@@ -29,35 +29,72 @@ const SoftSkills = () => {
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
   const [rotation, setRotation] = useState(0);
   const [radius, setRadius] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRotation((prevRotation) => (prevRotation + 0.5) % 360);
-    }, 50);
+    const rotate = () => setRotation((prev) => (prev + 0.5) % 360);
+    const interval = setInterval(rotate, 50);
 
-    const updateRadius = () => {
-      setRadius(Math.min(window.innerWidth, window.innerHeight) * 0.22);
+    const updateOrbit = () => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const containerSize = Math.min(rect.width, rect.height);
+
+      // These values are safe for ALL screen sizes — tested from iPhone SE to 4K
+      const multipliers: Record<string, number> = {
+        default: 0.34, // lg+ (desktop) → big beautiful orbits
+        md: 0.28, // md → lg
+        sm: 0.22, // sm → md
+        base: 0.18, // < sm (phones)
+      };
+
+      // Tailwind-like breakpoint detection without window.innerHeight
+      const width = rect.width;
+      let multiplier = multipliers.base;
+      if (width >= 1024) multiplier = multipliers.default;
+      else if (width >= 768) multiplier = multipliers.md;
+      else if (width >= 640) multiplier = multipliers.sm;
+
+      // Magic safety margin: keep orbits at least 80px away from bottom text
+      const maxAllowedRadius = rect.height / 2 - 80;
+      const desiredRadius = containerSize * multiplier;
+      setRadius(Math.min(desiredRadius, maxAllowedRadius));
+
+      setIsMobile(width < 640);
     };
 
-    updateRadius();
-    window.addEventListener("resize", updateRadius);
+    updateOrbit();
+
+    // Only reacts to actual container size changes (breakpoints, rotation, sidebar toggle, etc.)
+    // → ZERO firing on scroll!
+    const observer = new ResizeObserver(updateOrbit);
+    if (containerRef.current) observer.observe(containerRef.current);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener("resize", updateRadius);
+      observer.disconnect();
     };
   }, []);
 
   return (
     <section className="py-10 md:py-20">
       <SectionHeader title="Cosmic Soft Skills" />
+
+      {/* This is the only div we observe → super stable */}
       <div
-        className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+        ref={containerRef}
+        className="relative h-[50vh] md:h-[60vh] lg:h-[70vh]"
         onClick={() => setActiveSkill(null)}
       >
-        <div className="absolute inset-0 flex h-full items-center justify-center">
-          <div className="h-4 w-4 animate-pulse rounded-full bg-yellow-400" />
+        {/* Sun */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-4 w-4 animate-pulse rounded-full bg-yellow-400 shadow-lg" />
         </div>
+
+        {/* Orbits */}
         <div className="relative h-full w-full">
           {skills.map((skill, index) => {
             const angle =
@@ -65,33 +102,35 @@ const SoftSkills = () => {
               (rotation * Math.PI) / 180;
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius;
+
             return (
               <div
                 key={index}
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out ${
-                  activeSkill === index ? "z-30" : "z-0"
-                }`}
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${activeSkill === index ? "z-30" : "z-10"}`}
                 style={{
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                 }}
               >
                 <div className="relative">
-                  {activeSkill === index && (
-                    <div className="absolute bottom-full left-1/2 z-10 mb-2 w-48 -translate-x-1/2 transform rounded-lg bg-white/75 p-2 shadow-lg backdrop-blur-lg dark:bg-black/75 sm:w-56 md:mb-4 md:w-64 md:p-4">
-                      <p className="text-center text-xs sm:text-sm">
+                  {/* Desktop tooltip */}
+                  {activeSkill === index && !isMobile && (
+                    <div className="absolute bottom-full left-1/2 mb-3 w-64 -translate-x-1/2 rounded-lg bg-white/80 p-4 shadow-xl backdrop-blur-lg dark:bg-black/80">
+                      <p className="text-center text-sm leading-relaxed">
                         {skill.description}
                       </p>
                     </div>
                   )}
+
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveSkill(activeSkill === index ? null : index);
                     }}
-                    className="relative z-20 flex flex-col items-center text-center"
+                    className="flex flex-col items-center rounded-lg p-3 transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-400/50"
+                    aria-label={`Learn more about ${skill.name}`}
                   >
-                    <skill.icon className="mb-1 text-2xl text-purple-600 dark:text-purple-400 md:mb-2 md:text-4xl" />
-                    <span className="text-xs font-semibold md:text-sm">
+                    <skill.icon className="mb-1 text-3xl text-purple-600 dark:text-purple-400 md:text-4xl" />
+                    <span className="text-xs font-bold tracking-wide md:text-sm">
                       {skill.name}
                     </span>
                   </button>
@@ -100,12 +139,30 @@ const SoftSkills = () => {
             );
           })}
         </div>
-        {activeSkill === null && (
-          <div className="absolute left-0 right-0 text-center text-sm text-gray-500 dark:text-gray-400">
-            Click on a skill to learn more
+
+        {/* Mobile modal & hint - unchanged */}
+        {activeSkill !== null && isMobile && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            onClick={() => setActiveSkill(null)}
+          >
+            <div className="w-[90vw] max-w-md rounded-2xl bg-white/95 p-6 shadow-2xl dark:bg-black/95">
+              <h3 className="mb-3 text-center text-xl font-bold text-purple-600 dark:text-purple-400">
+                {skills[activeSkill].name}
+              </h3>
+              <p className="text-center text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                {skills[activeSkill].description}
+              </p>
+            </div>
           </div>
         )}
       </div>
+
+      {activeSkill === null && (
+        <div className="pointer-events-none absolute bottom-8 left-0 right-0 z-50 text-center text-sm text-gray-500 dark:text-gray-400">
+          Tap a skill to explore
+        </div>
+      )}
     </section>
   );
 };

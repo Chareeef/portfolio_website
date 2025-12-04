@@ -10,7 +10,7 @@ const experiences = [
   {
     title: "Co-Founder & Full-Stack Engineer",
     company: "RemoteOtter",
-    date: "October 2024 - Present",
+    date: "October 2024 - November 2025",
     logo: "/remoteotter_logo.png",
     description:
       "RemoteOtter is a modern job board platform that connects users with remote work opportunities worldwide. As Co-Founder and Full-Stack Engineer, I collaborated with Abdulrhman Metawei to design and implement the platform's architecture, ensuring scalability and performance. Built under the mentorship of Julien Barbier, Co-Founder of Holberton School, the platform features advanced search capabilities, personalized email notifications, and seamless user experience, powered by state-of-the-art technologies and AI integrations.",
@@ -24,7 +24,7 @@ const experiences = [
     website: "https://remoteotter.com",
     images: ["/remoteotter1.jpg", "/remoteotter2.jpg", "/remoteotter3.jpg"],
     accomplishments: [
-      "Built and scaled a remote job board platform with a database of 30,000+ job listings and 1,500 registered users in less than three months",
+      "Built and scaled a remote job board platform with a database of 200,000+ job listings and 3,000+ registered users.",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",
       "Developed the platform using Next.js, TypeScript, Prisma, PostgreSQL and OpenAI API, ensuring robust performance and seamless user experience.",
     ],

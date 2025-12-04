@@ -122,7 +122,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20">
-      <SectionHeader title="Stellar Projects" />
+      <SectionHeader title="Projects" />
       <div className="space-y-8">
         {projects.map((project, index) => (
           <div

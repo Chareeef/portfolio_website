@@ -1,227 +1,148 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiNodedotjs,
-  SiNextdotjs,
-  SiReact,
-  SiTailwindcss,
-  SiExpress,
-  SiPython,
-  SiDjango,
-  SiFlask,
-  SiMysql,
-  SiPostgresql,
-  SiMongodb,
-  SiRust,
-  SiRedis,
-  SiFirebase,
-  SiOpenai,
-  SiPrisma,
-  SiC,
-} from "react-icons/si";
-import { Rocket, Telescope, Gem } from "lucide-react";
+import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+type Skill = {
+  name: string;
+  icon: string;
+};
+// Official Iconify icons (2025 fresh)
+const skills = {
+  languages: [
+    { name: "HTML", icon: "simple-icons:html5" },
+    { name: "CSS", icon: "simple-icons:css3" },
+    { name: "JavaScript", icon: "simple-icons:javascript" },
+    { name: "TypeScript", icon: "simple-icons:typescript" },
+    { name: "Python", icon: "simple-icons:python" },
+    { name: "Rust", icon: "simple-icons:rust" },
+    { name: "C", icon: "simple-icons:c" },
+  ],
+  frameworks: [
+    { name: "React", icon: "simple-icons:react" },
+    { name: "Next.js", icon: "simple-icons:nextdotjs" },
+    { name: "Node.js", icon: "simple-icons:nodedotjs" },
+    { name: "Express", icon: "simple-icons:express" },
+    { name: "Django", icon: "simple-icons:django" },
+    { name: "Flask", icon: "simple-icons:flask" },
+    { name: "Tailwind", icon: "simple-icons:tailwindcss" },
+  ],
+  databases: [
+    { name: "PostgreSQL", icon: "simple-icons:postgresql" },
+    { name: "MySQL", icon: "simple-icons:mysql" },
+    { name: "MongoDB", icon: "simple-icons:mongodb" },
+    { name: "Redis", icon: "simple-icons:redis" },
+    { name: "Prisma", icon: "simple-icons:prisma" },
+    { name: "Firebase", icon: "simple-icons:firebase" },
+  ],
+};
 
-const skillSections = [
-  {
-    title: "Languages & Frameworks",
-    skills: [
-      { name: "HTML", icon: SiHtml5 },
-      { name: "CSS", icon: SiCss3 },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Next.js", icon: SiNextdotjs },
-      { name: "React.js", icon: SiReact },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Express.js", icon: SiExpress },
-      { name: "Python", icon: SiPython },
-      { name: "Django", icon: SiDjango },
-      { name: "Flask", icon: SiFlask },
-      { name: "Rust", icon: SiRust },
-      { name: "C", icon: SiC },
-    ],
-  },
-  {
-    title: "Databases",
-    skills: [
-      { name: "MySQL", icon: SiMysql },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "Redis", icon: SiRedis },
-      { name: "Cloud Firestore", icon: SiFirebase },
-      { name: "Prisma", icon: SiPrisma },
-    ],
-  },
-  {
-    title: "AI Tools",
-    skills: [
-      { name: "OpenAI API", icon: SiOpenai },
-      { name: "Groq", icon: Telescope },
-      { name: "Cohere", icon: Gem },
-      { name: "Pinecone", icon: Rocket },
-    ],
-  },
-];
-
-const ContinuousFeed = ({
-  skills,
+// Reusable card with slight variation per group
+const SkillCard = ({
+  skill,
+  index,
+  variant = "float", // "float" | "rise" | "pop"
 }: {
-  skills: { name: string; icon: React.ElementType }[];
+  skill: { name: string; icon: string };
+  index: number;
+  variant?: "float" | "rise" | "pop";
 }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const variants = {
+    float: {
+      initial: { opacity: 0, y: 60 },
+      animate: { opacity: 1, y: 0 },
+      hover: { y: -12, scale: 1.12 },
+    },
+    rise: {
+      initial: { opacity: 0, y: 80, rotateX: -30 },
+      animate: { opacity: 1, y: 0, rotateX: 0 },
+      hover: { y: -16, scale: 1.15, rotate: 6 },
+    },
+    pop: {
+      initial: { opacity: 0, scale: 0.4 },
+      animate: { opacity: 1, scale: 1 },
+      hover: { scale: 1.2, rotate: 8 },
+    },
+  };
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    const scrollWidth = scrollContainer.scrollWidth;
-
-    let scrollPosition = 0;
-    const scroll = () => {
-      scrollPosition += 0.5;
-      if (scrollPosition > scrollWidth / 2) {
-        scrollPosition = 0;
-      }
-      scrollContainer.scrollLeft = scrollPosition;
-      requestAnimationFrame(scroll);
-    };
-
-    const animation = requestAnimationFrame(scroll);
-
-    return () => cancelAnimationFrame(animation);
-  }, []);
+  const chosen = variants[variant];
 
   return (
-    <div
-      ref={scrollRef}
-      className="mx-auto flex max-w-4xl space-x-4 overflow-hidden py-4 md:space-x-8"
+    <motion.div
+      initial={chosen.initial}
+      whileInView={chosen.animate}
+      viewport={{ once: true, margin: "-80px" }}
+      whileHover={chosen.hover}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.08,
+        ease: [0.2, 0.65, 0.3, 0.9],
+      }}
+      className="group relative flex h-full w-[25%] flex-col items-center justify-end gap-4 rounded-2xl bg-white/5 p-6 backdrop-blur-xl transition-all hover:bg-white/10 dark:bg-black/10 hover:dark:bg-black/30 md:w-[20%] xl:w-[15%]"
     >
-      {[...skills, ...skills].map((skill, index) => (
-        <div key={index} className="flex flex-shrink-0 flex-col items-center">
-          <skill.icon className="mb-2 text-2xl text-purple-600 dark:text-purple-400 md:text-4xl" />
-          <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
-            {skill.name}
-          </span>
-        </div>
+      <div className="relative">
+        <Icon
+          icon={skill.icon}
+          className="text-5xl transition-all duration-500 group-hover:scale-125 md:text-6xl"
+        />
+        <div className="absolute -inset-4 scale-0 rounded-full bg-purple-500/20 blur-3xl transition-transform duration-700 group-hover:scale-100" />
+      </div>
+
+      <span className="text-center text-sm font-bold tracking-tight md:text-base">
+        {skill.name}
+      </span>
+    </motion.div>
+  );
+};
+
+const SkillSection = ({
+  title,
+  skills,
+  variant,
+}: {
+  title: string;
+  skills: Skill[];
+  variant: "float" | "rise" | "pop";
+}) => (
+  <div className="space-y-8">
+    <h3 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+      {title}
+    </h3>
+
+    <div className="flex flex-wrap justify-center gap-6">
+      {skills.map((skill, i) => (
+        <SkillCard key={skill.name} skill={skill} index={i} variant={variant} />
       ))}
     </div>
-  );
-};
-
-const CircularOrbit = ({
-  skills,
-}: {
-  skills: { name: string; icon: React.ElementType }[];
-}) => {
-  const [rotation, setRotation] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotation((prevRotation) => (prevRotation + 0.5) % 360);
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative mx-auto h-60 w-60 md:h-80 md:w-80">
-      {skills.map((skill, index) => {
-        const angle =
-          (index / skills.length) * 2 * Math.PI + (rotation * Math.PI) / 180;
-        const x = Math.cos(angle) * 120;
-        const y = Math.sin(angle) * 120;
-        return (
-          <div
-            key={index}
-            className="absolute -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
-            style={{
-              left: `calc(50% + ${x}px)`,
-              top: `calc(50% + ${y}px)`,
-            }}
-          >
-            <div className="flex flex-col items-center">
-              <skill.icon className="mb-1 text-2xl text-purple-600 dark:text-purple-400 md:mb-2 md:text-4xl" />
-              <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
-                {skill.name}
-              </span>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const HeartbeatingSquare = ({
-  skills,
-}: {
-  skills: { name: string; icon: React.ElementType }[];
-}) => {
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScale((prevScale) => (prevScale === 1 ? 1.1 : 1));
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="flex h-40 items-center justify-center md:h-60">
-      <div
-        className="grid grid-cols-2 gap-2 rounded-lg p-2 md:gap-4 md:p-4"
-        style={{
-          transform: `scale(${scale})`,
-          transition: "transform 0.5s ease-in-out",
-        }}
-      >
-        {skills.map((skill, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <skill.icon className="mb-1 text-2xl text-purple-600 dark:text-purple-400 md:mb-2 md:text-4xl" />
-            <span className="whitespace-nowrap text-xs font-semibold md:text-sm">
-              {skill.name}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+  </div>
+);
 
 const TechnicalSkills = () => {
   return (
-    <section id="skills" className="py-20">
-      <SectionHeader title="Technical Constellations" />
-      <div className="space-y-12">
-        <div className="rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5">
-          <h3 className="mb-4 text-center text-2xl font-bold">
-            {skillSections[0].title}
-          </h3>
-          <ContinuousFeed skills={skillSections[0].skills} />
-        </div>
-        <div className="block rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5 md:hidden">
-          <h3 className="mb-4 text-center text-2xl font-bold">
-            {skillSections[1].title}
-          </h3>
-          <ContinuousFeed skills={skillSections[1].skills} />
-        </div>
-        <div className="hidden rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5 md:block">
-          <h3 className="mb-4 text-center text-2xl font-bold">
-            {skillSections[1].title}
-          </h3>
-          <CircularOrbit skills={skillSections[1].skills} />
-        </div>
-        <div className="rounded-lg bg-white/5 p-6 backdrop-blur-md dark:bg-black/5">
-          <h3 className="mb-4 text-center text-2xl font-bold">
-            {skillSections[2].title}
-          </h3>
-          <HeartbeatingSquare skills={skillSections[2].skills} />
-        </div>
+    <section id="skills" className="py-20 lg:py-32">
+      <SectionHeader title="Technical Arsenal" />
+
+      <div className="mx-auto max-w-7xl space-y-20 px-6 lg:space-y-32">
+        {/* LANGUAGES — subtle floating entrance */}
+        <SkillSection
+          title="Languages"
+          skills={skills.languages}
+          variant="float"
+        />
+
+        {/* FRAMEWORKS — dramatic rise from below */}
+        <SkillSection
+          title="Frameworks & Libraries"
+          skills={skills.frameworks}
+          variant="rise"
+        />
+
+        {/* DATABASES — explosive pop-in */}
+        <SkillSection
+          title="Databases & Tools"
+          skills={skills.databases}
+          variant="pop"
+        />
       </div>
     </section>
   );

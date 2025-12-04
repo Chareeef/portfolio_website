@@ -11,7 +11,7 @@ const XIcon = ({ className }: { className?: string }) => (
 const Contact = () => {
   return (
     <section id="contact" className="py-20">
-      <SectionHeader title="Contact Transmission" />
+      <SectionHeader title="Contact" />
       <div className="flex justify-center space-x-8">
         <Link
           href="mailto:youssef.charif.h@gmail.com"

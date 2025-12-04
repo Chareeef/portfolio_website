@@ -22,7 +22,7 @@ const experiences = [
       "Memcached",
     ],
     website: "https://remoteotter.com",
-    images: ["/remoteotter1.jpg", "/remoteotter2.jpg", "/remoteotter3.jpg"],
+    // images: ["/remoteotter1.jpg", "/remoteotter2.jpg", "/remoteotter3.jpg"],
     accomplishments: [
       "Built and scaled a remote job board platform with a database of 200,000+ job listings and 3,000+ registered users.",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",
@@ -61,7 +61,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="py-20">
-      <SectionHeader title="Professional Odyssey" />
+      <SectionHeader title="Experience" />
       <div className="space-y-8">
         {experiences.map((exp, index) => (
           <div
@@ -126,7 +126,7 @@ const Experience = () => {
                       ))}
                     </ul>
                   </div>
-                  {exp.images && (
+                  {/*exp.images && (
                     <div className="grid grid-cols-1 gap-4">
                       {exp.images.map((image, imgIndex) => (
                         <Image
@@ -139,7 +139,7 @@ const Experience = () => {
                         />
                       ))}
                     </div>
-                  )}
+                  )*/}
                 </div>
               )}
             </div>

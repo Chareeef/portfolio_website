@@ -37,7 +37,7 @@ const Certificates = () => {
 
   return (
     <section id="certificates" className="py-20">
-      <SectionHeader title="Galactic Certificates" />
+      <SectionHeader title="Certificates" />
       <div className="space-y-6">
         {certificates.map((cert, index) => (
           <div

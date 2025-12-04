@@ -41,29 +41,11 @@ const SoftSkills = () => {
       if (!containerRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();
-      const containerSize = Math.min(rect.width, rect.height);
 
-      // These values are safe for ALL screen sizes — tested from iPhone SE to 4K
-      const multipliers: Record<string, number> = {
-        default: 0.34, // lg+ (desktop) → big beautiful orbits
-        md: 0.28, // md → lg
-        sm: 0.22, // sm → md
-        base: 0.18, // < sm (phones)
-      };
+      const maxAllowedRadius = rect.height / 2 - 50;
+      setRadius(maxAllowedRadius);
 
-      // Tailwind-like breakpoint detection without window.innerHeight
-      const width = rect.width;
-      let multiplier = multipliers.base;
-      if (width >= 1024) multiplier = multipliers.default;
-      else if (width >= 768) multiplier = multipliers.md;
-      else if (width >= 640) multiplier = multipliers.sm;
-
-      // Magic safety margin: keep orbits at least 80px away from bottom text
-      const maxAllowedRadius = rect.height / 2 - 80;
-      const desiredRadius = containerSize * multiplier;
-      setRadius(Math.min(desiredRadius, maxAllowedRadius));
-
-      setIsMobile(width < 640);
+      setIsMobile(rect.width < 640);
     };
 
     updateOrbit();
@@ -81,16 +63,18 @@ const SoftSkills = () => {
 
   return (
     <section className="py-10 md:py-20">
-      <SectionHeader title="Cosmic Soft Skills" />
+      <SectionHeader title="Soft Skills" />
 
       {/* This is the only div we observe → super stable */}
       <div
-        ref={containerRef}
         className="relative h-[50vh] md:h-[60vh] lg:h-[70vh]"
         onClick={() => setActiveSkill(null)}
       >
-        {/* Sun */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          ref={containerRef}
+        >
+          {/* Sun */}
           <div className="h-4 w-4 animate-pulse rounded-full bg-yellow-400 shadow-lg" />
         </div>
 
@@ -159,7 +143,7 @@ const SoftSkills = () => {
       </div>
 
       {activeSkill === null && (
-        <div className="pointer-events-none absolute bottom-8 left-0 right-0 z-50 text-center text-sm text-gray-500 dark:text-gray-400">
+        <div className="pointer-events-none absolute bottom-4 left-0 right-0 z-50 text-center text-sm text-gray-500 dark:text-gray-400">
           Tap a skill to explore
         </div>
       )}

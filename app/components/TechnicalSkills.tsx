@@ -16,10 +16,12 @@ import {
   SiMysql,
   SiPostgresql,
   SiMongodb,
+  SiRust,
   SiRedis,
   SiFirebase,
   SiOpenai,
   SiPrisma,
+  SiC,
 } from "react-icons/si";
 import { Rocket, Telescope, Gem } from "lucide-react";
 import SectionHeader from "./SectionHeader";
@@ -39,6 +41,8 @@ const skillSections = [
       { name: "Python", icon: SiPython },
       { name: "Django", icon: SiDjango },
       { name: "Flask", icon: SiFlask },
+      { name: "Rust", icon: SiRust },
+      { name: "C", icon: SiC },
     ],
   },
   {

@@ -8,21 +8,21 @@ import Link from "next/link";
 import { scrollToSection } from "../../utils";
 
 const projects = [
-  {
-    name: "Get A Gig",
-    logo: "/getagig_logo.png",
-    description:
-      "A foundational project for RemoteOtter, built collaboratively with Abdulrhman Metawei. This remote job board platform is tailored for software engineers, offering curated job listings and AI-powered cover letter generation.",
-    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Groq AI"],
-    github: "https://github.com/Chareeef/get-a-gig",
-    demo: "https://get-a-gig.vercel.app",
-    images: ["/getagig1.png", "/getagig2.png", "/getagig3.png"],
-    bulletPoints: [
-      "Integrated an AI-powered cover letter generator for personalized job applications.",
-      "Designed a responsive, modern interface for seamless use across devices.",
-      "Used Prisma and PostgreSQL for efficient data handling and scalability.",
-    ],
-  },
+  // {
+  //   name: "Get A Gig",
+  //   logo: "/getagig_logo.png",
+  //   description:
+  //     "A foundational project for RemoteOtter, built collaboratively with Abdulrhman Metawei. This remote job board platform is tailored for software engineers, offering curated job listings and AI-powered cover letter generation.",
+  //   technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Groq AI"],
+  //   github: "https://github.com/Chareeef/get-a-gig",
+  //   demo: "https://get-a-gig.vercel.app",
+  //   images: ["/getagig1.png", "/getagig2.png", "/getagig3.png"],
+  //   bulletPoints: [
+  //     "Integrated an AI-powered cover letter generator for personalized job applications.",
+  //     "Designed a responsive, modern interface for seamless use across devices.",
+  //     "Used Prisma and PostgreSQL for efficient data handling and scalability.",
+  //   ],
+  // },
   {
     name: "MemFlip",
     logo: "/memflip_logo.png",

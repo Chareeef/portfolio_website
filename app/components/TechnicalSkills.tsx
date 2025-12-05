@@ -78,7 +78,7 @@ const SkillCard = ({
         delay: index * 0.08,
         ease: [0.2, 0.65, 0.3, 0.9],
       }}
-      className="group relative flex h-full w-[25%] flex-col items-center justify-end gap-4 rounded-2xl bg-white/5 p-6 backdrop-blur-xl transition-all hover:bg-white/10 dark:bg-black/10 hover:dark:bg-black/30 md:w-[20%] xl:w-[15%]"
+      className="group relative flex h-full w-[25%] flex-col items-center justify-end gap-4 rounded-2xl bg-white/5 p-6 text-purple-700 backdrop-blur-xl transition-all hover:bg-white/10 hover:text-purple-900 dark:bg-black/10 dark:text-purple-400 hover:dark:bg-black/30 dark:hover:text-purple-600 md:w-[20%] xl:w-[15%]"
     >
       <div className="relative">
         <Icon

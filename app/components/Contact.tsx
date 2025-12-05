@@ -1,12 +1,6 @@
-import { Mail, Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 import SectionHeader from "./SectionHeader";
-
-const XIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+import { Icon } from "@iconify/react";
 
 const Contact = () => {
   return (
@@ -15,33 +9,33 @@ const Contact = () => {
       <div className="flex justify-center space-x-8">
         <Link
           href="mailto:youssef.charif.h@gmail.com"
-          className="text-blue-500 transition-colors hover:text-blue-700"
+          className="text-purple-700 transition-colors hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-600"
         >
-          <Mail className="h-8 w-8" />
+          <Icon icon="tabler:mail" className="h-8 w-8" />
         </Link>
         <Link
           href="https://www.linkedin.com/in/youssef-charif-hamidi"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-700 transition-colors hover:text-blue-900"
+          className="text-purple-700 transition-colors hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-600"
         >
-          <Linkedin className="h-8 w-8" />
+          <Icon icon="mdi:linkedin" className="h-8 w-8" />
         </Link>
         <Link
           href="https://x.com/YoussefCharifH2"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 transition-colors hover:text-blue-600"
+          className="text-purple-700 transition-colors hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-600"
         >
-          <XIcon className="h-8 w-8 fill-current" />
+          <Icon icon="tabler:brand-x" className="h-8 w-8" />
         </Link>
         <Link
           href="https://github.com/Chareeef"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-800 transition-colors hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
+          className="text-purple-700 transition-colors hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-600"
         >
-          <Github className="h-8 w-8" />
+          <Icon icon="tabler:brand-github" className="h-8 w-8" />
         </Link>
       </div>
     </section>

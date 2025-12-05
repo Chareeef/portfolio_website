@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Github, ExternalLink, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Link from "next/link";
 import { scrollToSection } from "../../utils";
+import { Icon } from "@iconify/react";
 
 const projects = [
   // {
@@ -163,10 +164,10 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-blue-500 transition-colors hover:text-blue-700"
+                  className="flex items-center text-purple-500 transition-colors hover:text-blue-700"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <Github className="mr-2" /> GitHub
+                  <Icon icon="tabler:brand-github" className="mr-2" /> GitHub
                 </Link>
                 <Link
                   href={project.demo}
@@ -175,7 +176,8 @@ const Projects = () => {
                   className="flex items-center text-green-500 transition-colors hover:text-green-700"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <ExternalLink className="mr-2" /> Live Demo
+                  <Icon icon="ri:external-link-line" className="mr-2" /> Live
+                  Demo
                 </Link>
               </div>
               {activeProject === index && (

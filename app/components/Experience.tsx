@@ -24,7 +24,7 @@ const experiences = [
     website: "https://remoteotter.com",
     // images: ["/remoteotter1.jpg", "/remoteotter2.jpg", "/remoteotter3.jpg"],
     accomplishments: [
-      "Built and scaled a remote job board platform with a database of 200,000+ job listings and 3,000+ registered users.",
+      "Built a remote job board that rapidly scaled 1M+ impressions and 40,000+ clicks in just 28 days.",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",
       "Developed the platform using Next.js, TypeScript, Prisma, PostgreSQL and OpenAI API, ensuring robust performance and seamless user experience.",
     ],

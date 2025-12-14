@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Link from "next/link";
-import { scrollToSection } from "../../utils";
 import { Icon } from "@iconify/react";
 
 const projects = [
@@ -25,6 +24,28 @@ const projects = [
   //   ],
   // },
   {
+    name: "Sadim AI",
+    logo: "/sadim_logo.png",
+    description:
+      "An AI-powered chatbot designed for natural, human-like conversations with rapid inference capabilities.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "NextAuth",
+      "Groq AI",
+      "Firestore",
+    ],
+    github: "https://github.com/Chareeef/SadimAI",
+    demo: "https://sadim-ai.com",
+    images: ["/sadim1.png", "/sadim2.png", "/sadim3.png"],
+    bulletPoints: [
+      "Engineered a fully responsive user interface using Next.js and Tailwind CSS, ensuring seamless and intuitive interactions across mobile, tablet, and desktop devices.",
+      "Implemented secure user authentication via NextAuth.js and optimized performance with streaming responses, delivering a robust, efficient, and privacy-focused chat experience.",
+      "Designed and implemented persistent chat history with Firebase Firestore, enabling users to save, browse, and manage past conversations with timestamps and clean organization.",
+      "Integrated dynamic conversation titles powered by AI, automatically generating concise and relevant titles for new chats to improve discoverability and user experience.",
+    ],
+  },
+  {
     name: "MemFlip",
     logo: "/memflip_logo.png",
     description:
@@ -34,24 +55,9 @@ const projects = [
     demo: "https://mem-flip.live",
     images: ["/memflip1.png", "/memflip2.png", "/memflip3.png"],
     bulletPoints: [
-      "Attracted 8 users and generated 130+ flashcards within 2 weeks after deployment.",
+      "Generated 130+ flashcards within 2 weeks after deployment.",
       "Implemented a seamless, responsive user interface for intuitive cross-device use.",
       "Ensured secure user authentication and real-time data storage for enhanced usability.",
-    ],
-  },
-  {
-    name: "Sadim AI",
-    logo: "/sadim_logo.png",
-    description:
-      "An AI-powered chatbot designed for natural, human-like conversations with rapid inference capabilities.",
-    technologies: ["Next.js", "Tailwind CSS", "NextAuth", "Groq AI"],
-    github: "https://github.com/Chareeef/SadimAI",
-    demo: "https://sadim-ai.com",
-    images: ["/sadim1.png", "/sadim2.png", "/sadim3.png"],
-    bulletPoints: [
-      "Facilitated 20+ conversations within the first 30 days of deployment.",
-      "Designed a responsive interface to ensure smooth interactions across all devices.",
-      "Delivered a secure and optimized user experience with robust authentication and performance.",
     ],
   },
   {
@@ -73,26 +79,26 @@ const projects = [
       "Designed a responsive user interface for seamless interaction across all devices.",
     ],
   },
-  {
-    name: "Archer",
-    logo: "/archer_logo.png",
-    description:
-      "An education app tailored for children with autism, enhancing literacy, math, and science skills through interactive tools and activities. Always under development to better meet user needs.",
-    technologies: [
-      "Next.js",
-      "Django Rest Framework",
-      "PostgreSQL",
-      "Supabase",
-    ],
-    github: "https://github.com/Chareeef/Archer",
-    demo: "https://archer-edu.vercel.app",
-    images: ["/archer1.jpg", "/archer2.jpg", "/archer3.jpg"],
-    bulletPoints: [
-      "Provides engaging and accessible learning experiences for children with autism.",
-      "Focuses on enhancing literacy, math, and science skills with interactive activities.",
-      "Promotes inclusivity by tailoring education to meet diverse cognitive needs.",
-    ],
-  },
+  // {
+  //   name: "Archer",
+  //   logo: "/archer_logo.png",
+  //   description:
+  //     "An education app tailored for children with autism, enhancing literacy, math, and science skills through interactive tools and activities. Always under development to better meet user needs.",
+  //   technologies: [
+  //     "Next.js",
+  //     "Django Rest Framework",
+  //     "PostgreSQL",
+  //     "Supabase",
+  //   ],
+  //   github: "https://github.com/Chareeef/Archer",
+  //   demo: "https://archer-edu.vercel.app",
+  //   images: ["/archer1.jpg", "/archer2.jpg", "/archer3.jpg"],
+  //   bulletPoints: [
+  //     "Provides engaging and accessible learning experiences for children with autism.",
+  //     "Focuses on enhancing literacy, math, and science skills with interactive activities.",
+  //     "Promotes inclusivity by tailoring education to meet diverse cognitive needs.",
+  //   ],
+  // },
   {
     name: "Pantry Tracker",
     logo: "/pantry_logo.png",
@@ -114,6 +120,35 @@ const projects = [
 const Projects = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
+  const previousActiveProjectRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    // Scroll logic: always scroll to the project we just interacted with
+    const targetIndex =
+      activeProject !== null ? activeProject : previousActiveProjectRef.current;
+
+    if (targetIndex !== null) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const target = document.querySelector(`#project-${targetIndex}`);
+          if (target) {
+            const headerHeight = 80;
+            const offset = 32;
+            const elementPosition =
+              target.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scrollTo({
+              top: elementPosition - headerHeight - offset,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    }
+
+    // Update the ref for next time (after current effect)
+    previousActiveProjectRef.current = activeProject;
+  }, [activeProject]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -208,9 +243,7 @@ const Projects = () => {
             <div
               className="mt-4 flex w-full cursor-pointer items-center justify-center border-t-2 border-gray-200 p-2 text-gray-500 hover:text-purple-500 dark:border-gray-700 dark:text-gray-700 dark:hover:text-purple-700"
               onClick={(e) => {
-                if (activeProject === index) {
-                  scrollToSection(e, `#project-${index}`, 32);
-                }
+                e.stopPropagation();
                 setActiveProject(activeProject === index ? null : index);
               }}
             >

@@ -3,37 +3,40 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+
 type Skill = {
   name: string;
   icon: string;
 };
-// Official Iconify icons (2025 fresh)
+
 const skills = {
-  languages: [
+  frontend: [
+    { name: "React", icon: "simple-icons:react" },
+    { name: "Next.js", icon: "simple-icons:nextdotjs" },
     { name: "HTML", icon: "simple-icons:html5" },
     { name: "CSS", icon: "simple-icons:css3" },
     { name: "JavaScript", icon: "simple-icons:javascript" },
     { name: "TypeScript", icon: "simple-icons:typescript" },
-    { name: "Python", icon: "simple-icons:python" },
-    { name: "Rust", icon: "simple-icons:rust" },
-    { name: "C", icon: "simple-icons:c" },
+    { name: "Tailwind", icon: "simple-icons:tailwindcss" },
   ],
-  frameworks: [
-    { name: "React", icon: "simple-icons:react" },
-    { name: "Next.js", icon: "simple-icons:nextdotjs" },
+  backend: [
     { name: "Node.js", icon: "simple-icons:nodedotjs" },
     { name: "Express", icon: "simple-icons:express" },
+    { name: "Python", icon: "simple-icons:python" },
     { name: "Django", icon: "simple-icons:django" },
     { name: "Flask", icon: "simple-icons:flask" },
-    { name: "Tailwind", icon: "simple-icons:tailwindcss" },
   ],
   databases: [
     { name: "PostgreSQL", icon: "simple-icons:postgresql" },
     { name: "MySQL", icon: "simple-icons:mysql" },
     { name: "MongoDB", icon: "simple-icons:mongodb" },
     { name: "Redis", icon: "simple-icons:redis" },
-    { name: "Prisma", icon: "simple-icons:prisma" },
-    { name: "Firebase", icon: "simple-icons:firebase" },
+  ],
+  tools: [
+    { name: "Git", icon: "simple-icons:git" },
+    { name: "GitHub", icon: "simple-icons:github" },
+    { name: "GitHub Actions", icon: "simple-icons:githubactions" },
+    { name: "Docker", icon: "simple-icons:docker" },
   ],
 };
 
@@ -123,26 +126,25 @@ const TechnicalSkills = () => {
       <SectionHeader title="Technical Arsenal" />
 
       <div className="mx-auto max-w-7xl space-y-20 px-6 lg:space-y-32">
-        {/* LANGUAGES — subtle floating entrance */}
+        {/* FRONTEND — subtle floating entrance */}
         <SkillSection
-          title="Languages"
-          skills={skills.languages}
+          title="Frontend"
+          skills={skills.frontend}
           variant="float"
         />
 
-        {/* FRAMEWORKS — dramatic rise from below */}
-        <SkillSection
-          title="Frameworks & Libraries"
-          skills={skills.frameworks}
-          variant="rise"
-        />
+        {/* BACKEND — dramatic rise from below */}
+        <SkillSection title="Backend" skills={skills.backend} variant="rise" />
 
         {/* DATABASES — explosive pop-in */}
         <SkillSection
-          title="Databases & Tools"
+          title="Databases"
           skills={skills.databases}
           variant="pop"
         />
+
+        {/* TOOLS — subtle floating entrance */}
+        <SkillSection title="Tools" skills={skills.tools} variant="float" />
       </div>
     </section>
   );

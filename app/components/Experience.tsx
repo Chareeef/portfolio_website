@@ -27,6 +27,8 @@ const experiences = [
       "Built a remote job board that rapidly scaled 1M+ impressions and 40,000+ clicks in just 28 days.",
       "Implemented personalized email notifications, advanced search filters, and real-time updates, achieving in average 100+ daily active users.",
       "Developed the platform using Next.js, TypeScript, Prisma, PostgreSQL and OpenAI API, ensuring robust performance and seamless user experience.",
+      "Designed the full database schema to support scalable job listings and user accounts.",
+      "Built Python web scraping scripts and automated cron jobs to continuously collect and update job data in the database.",
     ],
   },
   {

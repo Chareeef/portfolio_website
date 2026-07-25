@@ -1,0 +1,102 @@
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 78% 27%,
+      rgba(119, 117, 213, 0.17),
+      transparent 20rem
+    ),
+    linear-gradient(180deg, #07091b 0%, #0b1029 56%, #10152f 100%);
+}
+
+.scene-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.78;
+  background-image:
+    radial-gradient(circle, #fff 0 1px, transparent 1.3px),
+    radial-gradient(circle, #c6cff8 0 0.8px, transparent 1.1px),
+    radial-gradient(circle, #e7c98d 0 1.2px, transparent 1.5px);
+  background-position:
+    0 0,
+    37px 49px,
+    91px 121px;
+  background-size:
+    137px 137px,
+    173px 173px,
+    283px 283px;
+}
+
+.scene-planet {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow:
+    inset -22px -18px 38px rgba(3, 4, 14, 0.68),
+    0 0 80px rgba(129, 125, 215, 0.12);
+}
+
+.scene-planet--large {
+  right: 8%;
+  top: 10%;
+  width: clamp(9rem, 22vw, 22rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(215, 213, 243, 0.18);
+  background: radial-gradient(
+    circle at 36% 32%,
+    #726c9f,
+    #37375f 42%,
+    #181b37 78%
+  );
+  opacity: 0.7;
+}
+
+.scene-planet--small {
+  right: 34%;
+  top: 32%;
+  width: clamp(2rem, 4vw, 4rem);
+  aspect-ratio: 1;
+  background: #d7c086;
+  box-shadow: 0 0 40px rgba(231, 201, 141, 0.32);
+  opacity: 0.8;
+}
+
+.scene-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 19, 0.18),
+      transparent 55%,
+      rgba(5, 7, 19, 0.3)
+    ),
+    radial-gradient(
+      circle at 70% 45%,
+      transparent 18rem,
+      rgba(5, 7, 19, 0.26) 70%
+    );
+}
+
+.scene-fallback--closing .scene-planet--large {
+  right: 16%;
+  top: 8%;
+  opacity: 0.85;
+}
+
+@media (max-width: 767px) {
+  .scene-planet--large {
+    right: -9%;
+    top: 15%;
+  }
+
+  .scene-planet--small {
+    right: 32%;
+    top: 35%;
+  }
+
+  .scene-fallback svg {
+    transform: translateX(12%);
+  }
+}

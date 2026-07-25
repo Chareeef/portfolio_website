@@ -1,87 +1,127 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Header from "./components/Header";
-import { ThemeProvider } from "./components/ThemeProvider";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { DM_Mono, Manrope, Space_Grotesk } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
-export const metadata = {
-  title: "Youssef Charif Hamidi - Full-Stack Engineer",
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const mono = DM_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const siteUrl = "https://youssefcharifhamidi.com";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: "Youssef Charif Hamidi — Software Engineer & Product Builder",
   description:
-    "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
+    "Software engineer building production web and mobile applications, including RemoteOtter and MathVellum, with a focus on accessible and meaningful technology.",
+  alternates: { canonical: "/" },
+  authors: [{ name: "Youssef Charif Hamidi", url: siteUrl }],
+  creator: "Youssef Charif Hamidi",
+  keywords: [
+    "software engineer",
+    "product engineer",
+    "Next.js",
+    "Flutter",
+    "accessibility",
+    "RemoteOtter",
+    "MathVellum",
+  ],
   openGraph: {
-    title: "Youssef Charif Hamidi - Full-Stack Engineer",
+    type: "profile",
+    url: siteUrl,
+    siteName: "Youssef Charif Hamidi",
+    title: "Youssef Charif Hamidi — Software Engineer & Product Builder",
     description:
-      "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
+      "Building production web and mobile products that expand what people can do.",
     images: [
       {
-        url: "https://youssefcharifhamidi.com/og_my_picture.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
+        alt: "Beyond the Horizon — Youssef Charif Hamidi, software engineer and product builder",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Youssef Charif Hamidi - Full-Stack Engineer",
+    title: "Youssef Charif Hamidi — Software Engineer & Product Builder",
     description:
-      "Portfolio of Youssef Charif Hamidi, a full-stack engineer and co-founder of RemoteOtter.",
-    images: [
-      {
-        url: "https://youssefcharifhamidi.com/og_my_picture.png",
-        width: 1200,
-        height: 630,
-      },
+      "Building production web and mobile products that expand what people can do.",
+    images: ["/twitter-image"],
+  },
+  icons: {
+    icon: [
+      { url: "/icons/favicon.ico" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#050713",
+  colorScheme: "dark",
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Youssef Charif Hamidi",
+    url: siteUrl,
+    jobTitle: "Software Engineer & Product Builder",
+    email: "mailto:youssef.charif.h@gmail.com",
+    sameAs: [
+      "https://github.com/Chareeef",
+      "https://www.linkedin.com/in/youssef-charif-hamidi",
+    ],
+    knowsAbout: [
+      "Product engineering",
+      "Web application architecture",
+      "Mobile application development",
+      "Accessibility",
+      "PostgreSQL",
+      "Next.js",
+      "Flutter",
     ],
   },
 };
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Manifest */}
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
+    <html
+      lang="en"
+      className={`${sans.variable} ${display.variable} ${mono.variable}`}
+    >
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-
-        {/* Apple Touch Icon */}
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/icons/apple-touch-icon.png"
-        />
-      </head>
-
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-        </ThemeProvider>
-        <Analytics />
+        {children}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

@@ -137,7 +137,7 @@ export function MathVellumCaseStudy() {
             <div>
               <p className="eyebrow">The product in use</p>
               <h3 className="mt-4 font-display text-3xl tracking-[-0.045em] md:text-4xl">
-                Built for real notes, not a demo.
+                Built for real notes.
               </h3>
             </div>
             <p className="hidden max-w-xs text-right text-sm leading-6 text-[#858da5] sm:block">

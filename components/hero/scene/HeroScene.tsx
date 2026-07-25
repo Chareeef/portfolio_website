@@ -4,8 +4,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import type { Group } from "three";
 import * as THREE from "three";
-import { CelestialBodies } from "./CelestialBodies";
-import { HorizonEngine } from "./HorizonEngine";
+import { AsteroidWorld } from "./AsteroidWorld";
 import { ShootingStars } from "./ShootingStars";
 import { StarField } from "./StarField";
 
@@ -63,28 +62,42 @@ function EnvironmentDrift({
 
   return (
     <group ref={group}>
-      <CelestialBodies />
       <StarField mobile={mobile} />
     </group>
   );
 }
 
-function Scene({ active, mobile }: Omit<HeroSceneProps, "onReady">) {
+function ReadySignal({ onReady }: { onReady: () => void }) {
+  const sent = useRef(false);
+
+  useFrame(() => {
+    if (sent.current) return;
+    sent.current = true;
+    onReady();
+  });
+
+  return null;
+}
+
+function Scene({ active, mobile, onReady }: HeroSceneProps) {
   return (
     <>
       <color attach="background" args={["#03040b"]} />
-      <fog attach="fog" args={["#050614", 13, 31]} />
-      <ambientLight intensity={1.15} color="#aeb9ff" />
-      <hemisphereLight args={["#c8d5ff", "#17152c", 1.8]} />
-      <directionalLight position={[-4, 7, 6]} color="#d8e3ff" intensity={4.2} />
-      <directionalLight position={[6, 2, 1]} color="#9d7dff" intensity={3.4} />
+      <ambientLight intensity={0.42} color="#7888b4" />
+      <hemisphereLight args={["#dce9ff", "#090a14", 1.2]} />
+      <directionalLight position={[-4, 7, 6]} color="#fff0da" intensity={4.6} />
+      <directionalLight position={[6, 2, 1]} color="#8272bd" intensity={1.4} />
       <Suspense fallback={null}>
         <EnvironmentDrift active={active} mobile={mobile} />
-        <group position={mobile ? [-0.95, 1.2, -1.1] : [0, 0, 0]}>
-          <HorizonEngine active={active} />
+        <group
+          position={mobile ? [1.72, 2, -2.7] : [2.35, 0.28, -0.2]}
+          scale={mobile ? 0.8 : 1.05}
+        >
+          <AsteroidWorld active={active} subject="rose" />
         </group>
         {!mobile ? <ShootingStars active={active} /> : null}
       </Suspense>
+      <ReadySignal onReady={onReady} />
       <RenderScheduler active={active} />
     </>
   );
@@ -112,11 +125,10 @@ export function HeroScene({ active, mobile, onReady }: HeroSceneProps) {
         gl.setClearColor("#03040b");
         gl.outputColorSpace = THREE.SRGBColorSpace;
         camera.lookAt(mobile ? 1.15 : 1.25, 0.7, -0.6);
-        onReady();
       }}
       style={{ pointerEvents: "none" }}
     >
-      <Scene active={active} mobile={mobile} />
+      <Scene active={active} mobile={mobile} onReady={onReady} />
     </Canvas>
   );
 }

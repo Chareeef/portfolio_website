@@ -1,6 +1,7 @@
 import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { links } from "@/data/portfolio";
 import { SceneFallback } from "@/components/hero/SceneFallback";
+import { OpenChannelScene } from "./OpenChannelScene";
 
 export function FinalHorizon() {
   return (
@@ -10,11 +11,16 @@ export function FinalHorizon() {
       className="relative min-h-[88svh] overflow-hidden"
     >
       <div className="absolute inset-0">
-        <SceneFallback closing />
+        <SceneFallback />
+        <OpenChannelScene />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,19,.98)_0%,rgba(5,7,19,.84)_48%,rgba(5,7,19,.25)_78%,rgba(5,7,19,.44)_100%)]" />
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#070916] to-transparent" />
       </div>
 
+      <p className="sr-only">
+        A small asteroid carrying a seated fox drifts gently through a field of
+        stars.
+      </p>
       <div className="shell relative z-10 flex min-h-[88svh] items-center py-28">
         <div className="max-w-3xl">
           <p className="eyebrow">Open channel</p>

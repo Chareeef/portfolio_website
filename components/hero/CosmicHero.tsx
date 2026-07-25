@@ -114,14 +114,11 @@ export function CosmicHero() {
 
       <div className="sr-only">
         <p>
-          A luminous geometric engine floats in space as data paths converge
-          through its orbiting nodes and central core.
+          YC-01 is a small floating asteroid carrying a red rose protected
+          beneath a glass dome.
         </p>
       </div>
       <HeroContent />
-
-      <div aria-hidden="true" className="hero-crosshair hero-crosshair--one" />
-      <div aria-hidden="true" className="hero-crosshair hero-crosshair--two" />
 
       <div className="hero-object-card" aria-hidden="true">
         <div className="flex items-center justify-between">
@@ -133,9 +130,9 @@ export function CosmicHero() {
           </span>
         </div>
         <div className="hero-object-card__line" />
-        <div className="flex justify-between text-[#d9f7ff]">
-          <span>ALT 408.2 KM</span>
-          <span>VEL 7.66 KM/S</span>
+        <div className="hero-object-card__readout flex justify-between text-[#d9f7ff]">
+          <span>DISTANCE 4.24 LY</span>
+          <span>VEL 0.18 LY/YR</span>
         </div>
       </div>
     </section>

@@ -17,7 +17,7 @@ export function HeroContent() {
             Engineering{" "}
             <span className="hero-title-accent">beyond limits.</span>
           </h1>
-          <p className="mt-7 max-w-[36rem] text-base leading-7 text-[#bfc6d9] sm:text-lg sm:leading-8">
+          <p className="mt-7 max-w-[36rem] text-base leading-7 text-[#bfc6d9] sm:text-lg sm:leading-8 md:max-w-[25rem] xl:max-w-[36rem]">
             I&apos;m Youssef, a software engineer building resilient web and
             mobile products that expand what people can do.
           </p>

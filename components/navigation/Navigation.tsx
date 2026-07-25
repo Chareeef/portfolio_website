@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowDownToLine } from "lucide-react";
+import Image from "next/image";
 import { links } from "@/data/portfolio";
 
 const items = [
@@ -54,14 +55,16 @@ export function Navigation() {
         <a
           href="#top"
           className="flex min-h-11 items-center gap-3 rounded-full px-2"
-          aria-label="YC — Youssef Charif Hamidi, back to top"
+          aria-label="Youssef Charif Hamidi, back to top"
         >
-          <span
+          <Image
             aria-hidden="true"
-            className="grid size-8 place-items-center rounded-full border border-[#e7c98d]/35 bg-[#e7c98d]/10 font-display text-sm font-semibold text-[#f0d8a7]"
-          >
-            YC
-          </span>
+            src="/my_picture.png"
+            alt=""
+            width={64}
+            height={64}
+            className="size-8 rounded-full border border-[#e7c98d]/35 object-cover"
+          />
           <span className="hidden text-sm font-semibold tracking-[-0.02em] sm:block">
             Youssef Charif Hamidi
           </span>

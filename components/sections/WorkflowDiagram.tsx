@@ -1,6 +1,7 @@
 import {
   Cloud,
   Command,
+  ArrowDown,
   MonitorSmartphone,
   Server,
   SquareTerminal,
@@ -48,9 +49,9 @@ export function WorkflowDiagram() {
             {index < workflow.length - 1 ? (
               <span
                 aria-hidden="true"
-                className="absolute -bottom-1 left-[1.45rem] text-xs text-[#59617a] lg:hidden"
+                className="absolute left-9 top-full z-10 -translate-x-1/2 -translate-y-1/2 text-[#59617a] lg:hidden"
               >
-                ↓
+                <ArrowDown size={14} strokeWidth={2.5} />
               </span>
             ) : null}
           </li>

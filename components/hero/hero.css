@@ -1,0 +1,200 @@
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 72% 55%,
+      rgba(80, 212, 242, 0.11),
+      transparent 23rem
+    ),
+    radial-gradient(
+      circle at 78% 27%,
+      rgba(119, 93, 231, 0.24),
+      transparent 27rem
+    ),
+    linear-gradient(180deg, #02030a 0%, #06071a 60%, #050713 100%);
+}
+
+.scene-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.88;
+  background-image:
+    radial-gradient(circle, #fff 0 1px, transparent 1.3px),
+    radial-gradient(circle, #c6cff8 0 0.8px, transparent 1.1px),
+    radial-gradient(circle, #e7c98d 0 1.2px, transparent 1.5px);
+  background-position:
+    0 0,
+    37px 49px,
+    91px 121px;
+  background-size:
+    137px 137px,
+    173px 173px,
+    283px 283px;
+}
+
+.scene-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 19, 0.05),
+      transparent 55%,
+      rgba(5, 7, 19, 0.18)
+    ),
+    radial-gradient(
+      circle at 72% 52%,
+      transparent 18rem,
+      rgba(5, 7, 19, 0.2) 76%
+    );
+}
+
+.hero-lightfield {
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 4, 11, 0.96) 0%,
+      rgba(3, 4, 11, 0.83) 30%,
+      rgba(3, 4, 11, 0.3) 53%,
+      rgba(3, 4, 11, 0.02) 73%
+    ),
+    radial-gradient(
+      circle at 71% 54%,
+      transparent 0 11rem,
+      rgba(3, 4, 11, 0.08) 32rem
+    );
+}
+
+.hero-title-accent {
+  color: #a9eaf4;
+  text-shadow: 0 0 42px rgba(73, 213, 239, 0.14);
+}
+
+.hero-status {
+  display: inline-flex;
+  min-height: 2.15rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(119, 224, 240, 0.18);
+  border-radius: 999px;
+  background: rgba(9, 15, 29, 0.52);
+  padding: 0.4rem 0.75rem;
+  color: #bbcadb;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+}
+
+.hero-status__pulse {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #5af3bd;
+  box-shadow: 0 0 0 0 rgba(90, 243, 189, 0.5);
+  animation: signal-pulse 2s ease-out infinite;
+}
+
+.hero-object-card {
+  position: absolute;
+  z-index: 22;
+  right: max(1.5rem, calc((100vw - 86rem) / 2));
+  bottom: 2.2rem;
+  width: 19rem;
+  border: 1px solid rgba(111, 228, 248, 0.2);
+  background: rgba(7, 11, 24, 0.48);
+  padding: 0.7rem 0.8rem;
+  color: #7f90a8;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.11em;
+  backdrop-filter: blur(14px);
+  clip-path: polygon(
+    0.55rem 0,
+    100% 0,
+    100% calc(100% - 0.55rem),
+    calc(100% - 0.55rem) 100%,
+    0 100%,
+    0 0.55rem
+  );
+}
+
+.hero-object-card__line {
+  height: 1px;
+  margin-block: 0.55rem;
+  background: linear-gradient(90deg, rgba(105, 227, 249, 0.55), transparent);
+}
+
+.hero-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 0.6rem;
+}
+
+.hero-signal i {
+  display: block;
+  width: 2px;
+  height: 35%;
+  background: #66e5f8;
+}
+
+.hero-signal i:nth-child(2) {
+  height: 65%;
+}
+
+.hero-signal i:nth-child(3) {
+  height: 100%;
+}
+
+@keyframes signal-pulse {
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.45rem rgba(90, 243, 189, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-lightfield {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 4, 11, 0.1) 0%,
+        rgba(3, 4, 11, 0.3) 38%,
+        rgba(3, 4, 11, 0.96) 65%
+      ),
+      linear-gradient(90deg, rgba(3, 4, 11, 0.45), transparent 80%);
+  }
+
+  .hero-object-card {
+    right: 0.75rem;
+    bottom: auto;
+    top: 6.25rem;
+    width: 9.75rem;
+    padding: 0.55rem 0.65rem;
+    background: rgba(7, 11, 24, 0.66);
+    font-size: 0.5rem;
+  }
+
+  .hero-object-card__line,
+  .hero-object-card .hero-object-card__readout {
+    display: none;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .hero-object-card {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-status__pulse {
+    animation: none;
+  }
+}

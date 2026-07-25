@@ -1,6 +1,6 @@
 {
-  "name": "Youssef Charif Hamidi - Full-Stack Engineer",
-  "short_name": "Youssef Charif Hamidi - Full-Stack Engineer",
+  "name": "Youssef Charif Hamidi — Software Engineer & Product Builder",
+  "short_name": "Youssef Charif Hamidi",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#050713",
+  "background_color": "#050713"
 }

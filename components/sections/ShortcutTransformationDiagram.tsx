@@ -1,4 +1,4 @@
-import { ArrowRight, CornerDownRight, Keyboard, Sparkles } from "lucide-react";
+import { ArrowRight, CornerDownRight, Keyboard } from "lucide-react";
 
 const shortcuts = [
   {
@@ -73,7 +73,7 @@ export function ShortcutTransformationDiagram() {
         </div>
 
         <div className="divide-y divide-white/10 border-y border-white/10">
-          {shortcuts.map((shortcut, index) => (
+          {shortcuts.map((shortcut) => (
             <article
               key={shortcut.input}
               className="grid gap-5 py-7 md:grid-cols-[10rem_1fr_1.15fr] md:items-center md:gap-5 md:px-4"
@@ -96,11 +96,7 @@ export function ShortcutTransformationDiagram() {
 
               <div className="relative flex min-h-24 items-center gap-4 rounded-2xl border border-[#9992ef]/15 bg-[#9992ef]/[.055] px-4 py-4">
                 <span className="grid size-10 shrink-0 place-items-center rounded-full border border-[#70e7f8]/20 bg-[#70e7f8]/[.07] text-[#70e7f8]">
-                  {index === 0 ? (
-                    <Keyboard aria-hidden="true" size={17} />
-                  ) : (
-                    <Sparkles aria-hidden="true" size={17} />
-                  )}
+                  <Keyboard aria-hidden="true" size={17} />
                 </span>
                 <div>
                   <p className="font-display text-lg text-[#e5e3ed]">

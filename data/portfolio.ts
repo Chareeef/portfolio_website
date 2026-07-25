@@ -8,29 +8,6 @@ export const links = {
     "https://play.google.com/store/apps/details?id=com.mathvellum.app",
 } as const;
 
-export const proofMetrics = [
-  {
-    value: "1M+",
-    label: "RemoteOtter impressions",
-    context: "in its first month",
-  },
-  {
-    value: "40K+",
-    label: "RemoteOtter clicks",
-    context: "in its first month",
-  },
-  {
-    value: "200+",
-    label: "Daily active users",
-    context: "reached in month one",
-  },
-  {
-    value: "Google Play",
-    label: "MathVellum",
-    context: "published application",
-  },
-] as const;
-
 export const remoteOtterOwnership = [
   {
     title: "Product architecture",
@@ -63,8 +40,9 @@ export const supportingProjects = [
       "Authentication and cloud persistence",
     ],
     technology: ["Next.js", "TypeScript", "Firebase", "NextAuth", "Groq API"],
-    image: "/sadim1.png",
-    imageAlt: "Sadim AI responsive conversation interface",
+    image: "/sadim3.png",
+    imageAlt:
+      "Sadim AI chat interface showing a generated technical interview response",
     live: "https://sadim-ai.com",
     source: "https://github.com/Chareeef/SadimAI",
   },
@@ -80,8 +58,9 @@ export const supportingProjects = [
       "Responsive review interface",
     ],
     technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
-    image: "/memflip1.png",
-    imageAlt: "MemFlip flashcard generation and study interface",
+    image: "/memflip3.png",
+    imageAlt:
+      "MemFlip interface showing a generated collection of AI flashcards",
     live: "https://mem-flip.live",
     source: "https://github.com/Chareeef/MemFlip",
   },

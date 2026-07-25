@@ -61,32 +61,12 @@ export function CosmicHero() {
     motionQuery.addEventListener("change", updatePreferences);
     mobileQuery.addEventListener("change", updatePreferences);
 
-    const lowPowerDevice =
-      typeof navigator.hardwareConcurrency === "number" &&
-      navigator.hardwareConcurrency <= 2;
-    const canEnhance =
-      supportsWebGL() &&
-      !mobileQuery.matches &&
-      !connection?.saveData &&
-      !lowPowerDevice;
-    const idleWindow = window as unknown as {
-      requestIdleCallback?: (
-        callback: IdleRequestCallback,
-        options?: IdleRequestOptions,
-      ) => number;
-      cancelIdleCallback?: (handle: number) => void;
-    };
-    const idleId = idleWindow.requestIdleCallback
-      ? idleWindow.requestIdleCallback(() => setEnhance(canEnhance), {
-          timeout: 1800,
-        })
-      : window.setTimeout(() => setEnhance(canEnhance), 600);
+    const canEnhance = supportsWebGL() && !connection?.saveData;
+    setEnhance(canEnhance);
 
     return () => {
       motionQuery.removeEventListener("change", updatePreferences);
       mobileQuery.removeEventListener("change", updatePreferences);
-      if (idleWindow.cancelIdleCallback) idleWindow.cancelIdleCallback(idleId);
-      else window.clearTimeout(idleId);
     };
   }, []);
 
@@ -128,25 +108,35 @@ export function CosmicHero() {
           </SceneBoundary>
         ) : null}
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,19,.98)_0%,rgba(5,7,19,.83)_43%,rgba(5,7,19,.2)_78%,rgba(5,7,19,.48)_100%)] md:bg-[linear-gradient(90deg,rgba(5,7,19,.97)_0%,rgba(5,7,19,.76)_47%,rgba(5,7,19,.06)_75%,rgba(5,7,19,.26)_100%)]" />
+      <div className="hero-lightfield absolute inset-0" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-[#050713]" />
       <div className="noise" />
 
       <div className="sr-only">
         <p>
-          A wheelchair explorer is seen from behind on an extraterrestrial
-          ridge, following a starlit path toward distant planets and an open
-          horizon.
+          A luminous geometric engine floats in space as data paths converge
+          through its orbiting nodes and central core.
         </p>
       </div>
       <HeroContent />
 
-      <div className="absolute bottom-7 right-5 z-20 hidden max-w-[19rem] items-start gap-3 text-xs leading-5 text-[#8991aa] lg:flex">
-        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#e7c98d]" />
-        <p>
-          An explorer, a working interface, and the belief that the most
-          meaningful product is still ahead.
-        </p>
+      <div aria-hidden="true" className="hero-crosshair hero-crosshair--one" />
+      <div aria-hidden="true" className="hero-crosshair hero-crosshair--two" />
+
+      <div className="hero-object-card" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <span>OBJECT / YC-01</span>
+          <span className="hero-signal">
+            <i />
+            <i />
+            <i />
+          </span>
+        </div>
+        <div className="hero-object-card__line" />
+        <div className="flex justify-between text-[#d9f7ff]">
+          <span>ALT 408.2 KM</span>
+          <span>VEL 7.66 KM/S</span>
+        </div>
       </div>
     </section>
   );

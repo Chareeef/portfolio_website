@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/navigation/Navigation";
 import { CosmicHero } from "@/components/hero/CosmicHero";
-import { MetricsStrip } from "@/components/sections/MetricsStrip";
 import { RemoteOtterCaseStudy } from "@/components/sections/RemoteOtterCaseStudy";
 import { MathVellumCaseStudy } from "@/components/sections/MathVellumCaseStudy";
 import { SupportingProjects } from "@/components/sections/SupportingProjects";
@@ -19,7 +18,6 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <CosmicHero />
-        <MetricsStrip />
         <RemoteOtterCaseStudy />
         <MathVellumCaseStudy />
         <SupportingProjects />

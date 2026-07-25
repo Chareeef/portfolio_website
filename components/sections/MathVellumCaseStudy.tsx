@@ -10,7 +10,7 @@ import {
 import { links } from "@/data/portfolio";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { MathExpressionDemo } from "./MathExpressionDemo";
+import { ShortcutTransformationDiagram } from "./ShortcutTransformationDiagram";
 
 const engineering = [
   {
@@ -97,7 +97,7 @@ export function MathVellumCaseStudy() {
         </div>
 
         <Reveal className="mt-16">
-          <MathExpressionDemo />
+          <ShortcutTransformationDiagram />
         </Reveal>
 
         <div className="mt-20 grid gap-10 lg:grid-cols-[.76fr_1.24fr]">

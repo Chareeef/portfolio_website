@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { links, remoteOtterOwnership } from "@/data/portfolio";
+import { links } from "@/data/portfolio";
+import { copy, type Locale } from "@/lib/i18n";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { PipelineDiagram } from "./PipelineDiagram";
@@ -15,7 +16,9 @@ const technologies = [
   "Linux",
 ] as const;
 
-export function RemoteOtterCaseStudy() {
+export function RemoteOtterCaseStudy({ locale }: { locale: Locale }) {
+  const content = copy[locale].remoteOtter;
+
   return (
     <section
       id="work"
@@ -26,23 +29,23 @@ export function RemoteOtterCaseStudy() {
       <div className="shell relative">
         <SectionHeading
           id="remoteotter-title"
-          eyebrow="Flagship case study · 01"
+          eyebrow={content.eyebrow}
           title="RemoteOtter"
-          description="A production platform helping software engineers discover remote job opportunities."
+          description={content.description}
         />
 
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-white/10 py-4 text-sm">
           <p className="font-semibold text-[#ebe9e2]">
-            Co-Founder & Full-Stack Engineer
+            {content.role}
           </p>
-          <p className="text-[#8e96ae]">September 2024 — June 2026</p>
+          <p className="text-[#8e96ae]">{content.dates}</p>
           <a
             href={links.remoteOtter}
             target="_blank"
             rel="noreferrer"
             className="ml-auto inline-flex min-h-11 items-center gap-2 text-[#dfc78f] hover:text-white"
           >
-            Visit live product <ArrowUpRight aria-hidden="true" size={16} />
+            {content.visit} <ArrowUpRight aria-hidden="true" size={16} />
           </a>
         </div>
 
@@ -51,7 +54,7 @@ export function RemoteOtterCaseStudy() {
             <div className="screen-frame">
               <Image
                 src="/remoteotter1.jpg"
-                alt="RemoteOtter job discovery page showing search filters, job alerts and remote listings"
+                alt={content.imageAlt}
                 width={1920}
                 height={1142}
                 sizes="(max-width: 1024px) 100vw, 55vw"
@@ -60,23 +63,17 @@ export function RemoteOtterCaseStudy() {
               />
             </div>
             <p className="mt-4 max-w-xl text-sm leading-6 text-[#858da5]">
-              The product brought job discovery, filtering, personalised alerts,
-              saved opportunities and subscriptions into one production system.
+              {content.imageCaption}
             </p>
           </Reveal>
 
           <Reveal delay={0.08} className="lg:pt-8">
             <p className="font-display text-2xl leading-tight tracking-[-0.035em] text-[#e9e6df] md:text-3xl">
-              From architecture and ingestion pipelines to search, subscriptions
-              and Linux infrastructure.
+              {content.summary}
             </p>
 
             <div className="mt-9 grid grid-cols-3 gap-px overflow-hidden border-y border-white/10 bg-white/10">
-              {[
-                ["1M+", "impressions"],
-                ["40K+", "clicks"],
-                ["200+", "daily users"],
-              ].map(([value, label]) => (
+              {content.stats.map(([value, label, period]) => (
                 <div key={label} className="bg-[#070a17] px-3 py-5">
                   <p className="font-display text-2xl tracking-[-0.05em] text-[#edcfa0] sm:text-3xl">
                     {value}
@@ -84,7 +81,7 @@ export function RemoteOtterCaseStudy() {
                   <p className="mt-2 text-xs leading-5 text-[#9098af]">
                     {label}
                     <br />
-                    in month one
+                    {period}
                   </p>
                 </div>
               ))}
@@ -92,7 +89,7 @@ export function RemoteOtterCaseStudy() {
 
             <div
               className="mt-8 flex flex-wrap gap-2"
-              aria-label="Technologies used"
+              aria-label={content.technologyLabel}
             >
               {technologies.map((technology) => (
                 <span
@@ -107,20 +104,20 @@ export function RemoteOtterCaseStudy() {
         </div>
 
         <Reveal className="mt-16 border-y border-white/10 bg-[#0a0e20]/70 px-4 py-7 sm:px-7 lg:px-9">
-          <PipelineDiagram />
+          <PipelineDiagram locale={locale} />
         </Reveal>
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
           <div>
-            <p className="eyebrow">What I owned</p>
+            <p className="eyebrow">{content.owned}</p>
             <h3 className="mt-5 text-balance font-display text-3xl leading-tight tracking-[-0.045em] md:text-5xl">
-              One coherent product system, not a collection of features.
+              {content.ownedTitle}
             </h3>
           </div>
           <div className="grid gap-px bg-white/10 sm:grid-cols-2">
-            {remoteOtterOwnership.map((item, index) => (
+            {content.ownership.map(([title, body], index) => (
               <Reveal
-                key={item.title}
+                key={title}
                 delay={index * 0.05}
                 className="bg-[#070a17] p-6 sm:p-7"
               >
@@ -130,10 +127,10 @@ export function RemoteOtterCaseStudy() {
                   size={19}
                 />
                 <h4 className="mt-5 font-display text-xl tracking-[-0.03em]">
-                  {item.title}
+                  {title}
                 </h4>
                 <p className="mt-3 text-sm leading-7 text-[#9ca4bc]">
-                  {item.body}
+                  {body}
                 </p>
               </Reveal>
             ))}

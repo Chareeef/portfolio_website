@@ -1,8 +1,11 @@
 import { Award, BookOpen, GraduationCap } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { copy, type Locale } from "@/lib/i18n";
 
-export function Education() {
+export function Education({ locale }: { locale: Locale }) {
+  const content = copy[locale].education;
+
   return (
     <section
       aria-labelledby="education-title"
@@ -11,9 +14,9 @@ export function Education() {
       <div className="shell">
         <SectionHeading
           id="education-title"
-          eyebrow="Education & recognition"
-          title="Foundations for the work ahead."
-          description="Systems thinking, backend depth and the habit of learning by building."
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
         />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[1.18fr_.82fr]">
@@ -24,24 +27,16 @@ export function Education() {
               </span>
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.15em] text-[#858da5]">
-                  June 2024 · 12 months
+                  {content.alxDate}
                 </p>
                 <h3 className="mt-3 font-display text-3xl tracking-[-0.045em]">
-                  ALX Software Engineering
+                  {content.alxTitle}
                 </h3>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-[#9da5bc]">
-                  Completed a 12-month programme spanning systems programming,
-                  backend development, databases, algorithms, Linux and DevOps.
+                  {content.alxDescription}
                 </p>
                 <div className="mt-7 flex flex-wrap gap-2">
-                  {[
-                    "Systems programming",
-                    "Backend development",
-                    "Databases",
-                    "Algorithms",
-                    "Linux",
-                    "DevOps",
-                  ].map((item) => (
+                  {content.subjects.map((item) => (
                     <span
                       key={item}
                       className="border border-white/10 px-2.5 py-1.5 font-mono text-[0.65rem] text-[#939bb2]"
@@ -53,10 +48,10 @@ export function Education() {
               </div>
               <div className="sm:text-right">
                 <p className="font-display text-4xl tracking-[-0.06em] text-[#e7c98d]">
-                  145.52%
+                  {content.scoreValue}
                 </p>
                 <p className="mt-1 text-xs text-[#7f879f]">
-                  final performance score
+                  {content.score}
                 </p>
               </div>
             </div>
@@ -64,11 +59,11 @@ export function Education() {
             <div className="mt-9 grid gap-3 border-l border-[#9992ef]/35 pl-5 sm:ml-[4.75rem] sm:grid-cols-[auto_1fr] sm:items-start">
               <Award aria-hidden="true" size={20} className="text-[#e7c98d]" />
               <p className="text-sm leading-7 text-[#b6bbcc]">
-                Recognised as an{" "}
+                {locale === "en" ? "Recognised as an " : "Reconnu comme "}
                 <strong className="text-[#ece8de]">
-                  ALX Community Champion
+                  {content.champion}
                 </strong>{" "}
-                for advancing disability inclusion in technology.
+                {content.recognition}
               </p>
             </div>
           </Reveal>
@@ -80,13 +75,13 @@ export function Education() {
               </span>
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.15em] text-[#858da5]">
-                  June 2022
+                  {content.baccalaureateDate}
                 </p>
                 <h3 className="mt-3 font-display text-3xl tracking-[-0.045em]">
-                  Baccalauréat
+                  {content.baccalaureate}
                 </h3>
                 <p className="mt-4 text-base text-[#b2b8ca]">
-                  Sciences Mathématiques
+                  {content.field}
                 </p>
               </div>
             </div>

@@ -1,8 +1,11 @@
 import { capabilities } from "@/data/portfolio";
+import { copy, type Locale } from "@/lib/i18n";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
-export function Capabilities() {
+export function Capabilities({ locale }: { locale: Locale }) {
+  const content = copy[locale].capabilities;
+
   return (
     <section
       id="capabilities"
@@ -13,9 +16,9 @@ export function Capabilities() {
       <div className="shell relative">
         <SectionHeading
           id="capabilities-title"
-          eyebrow="Engineering capabilities"
-          title="Tools matter most when connected to outcomes."
-          description="I work across product, interface, data and infrastructure, taking ideas from early architecture decisions through production."
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
         />
 
         <div className="mt-16 grid gap-px overflow-hidden border border-white/10 bg-white/10 lg:grid-cols-2">
@@ -27,7 +30,7 @@ export function Capabilities() {
             >
               <div className="flex items-start justify-between gap-6">
                 <h3 className="font-display text-2xl tracking-[-0.04em] md:text-3xl">
-                  {capability.title}
+                  {content.items[index][0]}
                 </h3>
                 <span
                   aria-hidden="true"
@@ -35,10 +38,10 @@ export function Capabilities() {
                 />
               </div>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#8e96ad]">
-                {capability.description}
+                {content.items[index][1]}
               </p>
               <ul
-                aria-label={`${capability.title} toolkit`}
+                aria-label={`${content.items[index][0]} — ${content.toolkit}`}
                 className="mt-8 flex flex-wrap gap-2 border-t border-white/[.08] pt-6"
               >
                 {capability.tools.map((tool) => (

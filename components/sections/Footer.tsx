@@ -1,20 +1,17 @@
-import { ArrowUp } from "lucide-react";
+import { copy, type Locale } from "@/lib/i18n";
+import { BackToTopButton } from "@/components/navigation/BackToTopButton";
 
-export function Footer() {
+export function Footer({ locale }: { locale: Locale }) {
+  const content = copy[locale].footer;
+
   return (
-    <footer className="border-t border-white/10 bg-[#04050d]">
-      <div className="shell flex flex-col gap-5 py-7 text-xs text-[#747c94] sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {new Date().getFullYear()} Youssef Charif Hamidi. Built with
-          intention.
+    <footer className="relative border-t border-white/10 bg-[#04050d]">
+      <div className="shell relative flex items-center justify-center py-4 text-center text-xs text-[#747c94]">
+        <p className="max-w-[30rem]">
+          © {new Date().getFullYear()} Youssef Charif Hamidi. {content.built}
         </p>
-        <a
-          href="#top"
-          className="inline-flex min-h-11 w-fit items-center gap-2 text-[#aeb5c8] hover:text-white"
-        >
-          Back to horizon <ArrowUp aria-hidden="true" size={15} />
-        </a>
       </div>
+      <BackToTopButton label={content.back} />
     </footer>
   );
 }

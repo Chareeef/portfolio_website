@@ -6,24 +6,32 @@ import {
   Server,
   SquareTerminal,
 } from "lucide-react";
+import { copy, type Locale } from "@/lib/i18n";
 
-const workflow = [
-  { name: "Tablet", detail: "Primary interface", icon: MonitorSmartphone },
-  { name: "Termux", detail: "Local terminal", icon: SquareTerminal },
-  { name: "SSH", detail: "Secure connection", icon: Command },
-  { name: "Ubuntu", detail: "Development environment", icon: Server },
-  { name: "Vim + tmux", detail: "Focused workspace", icon: SquareTerminal },
-  { name: "Production", detail: "Deployed systems", icon: Cloud },
+const icons = [
+  MonitorSmartphone,
+  SquareTerminal,
+  Command,
+  Server,
+  SquareTerminal,
+  Cloud,
 ] as const;
 
-export function WorkflowDiagram() {
+export function WorkflowDiagram({ locale }: { locale: Locale }) {
+  const content = copy[locale].mission.workflow;
+  const workflow = content.steps.map(([name, detail], index) => ({
+    name,
+    detail,
+    icon: icons[index],
+  }));
+
   return (
     <figure aria-labelledby="workflow-caption">
       <figcaption
         id="workflow-caption"
         className="mb-6 font-mono text-xs uppercase tracking-[0.16em] text-[#a8afc6]"
       >
-        Development workflow
+        {content.caption}
       </figcaption>
       <ol className="relative grid gap-2 lg:grid-cols-6">
         <span

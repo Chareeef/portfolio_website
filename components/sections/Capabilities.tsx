@@ -15,7 +15,7 @@ export function Capabilities() {
           id="capabilities-title"
           eyebrow="Engineering capabilities"
           title="Tools matter most when connected to outcomes."
-          description="A working map of the systems I have built and the technologies used to make them real—not a claim of equal mastery across every tool."
+          description="A working map of the systems I have built and the technologies used to make them real, not a claim of equal mastery across every tool."
         />
 
         <div className="mt-16 grid gap-px overflow-hidden border border-white/10 bg-white/10 lg:grid-cols-2">

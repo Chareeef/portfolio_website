@@ -27,7 +27,7 @@ export function Mission() {
               <p>
                 That workflow has sharpened my adaptability and my attention to
                 efficient interfaces. My experience has also strengthened my
-                interest in accessibility and independence—not as an abstract
+                interest in accessibility and independence, not as an abstract
                 feature, but as part of how useful technology should work.
               </p>
               <p className="font-display text-xl leading-8 tracking-[-0.025em] text-[#e9e5dc] md:text-2xl">
@@ -44,12 +44,7 @@ export function Mission() {
         </Reveal>
 
         <div className="mt-12">
-          <div className="mb-6">
-            <p className="eyebrow">What guides my work</p>
-            <h3 className="mt-4 font-display text-3xl tracking-[-0.045em] md:text-4xl">
-              Principles I build by.
-            </h3>
-          </div>
+          <p className="eyebrow mb-6">What guides my work</p>
           <div className="grid gap-px bg-white/10 sm:grid-cols-3">
             {[
               ["Adaptability", "Find the workable interface, then keep moving."],

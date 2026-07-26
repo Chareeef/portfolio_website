@@ -1,5 +1,9 @@
 import { capabilities } from "@/data/portfolio";
-import { copy, type Locale } from "@/lib/i18n";
+import {
+  capabilityToolLabels,
+  copy,
+  type Locale,
+} from "@/lib/i18n";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
@@ -49,7 +53,7 @@ export function Capabilities({ locale }: { locale: Locale }) {
                     key={tool}
                     className="rounded-full border border-white/[.1] bg-white/[.025] px-3 py-1.5 font-mono text-[0.68rem] tracking-[0.02em] text-[#aeb4c6]"
                   >
-                    {tool}
+                    {capabilityToolLabels[locale][tool] ?? tool}
                   </li>
                 ))}
               </ul>

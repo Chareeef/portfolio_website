@@ -6,6 +6,21 @@ export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
+export const capabilityToolLabels: Record<
+  Locale,
+  Partial<Record<string, string>>
+> = {
+  en: {},
+  fr: {
+    Architecture: "Architecture",
+    Authentication: "Authentification",
+    Payments: "Paiements",
+    Search: "Recherche",
+    Notifications: "Notifications",
+    Deployment: "Déploiement",
+  },
+};
+
 export const copy = {
   en: {
     meta: {
@@ -425,7 +440,7 @@ export const copy = {
         ],
       ],
       productEyebrow: "Le produit à l’usage",
-      productTitle: "L’éditeur en détail.",
+      productTitle: "Au cœur de l’éditeur.",
       screenshots: [
         [
           "Éditeur structuré MathVellum avec clavier mathématique personnalisé et curseur imbriqué",

@@ -4,6 +4,7 @@ import { copy, type Locale } from "@/lib/i18n";
 
 export function HeroContent({ locale }: { locale: Locale }) {
   const content = copy[locale].hero;
+  const resumeHref = locale === "fr" ? links.resumeFr : links.resume;
 
   return (
     <div className="relative z-20 flex min-h-[100svh] items-end pb-16 pt-32 md:items-center md:pb-20">
@@ -54,8 +55,10 @@ export function HeroContent({ locale }: { locale: Locale }) {
             </a>
             <a
               className="inline-flex min-h-11 items-center gap-2 hover:text-white"
-              href={links.resume}
-              download
+              href={resumeHref}
+              download={
+                locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
+              }
             >
               {content.resume} <ArrowUpRight aria-hidden="true" size={13} />
             </a>

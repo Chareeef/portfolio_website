@@ -6,6 +6,7 @@ import { copy, type Locale } from "@/lib/i18n";
 
 export function FinalHorizon({ locale }: { locale: Locale }) {
   const content = copy[locale].contact;
+  const resumeHref = locale === "fr" ? links.resumeFr : links.resume;
 
   return (
     <section
@@ -64,7 +65,13 @@ export function FinalHorizon({ locale }: { locale: Locale }) {
             >
               <Github aria-hidden="true" size={17} /> GitHub
             </a>
-            <a className="button-secondary" href={links.resume} download>
+            <a
+              className="button-secondary"
+              href={resumeHref}
+              download={
+                locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
+              }
+            >
               <Download aria-hidden="true" size={17} /> {content.resume}
             </a>
           </div>

@@ -3,6 +3,7 @@ export const links = {
   github: "https://github.com/Chareeef",
   linkedin: "https://www.linkedin.com/in/youssef-charif-hamidi",
   resume: "/youssef-charif-hamidi-resume.pdf",
+  resumeFr: "/CV – Youssef Charif Hamidi.pdf",
   remoteOtter: "https://remoteotter.com",
   mathVellum:
     "https://play.google.com/store/apps/details?id=com.mathvellum.app",

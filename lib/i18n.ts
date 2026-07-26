@@ -328,7 +328,7 @@ export const copy = {
     hero: {
       scene:
         "Une personne et son chien contemplent un horizon cosmique lointain.",
-      status: "Je conçois des produits ambitieux",
+      status: "Des produits ambitieux. Un impact concret.",
       title: "Ingénierie",
       titleAccent: "sans limites.",
       intro:

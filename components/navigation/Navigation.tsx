@@ -16,6 +16,7 @@ export function Navigation({ locale }: { locale: Locale }) {
   );
   const otherLocale = locale === "en" ? "fr" : "en";
   const languageHref = `/${otherLocale}`;
+  const resumeHref = locale === "fr" ? links.resumeFr : links.resume;
 
   const preserveCurrentSection = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!window.location.hash) return;
@@ -93,8 +94,10 @@ export function Navigation({ locale }: { locale: Locale }) {
             </a>
           ))}
           <a
-            href={links.resume}
-            download
+            href={resumeHref}
+            download={
+              locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
+            }
             className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-full border border-white/[.14] px-3 text-sm text-[#f2eee5] transition-colors hover:border-[#e7c98d]/55"
           >
             {content.resume} <ArrowDownToLine aria-hidden="true" size={15} />
@@ -152,8 +155,10 @@ export function Navigation({ locale }: { locale: Locale }) {
             </a>
           ))}
           <a
-            href={links.resume}
-            download
+            href={resumeHref}
+            download={
+              locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
+            }
             onClick={() => setOpen(false)}
             className="mt-2 flex min-h-12 items-center justify-between rounded-2xl bg-[#f3efe4] px-4 font-semibold text-[#090b17]"
           >

@@ -289,7 +289,16 @@ export function AsteroidWorld({
         <meshStandardMaterial color="#5a504b" roughness={1} flatShading />
       </mesh>
 
-      {subject === "rose" ? <Rose /> : <Fox />}
+      {subject === "rose" ? (
+        <Rose />
+      ) : (
+        <>
+          <Fox />
+          <group position={[-0.72, 0.52, 0.48]} scale={0.52}>
+            <Rose />
+          </group>
+        </>
+      )}
 
       <group ref={fragments}>
         <RockFragment position={[-1.8, -0.55, 0.1]} scale={0.11} />

@@ -18,8 +18,8 @@ export function FinalHorizon() {
       </div>
 
       <p className="sr-only">
-        A small asteroid carrying a seated fox drifts gently through a field of
-        stars.
+        A small asteroid carrying a seated fox and a rose drifts gently through
+        a field of stars.
       </p>
       <div className="shell relative z-10 flex min-h-[88svh] items-center py-28">
         <div className="max-w-3xl">
@@ -67,6 +67,21 @@ export function FinalHorizon() {
               <Download aria-hidden="true" size={17} /> Résumé
             </a>
           </div>
+        </div>
+      </div>
+      <div className="telemetry-card" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <span>OBJECT / YC-01</span>
+          <span className="hero-signal">
+            <i />
+            <i />
+            <i />
+          </span>
+        </div>
+        <div className="telemetry-card__line" />
+        <div className="telemetry-card__readout flex justify-between text-[#d9f7ff]">
+          <span>DISTANCE 4.24 LY</span>
+          <span>VEL 0.18 LY/YR</span>
         </div>
       </div>
     </section>

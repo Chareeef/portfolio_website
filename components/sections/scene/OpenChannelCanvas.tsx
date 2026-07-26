@@ -52,7 +52,7 @@ function FoxScene({
       <directionalLight position={[5, 1, 2]} color="#7566ad" intensity={1.2} />
       <StarField mobile={mobile} />
       <group
-        position={mobile ? [3.15, 3.6, -2.8] : [3.05, -0.18, -0.55]}
+        position={mobile ? [3.55, 3.6, -2.8] : [3.5, -0.18, -0.55]}
         scale={mobile ? 0.5 : 1.12}
       >
         <AsteroidWorld active={active} subject="fox" motionOffset={2.8} />

@@ -2,37 +2,38 @@ import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { links } from "@/data/portfolio";
 import { SceneFallback } from "@/components/hero/SceneFallback";
 import { OpenChannelScene } from "./OpenChannelScene";
+import { copy, type Locale } from "@/lib/i18n";
 
-export function FinalHorizon() {
+export function FinalHorizon({ locale }: { locale: Locale }) {
+  const content = copy[locale].contact;
+
   return (
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative min-h-[88svh] overflow-hidden"
+      className="final-horizon relative min-h-[88svh] overflow-hidden"
     >
       <div className="absolute inset-0">
         <SceneFallback />
         <OpenChannelScene />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,19,.98)_0%,rgba(5,7,19,.84)_48%,rgba(5,7,19,.25)_78%,rgba(5,7,19,.44)_100%)]" />
+        <div className="final-horizon__shade absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,19,.98)_0%,rgba(5,7,19,.84)_48%,rgba(5,7,19,.25)_78%,rgba(5,7,19,.44)_100%)]" />
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#070916] to-transparent" />
       </div>
 
       <p className="sr-only">
-        A small asteroid carrying a seated fox and a rose drifts gently through
-        a field of stars.
+        {content.scene}
       </p>
-      <div className="shell relative z-10 flex min-h-[88svh] items-center py-28">
-        <div className="max-w-3xl">
-          <p className="eyebrow">Open channel</p>
+      <div className="final-horizon__shell shell relative z-10 flex min-h-[88svh] items-center py-28">
+        <div className="final-horizon__content max-w-3xl">
+          <p className="eyebrow">{content.eyebrow}</p>
           <h2
             id="contact-title"
             className="mt-6 text-balance font-display text-[clamp(3rem,7.2vw,7rem)] font-medium leading-[0.91] tracking-[-0.065em]"
           >
-            The next meaningful product is still ahead.
+            {content.title}
           </h2>
           <p className="mt-7 max-w-2xl text-base leading-8 text-[#b8bed0] md:text-lg">
-            I am open to software engineering opportunities, ambitious product
-            work and collaborations that create meaningful impact.
+            {content.description}
           </p>
 
           <a
@@ -43,9 +44,9 @@ export function FinalHorizon() {
             youssef.charif.h@gmail.com
           </a>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="final-horizon__actions mt-9 flex flex-wrap gap-3">
             <a className="button-primary" href={links.email}>
-              Email me <ArrowUpRight aria-hidden="true" size={17} />
+              {content.email} <ArrowUpRight aria-hidden="true" size={17} />
             </a>
             <a
               className="button-secondary"
@@ -64,12 +65,15 @@ export function FinalHorizon() {
               <Github aria-hidden="true" size={17} /> GitHub
             </a>
             <a className="button-secondary" href={links.resume} download>
-              <Download aria-hidden="true" size={17} /> Résumé
+              <Download aria-hidden="true" size={17} /> {content.resume}
             </a>
           </div>
         </div>
       </div>
-      <div className="telemetry-card" aria-hidden="true">
+      <div
+        className="telemetry-card final-horizon__telemetry"
+        aria-hidden="true"
+      >
         <div className="flex items-center justify-between">
           <span>OBJECT / YC-01</span>
           <span className="hero-signal">

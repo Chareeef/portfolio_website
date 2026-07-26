@@ -1,31 +1,37 @@
 import { ArrowRight, CornerDownRight, Keyboard } from "lucide-react";
+import { copy, type Locale } from "@/lib/i18n";
 
-const shortcuts = [
-  {
-    input: "sq",
-    name: "Square root",
-    description: "The cursor lands inside the radicand, ready for the value.",
-    output: (
+export function ShortcutTransformationDiagram({
+  locale,
+}: {
+  locale: Locale;
+}) {
+  const content = copy[locale].mathVellum.shortcuts;
+  const shortcuts = [
+    {
+      input: "sq",
+      name: content.items[0][0],
+      description: content.items[0][1],
+      output: (
       <span
         className="inline-flex items-start font-display text-5xl text-[#f2effc]"
-        aria-label="Editable square root"
+        aria-label={content.squareRootLabel}
       >
         <span className="leading-none">√</span>
         <span className="-ml-1 mt-1 inline-flex min-w-20 items-center border-t-2 border-[#d9d5f4] px-4 py-2">
           <span className="h-9 w-[2px] animate-pulse bg-[#70e7f8]" />
         </span>
       </span>
-    ),
-  },
-  {
-    input: "fr",
-    name: "Fraction",
-    description:
-      "A numerator and denominator are created as one navigable expression.",
-    output: (
+      ),
+    },
+    {
+      input: "fr",
+      name: content.items[1][0],
+      description: content.items[1][1],
+      output: (
       <span
         className="inline-grid min-w-28 grid-rows-2 text-center font-display text-2xl text-[#f2effc]"
-        aria-label="Editable fraction"
+        aria-label={content.fractionLabel}
       >
         <span className="grid min-h-11 place-items-center border-b-2 border-[#d9d5f4]">
           <span className="h-7 w-[2px] animate-pulse bg-[#70e7f8]" />
@@ -34,11 +40,10 @@ const shortcuts = [
           □
         </span>
       </span>
-    ),
-  },
-] as const;
+      ),
+    },
+  ];
 
-export function ShortcutTransformationDiagram() {
   return (
     <section
       aria-labelledby="shortcut-schema-title"
@@ -51,21 +56,21 @@ export function ShortcutTransformationDiagram() {
 
       <div className="relative flex flex-col justify-between gap-6 border-b border-white/10 pb-7 md:flex-row md:items-end">
         <div>
-          <p className="eyebrow">Live shortcut expansion</p>
+          <p className="eyebrow">{content.eyebrow}</p>
           <h3
             id="shortcut-schema-title"
             className="mt-4 max-w-2xl font-display text-3xl tracking-[-0.045em] sm:text-4xl"
           >
-            Type the intent. Get the real structure.
+            {content.title}
           </h3>
         </div>
       </div>
 
       <div className="relative mt-2">
         <div className="hidden grid-cols-[10rem_1fr_1.15fr] gap-5 px-4 py-4 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-[#626c86] md:grid">
-          <span>Keystrokes</span>
-          <span>Shortcut parser</span>
-          <span>Editable output</span>
+          {content.headers.map((header) => (
+            <span key={header}>{header}</span>
+          ))}
         </div>
 
         <div className="divide-y divide-white/10 border-y border-white/10">
@@ -76,7 +81,7 @@ export function ShortcutTransformationDiagram() {
             >
               <div>
                 <p className="mb-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-[#626c86] md:hidden">
-                  Keystrokes
+                  {content.headers[0]}
                 </p>
                 <div className="flex items-center gap-2">
                   {shortcut.input.split("").map((letter) => (
@@ -96,10 +101,10 @@ export function ShortcutTransformationDiagram() {
                 </span>
                 <div>
                   <p className="font-display text-lg text-[#e5e3ed]">
-                    Recognise “{shortcut.input}”
+                    {content.recognise} « {shortcut.input} »
                   </p>
                   <p className="mt-1 text-xs leading-5 text-[#7f89a4]">
-                    Match shortcut · replace token
+                    {content.match}
                   </p>
                 </div>
                 <ArrowRight
@@ -133,8 +138,7 @@ export function ShortcutTransformationDiagram() {
       </div>
 
       <p className="relative mt-5 text-sm leading-7 text-[#8f98b0]">
-        These are not visual substitutions. MathVellum inserts structured,
-        keyboard-navigable expressions the moment the shortcut is completed.
+        {content.note}
       </p>
     </section>
   );

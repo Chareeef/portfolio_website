@@ -1,6 +1,9 @@
 import { HeroContent } from "./HeroContent";
+import { copy, type Locale } from "@/lib/i18n";
 
-export function CosmicHero() {
+export function CosmicHero({ locale }: { locale: Locale }) {
+  const content = copy[locale].hero;
+
   return (
     <section
       id="top"
@@ -29,11 +32,9 @@ export function CosmicHero() {
       <div className="noise" />
 
       <div className="sr-only">
-        <p>
-          A person and their dog look across a distant cosmic horizon.
-        </p>
+        <p>{content.scene}</p>
       </div>
-      <HeroContent />
+      <HeroContent locale={locale} />
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react";
 import { DM_Mono, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -29,7 +30,13 @@ export const metadata: Metadata = {
   title: "Youssef Charif Hamidi — Software Engineer & Product Builder",
   description:
     "Software engineer building production web and mobile applications, including RemoteOtter and MathVellum, with a focus on accessible and meaningful technology.",
-  alternates: { canonical: "/" },
+  alternates: {
+    languages: {
+      en: "/en",
+      fr: "/fr",
+      "x-default": "/",
+    },
+  },
   authors: [{ name: "Youssef Charif Hamidi", url: siteUrl }],
   creator: "Youssef Charif Hamidi",
   keywords: [
@@ -107,12 +114,14 @@ const personSchema = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const locale = (await headers()).get("x-portfolio-locale") === "fr" ? "fr" : "en";
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${sans.variable} ${display.variable} ${mono.variable}`}
     >
       <body>

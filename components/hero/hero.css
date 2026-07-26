@@ -190,6 +190,10 @@
   height: 100%;
 }
 
+.open-channel-scene {
+  inset: 0;
+}
+
 @keyframes signal-pulse {
   70%,
   100% {
@@ -225,6 +229,49 @@
 }
 
 @media (max-width: 767px) {
+  .final-horizon__shell {
+    align-items: flex-start;
+    padding-top: 5.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .final-horizon__content {
+    width: 100%;
+  }
+
+  .final-horizon__actions {
+    width: 46%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .final-horizon__actions .button-primary,
+  .final-horizon__actions .button-secondary {
+    width: 100%;
+  }
+
+  .final-horizon__shade {
+    background:
+      radial-gradient(
+        ellipse at 82% 78%,
+        rgba(76, 163, 189, 0.18),
+        transparent 13rem
+      ),
+      linear-gradient(
+        90deg,
+        rgba(5, 7, 19, 0.97) 0%,
+        rgba(5, 7, 19, 0.82) 48%,
+        rgba(5, 7, 19, 0.18) 74%,
+        rgba(5, 7, 19, 0.28) 100%
+      );
+  }
+
+  .open-channel-scene {
+    inset: auto 0 3.5rem auto;
+    width: 54%;
+    height: 19rem;
+  }
+
   .hero-artwork img {
     object-position: 82% center;
   }
@@ -257,11 +304,11 @@
 
   .telemetry-card {
     right: 0.75rem;
-    bottom: auto;
-    top: 6.25rem;
+    bottom: 3rem;
+    top: auto;
     width: 9.75rem;
     padding: 0.55rem 0.65rem;
-    background: rgba(7, 11, 24, 0.66);
+    background: rgba(7, 11, 24, 0.5);
     font-size: 0.5rem;
   }
 

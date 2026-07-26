@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { ArrowUpRight, Github } from "lucide-react";
 import { archiveProjects, supportingProjects } from "@/data/portfolio";
+import { copy, type Locale } from "@/lib/i18n";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
-export function SupportingProjects() {
+export function SupportingProjects({ locale }: { locale: Locale }) {
+  const content = copy[locale].projects;
+
   return (
     <section
       aria-labelledby="supporting-title"
@@ -13,9 +16,9 @@ export function SupportingProjects() {
       <div className="shell">
         <SectionHeading
           id="supporting-title"
-          eyebrow="Selected work · 03"
-          title="Other systems in orbit"
-          description="Focused applications where interface decisions, reliable data and applied AI work together."
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
         />
 
         <div className="mt-16 divide-y divide-white/10 border-y border-white/10">
@@ -28,7 +31,7 @@ export function SupportingProjects() {
                 <div className="screen-frame">
                   <Image
                     src={project.image}
-                    alt={project.imageAlt}
+                    alt={content.items[index].imageAlt}
                     width={1920}
                     height={1142}
                     sizes="(max-width: 768px) 100vw, 45vw"
@@ -42,16 +45,16 @@ export function SupportingProjects() {
                 className={index % 2 === 1 ? "md:order-1 md:pr-10" : "md:pl-10"}
               >
                 <p className="font-mono text-xs uppercase tracking-[0.17em] text-[#7f879f]">
-                  {project.index} · Supporting system
+                  {project.index} · {content.system}
                 </p>
                 <h3 className="mt-4 font-display text-4xl tracking-[-0.05em] md:text-6xl">
                   {project.name}
                 </h3>
                 <p className="mt-5 max-w-xl text-base leading-8 text-[#b0b6ca]">
-                  {project.description}
+                  {content.items[index].description}
                 </p>
                 <ul className="mt-7 grid gap-3 text-sm text-[#d4d6e0] sm:grid-cols-2">
-                  {project.highlights.map((highlight) => (
+                  {content.items[index].highlights.map((highlight) => (
                     <li
                       key={highlight}
                       className="border-l border-[#9992ef]/35 pl-3 leading-6"
@@ -78,7 +81,7 @@ export function SupportingProjects() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Live site <ArrowUpRight aria-hidden="true" size={16} />
+                    {content.live} <ArrowUpRight aria-hidden="true" size={16} />
                   </a>
                   <a
                     className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
@@ -86,7 +89,7 @@ export function SupportingProjects() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Github aria-hidden="true" size={16} /> Source repository
+                    <Github aria-hidden="true" size={16} /> {content.source}
                   </a>
                 </div>
               </Reveal>
@@ -97,9 +100,9 @@ export function SupportingProjects() {
         <div className="mt-20">
           <div className="grid gap-5 md:grid-cols-[.7fr_1.3fr]">
             <div>
-              <p className="eyebrow">Systems archive</p>
+              <p className="eyebrow">{content.archiveEyebrow}</p>
               <h3 className="mt-5 font-display text-3xl tracking-[-0.045em] md:text-4xl">
-                Foundations below the surface
+                {content.archiveTitle}
               </h3>
             </div>
             <div className="divide-y divide-white/10 border-y border-white/10">
@@ -119,7 +122,7 @@ export function SupportingProjects() {
                       {project.name}
                     </span>
                     <span className="mt-1 block text-xs leading-5 text-[#7f879f] sm:inline sm:pl-4">
-                      {project.type}
+                      {content.archiveTypes[index]}
                     </span>
                   </span>
                   <ArrowUpRight

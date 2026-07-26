@@ -9,18 +9,18 @@ import {
   ServerCog,
   Waypoints,
 } from "lucide-react";
+import { copy, type Locale } from "@/lib/i18n";
 
-const steps = [
-  { name: "Sources", detail: "Job boards + ATS", icon: RadioTower },
-  { name: "Ingest", detail: "Python pipelines", icon: ServerCog },
-  { name: "Normalise", detail: "Shared data model", icon: Waypoints },
-  { name: "Deduplicate", detail: "Canonical records", icon: Filter },
-  { name: "Index", detail: "PostgreSQL search", icon: Database },
-  { name: "Deliver", detail: "Search + alerts", icon: Search },
-] as const;
+const icons = [RadioTower, ServerCog, Waypoints, Filter, Database, Search] as const;
 
-export function PipelineDiagram() {
+export function PipelineDiagram({ locale }: { locale: Locale }) {
   const reducedMotion = useReducedMotion();
+  const content = copy[locale].remoteOtter.pipeline;
+  const steps = content.steps.map(([name, detail], index) => ({
+    name,
+    detail,
+    icon: icons[index],
+  }));
 
   return (
     <figure aria-labelledby="pipeline-caption">
@@ -29,10 +29,10 @@ export function PipelineDiagram() {
         className="mb-5 flex items-center justify-between gap-4"
       >
         <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#a8afc6]">
-          Listing delivery system
+          {content.caption}
         </span>
         <span className="hidden font-mono text-[0.64rem] text-[#69718b] sm:block">
-          scheduled refresh
+          {content.refresh}
         </span>
       </figcaption>
 

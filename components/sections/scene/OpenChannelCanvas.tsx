@@ -61,8 +61,8 @@ function FoxScene({
       <directionalLight position={[5, 1, 2]} color="#665b9c" intensity={1.05} />
       <StarField mobile={mobile} />
       <group
-        position={mobile ? [2.8, 2.25, -2] : [4, -0.18, -0.55]}
-        scale={mobile ? 0.82 : 1.12}
+        position={mobile ? [0, -0.18, -0.35] : [4, -0.18, -0.55]}
+        scale={mobile ? 1.22 : 1.12}
       >
         <AsteroidWorld active={active} subject="fox" motionOffset={2.8} />
       </group>
@@ -110,7 +110,7 @@ export function OpenChannelScene() {
     <div
       ref={wrapperRef}
       aria-hidden="true"
-      className={`absolute inset-0 transition-opacity duration-1000 ${
+      className={`open-channel-scene absolute transition-opacity duration-1000 ${
         ready ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -119,8 +119,8 @@ export function OpenChannelScene() {
         dpr={mobile ? 1 : [1, 1.25]}
         shadows={!mobile}
         camera={{
-          position: mobile ? [0.9, 1.1, 8] : [0.2, 1, 7.7],
-          fov: mobile ? 56 : 43,
+          position: mobile ? [0, 0.9, 6.4] : [0.2, 1, 7.7],
+          fov: mobile ? 50 : 43,
           near: 0.1,
           far: 100,
         }}
@@ -134,7 +134,7 @@ export function OpenChannelScene() {
         onCreated={({ gl, camera }) => {
           gl.setClearColor("#03040b", 0);
           gl.outputColorSpace = THREE.SRGBColorSpace;
-          camera.lookAt(mobile ? 1.4 : 1.55, 0.65, -0.4);
+          camera.lookAt(mobile ? 0 : 1.55, mobile ? 0.45 : 0.65, -0.4);
         }}
         style={{ pointerEvents: "none" }}
       >

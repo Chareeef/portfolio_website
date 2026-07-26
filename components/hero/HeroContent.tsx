@@ -8,7 +8,7 @@ export function HeroContent() {
         <div className="max-w-[42rem]">
           <div className="hero-status">
             <span className="hero-status__pulse" />
-            <span>Available for ambitious missions</span>
+            <span>Building ambitious products</span>
           </div>
           <h1
             id="hero-heading"
@@ -24,7 +24,7 @@ export function HeroContent() {
 
           <div className="mt-9 flex flex-wrap gap-3">
             <a className="button-primary" href="#work">
-              Enter the work <ArrowRight aria-hidden="true" size={18} />
+              Explore my work <ArrowRight aria-hidden="true" size={18} />
             </a>
             <a className="button-secondary" href={links.email}>
               Start a conversation <Mail aria-hidden="true" size={17} />

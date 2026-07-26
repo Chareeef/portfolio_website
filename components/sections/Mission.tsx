@@ -43,29 +43,37 @@ export function Mission() {
           <WorkflowDiagram />
         </Reveal>
 
-        <div className="mt-12 grid gap-px bg-white/10 sm:grid-cols-3">
-          {[
-            ["Adaptability", "Find the workable interface, then keep moving."],
-            ["Clarity", "Reduce friction until the important work is visible."],
-            [
-              "Independence",
-              "Build systems that give people meaningful control.",
-            ],
-          ].map(([title, body], index) => (
-            <Reveal
-              key={title}
-              delay={index * 0.06}
-              className="bg-[#050713] p-6"
-            >
-              <p className="font-mono text-[0.65rem] text-[#626b84]">
-                0{index + 1}
-              </p>
-              <h3 className="mt-5 font-display text-xl tracking-[-0.035em]">
-                {title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-[#8f97ae]">{body}</p>
-            </Reveal>
-          ))}
+        <div className="mt-12">
+          <div className="mb-6">
+            <p className="eyebrow">What guides my work</p>
+            <h3 className="mt-4 font-display text-3xl tracking-[-0.045em] md:text-4xl">
+              Principles I build by.
+            </h3>
+          </div>
+          <div className="grid gap-px bg-white/10 sm:grid-cols-3">
+            {[
+              ["Adaptability", "Find the workable interface, then keep moving."],
+              ["Clarity", "Reduce friction until the important work is visible."],
+              [
+                "Independence",
+                "Build systems that give people meaningful control.",
+              ],
+            ].map(([title, body], index) => (
+              <Reveal
+                key={title}
+                delay={index * 0.06}
+                className="bg-[#050713] p-6"
+              >
+                <p className="font-mono text-[0.65rem] text-[#626b84]">
+                  0{index + 1}
+                </p>
+                <h3 className="mt-5 font-display text-xl tracking-[-0.035em]">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#8f97ae]">{body}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

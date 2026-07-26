@@ -59,10 +59,6 @@ export function ShortcutTransformationDiagram() {
             Type the intent. Get the real structure.
           </h3>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.13em] text-[#6ee4f5]">
-          <span className="size-1.5 rounded-full bg-[#63e7c0] shadow-[0_0_12px_#63e7c0]" />
-          Rendered immediately
-        </div>
       </div>
 
       <div className="relative mt-2">
@@ -136,7 +132,7 @@ export function ShortcutTransformationDiagram() {
         </div>
       </div>
 
-      <p className="relative mt-5 max-w-3xl text-sm leading-7 text-[#8f98b0]">
+      <p className="relative mt-5 text-sm leading-7 text-[#8f98b0]">
         These are not visual substitutions. MathVellum inserts structured,
         keyboard-navigable expressions the moment the shortcut is completed.
       </p>

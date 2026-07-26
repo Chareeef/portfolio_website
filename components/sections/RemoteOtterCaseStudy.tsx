@@ -140,17 +140,6 @@ export function RemoteOtterCaseStudy() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-5 border-t border-white/10 pt-8 md:grid-cols-[12rem_1fr]">
-          <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#dfc78f]">
-            Scale and outcome
-          </p>
-          <p className="max-w-3xl text-base leading-8 text-[#bdc2d2] md:text-lg">
-            Within its first month, RemoteOtter reached 1M+ impressions, 40K+
-            clicks and 200+ daily active users—early validation that the system
-            could turn a high-volume, fragmented data problem into a useful
-            product.
-          </p>
-        </div>
       </div>
     </section>
   );

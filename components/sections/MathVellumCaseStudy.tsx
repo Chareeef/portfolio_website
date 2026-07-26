@@ -76,7 +76,7 @@ export function MathVellumCaseStudy() {
           <Reveal className="border-l border-[#9992ef]/30 pl-6 sm:pl-9">
             <p className="max-w-2xl font-display text-2xl leading-[1.3] tracking-[-0.035em] text-[#e9e6ef] md:text-3xl">
               MathVellum was originally designed to help people with motor
-              disabilities who cannot rely on pen and paper write mathematics
+              disabilities, who cannot rely on pen and paper, write mathematics
               independently.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -137,12 +137,9 @@ export function MathVellumCaseStudy() {
             <div>
               <p className="eyebrow">The product in use</p>
               <h3 className="mt-4 font-display text-3xl tracking-[-0.045em] md:text-4xl">
-                Built for real notes.
+                A closer look at the editor.
               </h3>
             </div>
-            <p className="hidden max-w-xs text-right text-sm leading-6 text-[#858da5] sm:block">
-              Local screenshots from the published MathVellum application.
-            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">

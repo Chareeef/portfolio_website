@@ -28,13 +28,21 @@ export function Navigation({ locale }: { locale: Locale }) {
     const sections = items
       .map((item) => document.querySelector(item.href))
       .filter((section): section is Element => Boolean(section));
+    const sectionEntries = new Map<Element, IntersectionObserverEntry>();
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
+        entries.forEach((entry) => sectionEntries.set(entry.target, entry));
+
+        const visible = sections
+          .map((section) => sectionEntries.get(section))
+          .filter(
+            (entry): entry is IntersectionObserverEntry =>
+              Boolean(entry?.isIntersecting),
+          )
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
+
+        setActive(visible ? `#${visible.target.id}` : "");
       },
       { rootMargin: "-30% 0px -62% 0px", threshold: [0, 0.2, 0.6] },
     );

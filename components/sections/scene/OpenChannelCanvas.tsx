@@ -46,14 +46,23 @@ function FoxScene({
 }) {
   return (
     <>
-      <ambientLight intensity={0.38} color="#7d87ad" />
-      <hemisphereLight args={["#f1e7d8", "#080912", 1.05]} />
-      <directionalLight position={[-5, 7, 6]} color="#ffd7a7" intensity={4.8} />
-      <directionalLight position={[5, 1, 2]} color="#7566ad" intensity={1.2} />
+      <ambientLight intensity={0.24} color="#737d9d" />
+      <hemisphereLight args={["#dce6f3", "#070810", 0.82]} />
+      <directionalLight
+        position={[-5, 7, 6]}
+        color="#ffddb8"
+        intensity={4.2}
+        castShadow={!mobile}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-near={0.5}
+        shadow-camera-far={18}
+      />
+      <directionalLight position={[5, 1, 2]} color="#665b9c" intensity={1.05} />
       <StarField mobile={mobile} />
       <group
-        position={mobile ? [3.55, 3.6, -2.8] : [3.5, -0.18, -0.55]}
-        scale={mobile ? 0.5 : 1.12}
+        position={mobile ? [2.8, 2.25, -2] : [4, -0.18, -0.55]}
+        scale={mobile ? 0.82 : 1.12}
       >
         <AsteroidWorld active={active} subject="fox" motionOffset={2.8} />
       </group>
@@ -108,9 +117,10 @@ export function OpenChannelScene() {
       <Canvas
         frameloop="demand"
         dpr={mobile ? 1 : [1, 1.25]}
+        shadows={!mobile}
         camera={{
-          position: mobile ? [0.65, 1.1, 8] : [0.2, 1, 7.7],
-          fov: mobile ? 52 : 43,
+          position: mobile ? [0.9, 1.1, 8] : [0.2, 1, 7.7],
+          fov: mobile ? 56 : 43,
           near: 0.1,
           far: 100,
         }}
@@ -124,7 +134,7 @@ export function OpenChannelScene() {
         onCreated={({ gl, camera }) => {
           gl.setClearColor("#03040b", 0);
           gl.outputColorSpace = THREE.SRGBColorSpace;
-          camera.lookAt(mobile ? 1.1 : 1.45, 0.65, -0.4);
+          camera.lookAt(mobile ? 1.4 : 1.55, 0.65, -0.4);
         }}
         style={{ pointerEvents: "none" }}
       >

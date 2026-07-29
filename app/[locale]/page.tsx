@@ -39,15 +39,26 @@ export async function generateMetadata({
       },
     },
     openGraph: {
+      type: "profile",
       title: content.meta.title,
       description: content.meta.description,
       url: `/${value}`,
       locale: value === "fr" ? "fr_FR" : "en_US",
       alternateLocale: value === "fr" ? ["en_US"] : ["fr_FR"],
+      images: [
+        {
+          url: "/og_my_picture.png",
+          width: 1200,
+          height: 630,
+          alt: "Portrait of Youssef Charif Hamidi",
+        },
+      ],
     },
     twitter: {
+      card: "summary_large_image",
       title: content.meta.title,
       description: content.meta.description,
+      images: ["/og_my_picture.png"],
     },
   };
 }

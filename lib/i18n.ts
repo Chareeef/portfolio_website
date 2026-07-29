@@ -201,7 +201,7 @@ export const copy = {
             "Keyboard-friendly study sessions with recall ratings",
           ],
           imageAlt:
-            "MemFlip deck editor showing six AI-generated flashcards ready to review",
+            "MemFlip study session showing a revealed flashcard with recall rating controls",
         },
         {
           description:
@@ -496,7 +496,7 @@ export const copy = {
             "Sessions au clavier avec autoévaluation du rappel",
           ],
           imageAlt:
-            "Éditeur de paquets MemFlip affichant six flashcards générées par IA, prêtes à être relues",
+            "Session d’étude MemFlip affichant une flashcard révélée et les options d’autoévaluation",
         },
         {
           description:

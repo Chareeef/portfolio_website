@@ -43,7 +43,7 @@ export const supportingProjects = [
     technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
     image: "/memflip3.png",
     imageAlt:
-      "MemFlip deck editor showing six AI-generated flashcards ready to review",
+      "MemFlip study session showing a revealed flashcard with recall rating controls",
     live: "https://mem-flip.live",
     source: "https://github.com/Chareeef/MemFlip",
   },

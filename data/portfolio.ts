@@ -30,8 +30,26 @@ export const remoteOtterOwnership = [
 
 export const supportingProjects = [
   {
-    name: "Sadim AI",
+    name: "MemFlip",
     index: "01",
+    description:
+      "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and running focused review sessions.",
+    highlights: [
+      "Editable AI drafts with duplicate-aware extension",
+      "Manual creation and full deck management",
+      "Search, sorting and bulk library actions",
+      "Keyboard-friendly study sessions with recall ratings",
+    ],
+    technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
+    image: "/memflip3.png",
+    imageAlt:
+      "MemFlip deck editor showing six AI-generated flashcards ready to review",
+    live: "https://mem-flip.live",
+    source: "https://github.com/Chareeef/MemFlip",
+  },
+  {
+    name: "Sadim AI",
+    index: "02",
     description:
       "A responsive AI chat application with streamed responses and persistent conversations.",
     highlights: [
@@ -46,24 +64,6 @@ export const supportingProjects = [
       "Sadim AI chat interface showing a generated technical interview response",
     live: "https://sadim-ai.com",
     source: "https://github.com/Chareeef/SadimAI",
-  },
-  {
-    name: "MemFlip",
-    index: "02",
-    description:
-      "An AI-assisted flashcard application for generating, organising, saving and reviewing study material.",
-    highlights: [
-      "AI-generated flashcards",
-      "Authentication and Firestore persistence",
-      "Saved study collections",
-      "Responsive review interface",
-    ],
-    technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
-    image: "/memflip3.png",
-    imageAlt:
-      "MemFlip interface showing a generated collection of AI flashcards",
-    live: "https://mem-flip.live",
-    source: "https://github.com/Chareeef/MemFlip",
   },
 ] as const;
 

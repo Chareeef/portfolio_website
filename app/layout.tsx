@@ -57,10 +57,10 @@ export const metadata: Metadata = {
       "Building production web and mobile products that expand what people can do.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og_my_picture.png",
         width: 1200,
         height: 630,
-        alt: "Beyond the Horizon — Youssef Charif Hamidi, software engineer and product builder",
+        alt: "Portrait of Youssef Charif Hamidi",
       },
     ],
   },
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: "Youssef Charif Hamidi — Software Engineer & Product Builder",
     description:
       "Building production web and mobile products that expand what people can do.",
-    images: ["/twitter-image"],
+    images: ["/og_my_picture.png"],
   },
   icons: {
     icon: [

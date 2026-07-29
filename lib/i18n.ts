@@ -193,6 +193,18 @@ export const copy = {
       items: [
         {
           description:
+            "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and running focused review sessions.",
+          highlights: [
+            "Editable AI drafts with duplicate-aware extension",
+            "Manual creation and full deck management",
+            "Search, sorting and bulk library actions",
+            "Keyboard-friendly study sessions with recall ratings",
+          ],
+          imageAlt:
+            "MemFlip deck editor showing six AI-generated flashcards ready to review",
+        },
+        {
+          description:
             "A responsive AI chat application with streamed responses and persistent conversations.",
           highlights: [
             "Streamed model responses",
@@ -202,18 +214,6 @@ export const copy = {
           ],
           imageAlt:
             "Sadim AI chat interface showing a generated technical interview response",
-        },
-        {
-          description:
-            "An AI-assisted flashcard application for generating, organising, saving and reviewing study material.",
-          highlights: [
-            "AI-generated flashcards",
-            "Authentication and Firestore persistence",
-            "Saved study collections",
-            "Responsive review interface",
-          ],
-          imageAlt:
-            "MemFlip interface showing a generated collection of AI flashcards",
         },
       ],
       archiveEyebrow: "Systems archive",
@@ -488,6 +488,18 @@ export const copy = {
       items: [
         {
           description:
+            "Un espace de révision assisté par IA pour créer des paquets de flashcards modifiables, organiser une bibliothèque consultable et mener des sessions ciblées.",
+          highlights: [
+            "Brouillons IA modifiables et extension sans doublons",
+            "Création manuelle et gestion complète des paquets",
+            "Recherche, tri et actions groupées dans la bibliothèque",
+            "Sessions au clavier avec autoévaluation du rappel",
+          ],
+          imageAlt:
+            "Éditeur de paquets MemFlip affichant six flashcards générées par IA, prêtes à être relues",
+        },
+        {
+          description:
             "Une application de chat IA responsive, avec réponses en streaming et conservation de l’historique des conversations.",
           highlights: [
             "Réponses du modèle en streaming",
@@ -497,18 +509,6 @@ export const copy = {
           ],
           imageAlt:
             "Interface de Sadim AI affichant une réponse générée pour un entretien technique",
-        },
-        {
-          description:
-            "Une application de flashcards assistée par IA pour créer, organiser, sauvegarder et réviser des contenus d’apprentissage.",
-          highlights: [
-            "Flashcards générées par IA",
-            "Authentification et stockage dans Firestore",
-            "Sauvegarde des collections de révision",
-            "Interface de révision responsive",
-          ],
-          imageAlt:
-            "Interface de MemFlip affichant une collection de flashcards générées par IA",
         },
       ],
       archiveEyebrow: "Archives techniques",

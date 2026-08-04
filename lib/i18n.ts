@@ -193,15 +193,15 @@ export const copy = {
       items: [
         {
           description:
-            "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and running focused review sessions.",
+            "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and tracking recall across every completed revision.",
           highlights: [
             "Editable AI drafts with duplicate-aware extension",
             "Manual creation and full deck management",
             "Search, sorting and bulk library actions",
-            "Keyboard-friendly study sessions with recall ratings",
+            "Weighted recall scores and interactive revision trends",
           ],
           imageAlt:
-            "MemFlip study session showing a revealed flashcard with recall rating controls",
+            "MemFlip study session showing a revealed flashcard with Forgot, Hard, Good and Easy recall controls",
         },
         {
           description:
@@ -488,15 +488,15 @@ export const copy = {
       items: [
         {
           description:
-            "Un espace de révision assisté par IA pour créer des paquets de flashcards modifiables, organiser une bibliothèque consultable et mener des sessions ciblées.",
+            "Un espace de révision assisté par IA pour créer des paquets de flashcards modifiables, organiser une bibliothèque consultable et suivre la mémorisation après chaque révision.",
           highlights: [
             "Brouillons IA modifiables et extension sans doublons",
             "Création manuelle et gestion complète des paquets",
             "Recherche, tri et actions groupées dans la bibliothèque",
-            "Sessions au clavier avec autoévaluation du rappel",
+            "Scores de mémorisation pondérés et tendances interactives",
           ],
           imageAlt:
-            "Session d’étude MemFlip affichant une flashcard révélée et les options d’autoévaluation",
+            "Session d’étude MemFlip affichant une flashcard révélée et les choix Oublié, Difficile, Bien et Facile",
         },
         {
           description:

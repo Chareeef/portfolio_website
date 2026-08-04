@@ -33,17 +33,17 @@ export const supportingProjects = [
     name: "MemFlip",
     index: "01",
     description:
-      "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and running focused review sessions.",
+      "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and tracking recall across every completed revision.",
     highlights: [
       "Editable AI drafts with duplicate-aware extension",
       "Manual creation and full deck management",
       "Search, sorting and bulk library actions",
-      "Keyboard-friendly study sessions with recall ratings",
+      "Weighted recall scores and interactive revision trends",
     ],
     technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
     image: "/memflip3.png",
     imageAlt:
-      "MemFlip study session showing a revealed flashcard with recall rating controls",
+      "MemFlip study session showing a revealed flashcard with Forgot, Hard, Good and Easy recall controls",
     live: "https://mem-flip.live",
     source: "https://github.com/Chareeef/MemFlip",
   },

@@ -61,7 +61,7 @@ export const supportingProjects = [
     technology: ["Next.js", "TypeScript", "Firebase", "NextAuth", "Groq API"],
     image: "/sadim3.png",
     imageAlt:
-      "Sadim AI chat interface showing a generated technical interview response",
+      "Sadim AI workspace showing Antoine's saved food-sharing project conversations and active pickup-planning chat",
     live: "https://sadim-ai.com",
     source: "https://github.com/Chareeef/SadimAI",
   },

@@ -213,7 +213,7 @@ export const copy = {
             "Authentication and cloud persistence",
           ],
           imageAlt:
-            "Sadim AI chat interface showing a generated technical interview response",
+            "Sadim AI workspace showing Antoine's saved food-sharing project conversations and active pickup-planning chat",
         },
       ],
       archiveEyebrow: "Systems archive",
@@ -508,7 +508,7 @@ export const copy = {
             "Authentification et stockage dans le cloud",
           ],
           imageAlt:
-            "Interface de Sadim AI affichant une réponse générée pour un entretien technique",
+            "Espace Sadim AI affichant les conversations enregistrées d’Antoine sur un projet de partage alimentaire et un échange actif sur le retrait",
         },
       ],
       archiveEyebrow: "Archives techniques",

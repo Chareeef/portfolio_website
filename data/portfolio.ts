@@ -68,13 +68,13 @@ export const supportingProjects = [
     technology: ["Next.js", "TypeScript", "Firebase", "NextAuth", "Groq API"],
     images: [
       {
-        src: "/sadim1.png",
-        width: 1920,
-        height: 1142,
+        src: "/sadim-home.png",
+        width: 1600,
+        height: 850,
         position: "center",
       },
-      { src: "/sadim2.png", width: 1920, height: 1142 },
-      { src: "/sadim3.png", width: 1920, height: 1142 },
+      { src: "/sadim-signin.png", width: 1600, height: 1000 },
+      { src: "/sadim-chat.png", width: 1600, height: 1000 },
     ],
     live: "https://sadim-ai.com",
     source: "https://github.com/Chareeef/SadimAI",

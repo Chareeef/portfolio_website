@@ -41,9 +41,16 @@ export const supportingProjects = [
       "Weighted recall scores and interactive revision trends",
     ],
     technology: ["Next.js", "TypeScript", "Groq", "Clerk", "Firestore"],
-    image: "/memflip3.png",
-    imageAlt:
-      "MemFlip study session showing a revealed flashcard with Forgot, Hard, Good and Easy recall controls",
+    images: [
+      {
+        src: "/memflip1.png",
+        width: 1536,
+        height: 3264,
+        position: "top",
+      },
+      { src: "/memflip2.png", width: 1600, height: 1000 },
+      { src: "/memflip3.png", width: 1600, height: 1000 },
+    ],
     live: "https://mem-flip.live",
     source: "https://github.com/Chareeef/MemFlip",
   },
@@ -59,9 +66,16 @@ export const supportingProjects = [
       "Authentication and cloud persistence",
     ],
     technology: ["Next.js", "TypeScript", "Firebase", "NextAuth", "Groq API"],
-    image: "/sadim3.png",
-    imageAlt:
-      "Sadim AI workspace showing Antoine's saved food-sharing project conversations and active pickup-planning chat",
+    images: [
+      {
+        src: "/sadim1.png",
+        width: 1920,
+        height: 1142,
+        position: "center",
+      },
+      { src: "/sadim2.png", width: 1920, height: 1142 },
+      { src: "/sadim3.png", width: 1920, height: 1142 },
+    ],
     live: "https://sadim-ai.com",
     source: "https://github.com/Chareeef/SadimAI",
   },

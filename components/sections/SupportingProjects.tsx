@@ -25,74 +25,101 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
           {supportingProjects.map((project, index) => (
             <article
               key={project.name}
-              className="grid gap-8 py-10 md:grid-cols-[.9fr_1.1fr] md:items-center md:py-16"
+              className="py-12 md:py-20"
             >
-              <Reveal className={index % 2 === 1 ? "md:order-2" : ""}>
+              <div className="grid gap-8 md:grid-cols-[0.78fr_1.22fr] md:gap-14 lg:gap-20">
+                <Reveal>
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.17em] text-[#7f879f]">
+                      {project.index} · {content.system}
+                    </p>
+                    <h3 className="mt-4 font-display text-4xl tracking-[-0.05em] md:text-6xl">
+                      {project.name}
+                    </h3>
+                    <p className="mt-5 max-w-xl text-base leading-8 text-[#b0b6ca]">
+                      {content.items[index].description}
+                    </p>
+                    <div className="mt-8 flex flex-wrap gap-5">
+                      <a
+                        className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#e5cf9c] hover:text-white"
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {content.live}{" "}
+                        <ArrowUpRight aria-hidden="true" size={16} />
+                      </a>
+                      <a
+                        className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
+                        href={project.source}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <Github aria-hidden="true" size={16} /> {content.source}
+                      </a>
+                    </div>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.08}>
+                  <div>
+                    <ul className="grid gap-3 text-sm text-[#d4d6e0] sm:grid-cols-2">
+                      {content.items[index].highlights.map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="border-l border-[#9992ef]/35 pl-3 leading-6"
+                        >
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-7 flex flex-wrap gap-2">
+                      {project.technology.map((item) => (
+                        <span
+                          key={item}
+                          className="font-mono text-[0.68rem] text-[#858da5]"
+                        >
+                          {item}
+                          <span className="ml-2 text-[#3e455d]">/</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+
+              <Reveal delay={0.12} className="mt-10 md:mt-14">
                 <div className="screen-frame">
-                  <Image
-                    src={project.image}
-                    alt={content.items[index].imageAlt}
-                    width={1920}
-                    height={1142}
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                    className="h-auto w-full"
-                  />
+                  <div className="relative aspect-[16/10] overflow-hidden md:aspect-[16/8.5]">
+                    <Image
+                      src={project.images[0].src}
+                      alt={content.items[index].imageAlts[0]}
+                      fill
+                      sizes="(max-width: 1400px) 100vw, 1376px"
+                      className="object-cover"
+                      style={{ objectPosition: project.images[0].position }}
+                    />
+                  </div>
                 </div>
               </Reveal>
 
-              <Reveal
-                delay={0.08}
-                className={index % 2 === 1 ? "md:order-1 md:pr-10" : "md:pl-10"}
-              >
-                <p className="font-mono text-xs uppercase tracking-[0.17em] text-[#7f879f]">
-                  {project.index} · {content.system}
-                </p>
-                <h3 className="mt-4 font-display text-4xl tracking-[-0.05em] md:text-6xl">
-                  {project.name}
-                </h3>
-                <p className="mt-5 max-w-xl text-base leading-8 text-[#b0b6ca]">
-                  {content.items[index].description}
-                </p>
-                <ul className="mt-7 grid gap-3 text-sm text-[#d4d6e0] sm:grid-cols-2">
-                  {content.items[index].highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className="border-l border-[#9992ef]/35 pl-3 leading-6"
-                    >
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {project.technology.map((item) => (
-                    <span
-                      key={item}
-                      className="font-mono text-[0.68rem] text-[#858da5]"
-                    >
-                      {item}
-                      <span className="ml-2 text-[#3e455d]">/</span>
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-8 flex flex-wrap gap-5">
-                  <a
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#e5cf9c] hover:text-white"
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {content.live} <ArrowUpRight aria-hidden="true" size={16} />
-                  </a>
-                  <a
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
-                    href={project.source}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Github aria-hidden="true" size={16} /> {content.source}
-                  </a>
-                </div>
-              </Reveal>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 md:mt-4 md:gap-4">
+                {project.images.slice(1).map((image, imageIndex) => (
+                  <Reveal key={image.src} delay={0.06 * imageIndex}>
+                    <div className="screen-frame">
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={image.src}
+                          alt={content.items[index].imageAlts[imageIndex + 1]}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1400px) 50vw, 680px"
+                          className="object-cover object-center"
+                        />
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </article>
           ))}
         </div>

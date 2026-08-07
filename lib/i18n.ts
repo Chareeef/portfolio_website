@@ -200,8 +200,11 @@ export const copy = {
             "Search, sorting and bulk library actions",
             "Weighted recall scores and interactive revision trends",
           ],
-          imageAlt:
-            "MemFlip study session showing a revealed flashcard with Forgot, Hard, Good and Easy recall controls",
+          imageAlts: [
+            "MemFlip landing page presenting its AI-assisted flashcard workflow and recall tracking",
+            "MemFlip library showing searchable saved decks for several subjects",
+            "MemFlip study session showing a Cell Biology flashcard ready to reveal",
+          ],
         },
         {
           description:
@@ -212,8 +215,11 @@ export const copy = {
             "Sanitised Markdown and syntax-highlighted code",
             "Authentication and cloud persistence",
           ],
-          imageAlt:
-            "Sadim AI workspace showing Antoine's saved food-sharing project conversations and active pickup-planning chat",
+          imageAlts: [
+            "Sadim AI landing page with the Think further, Move faster product message",
+            "Sadim AI secure sign-in screen explaining conversation history and cross-device access",
+            "Sadim AI workspace showing saved food-sharing conversations and an active planning chat",
+          ],
         },
       ],
       archiveEyebrow: "Systems archive",
@@ -495,8 +501,11 @@ export const copy = {
             "Recherche, tri et actions groupées dans la bibliothèque",
             "Scores de mémorisation pondérés et tendances interactives",
           ],
-          imageAlt:
-            "Session d’étude MemFlip affichant une flashcard révélée et les choix Oublié, Difficile, Bien et Facile",
+          imageAlts: [
+            "Page d’accueil de MemFlip présentant la création de flashcards assistée par IA et le suivi de la mémorisation",
+            "Bibliothèque MemFlip affichant des paquets enregistrés et consultables pour plusieurs matières",
+            "Session d’étude MemFlip avec une flashcard de biologie cellulaire prête à être révélée",
+          ],
         },
         {
           description:
@@ -507,8 +516,11 @@ export const copy = {
             "Nettoyage du Markdown et coloration syntaxique du code",
             "Authentification et stockage dans le cloud",
           ],
-          imageAlt:
-            "Espace Sadim AI affichant les conversations enregistrées d’Antoine sur un projet de partage alimentaire et un échange actif sur le retrait",
+          imageAlts: [
+            "Page d’accueil de Sadim AI avec le message produit Think further, Move faster",
+            "Écran de connexion sécurisé de Sadim AI présentant l’historique et l’accès multi-appareils",
+            "Espace Sadim AI affichant des conversations enregistrées sur un projet de partage alimentaire et un échange actif",
+          ],
         },
       ],
       archiveEyebrow: "Archives techniques",

@@ -87,6 +87,15 @@ export function Navigation({ locale }: { locale: Locale }) {
 
     const onPointerDown = (event: PointerEvent) => {
       if (
+        open &&
+        event.target instanceof Element &&
+        !event.target.closest("[data-navigation-menu]")
+      ) {
+        setOpen(false);
+        setOpenProjectGroup(null);
+      }
+
+      if (
         openProjectGroup &&
         event.target instanceof Element &&
         !event.target.closest("[data-project-dropdown]")
@@ -122,12 +131,12 @@ export function Navigation({ locale }: { locale: Locale }) {
             height={64}
             className="size-8 rounded-full border border-[#e7c98d]/35 object-cover"
           />
-          <span className="hidden text-sm font-semibold tracking-[-0.02em] sm:block">
+          <span className="hidden whitespace-nowrap text-sm font-semibold tracking-[-0.02em] sm:block min-[1000px]:hidden min-[1180px]:block">
             Youssef Charif Hamidi
           </span>
         </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 min-[1000px]:flex">
           {projectGroups.map((group) => {
             const groupIsActive = group.items.some(
               (item) => item.href === active,
@@ -143,18 +152,11 @@ export function Navigation({ locale }: { locale: Locale }) {
                 <summary
                   onClick={(event) => {
                     event.preventDefault();
-
-                    if (!groupIsActive) {
-                      setOpenProjectGroup(null);
-                      window.location.hash = group.items[0].href;
-                      return;
-                    }
-
                     setOpenProjectGroup((current) =>
                       current === group.label ? null : group.label,
                     );
                   }}
-                  className={`flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors [&::-webkit-details-marker]:hidden ${
+                  className={`flex cursor-pointer list-none items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm transition-colors [&::-webkit-details-marker]:hidden ${
                     groupIsActive
                       ? "bg-white/[.09] text-white"
                       : "text-[#aeb5ca] hover:text-white"
@@ -167,14 +169,14 @@ export function Navigation({ locale }: { locale: Locale }) {
                     className="transition-transform group-open:rotate-180"
                   />
                 </summary>
-                <div className="absolute left-0 top-[calc(100%+.65rem)] min-w-56 rounded-2xl border border-white/10 bg-[#080b19]/95 p-2 shadow-2xl backdrop-blur-xl">
+                <div className="absolute left-0 top-[calc(100%+.65rem)] w-max min-w-48 rounded-2xl border border-white/10 bg-[#080b19]/95 p-2 text-left shadow-2xl backdrop-blur-xl">
                   {group.items.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpenProjectGroup(null)}
                       aria-current={active === item.href ? "location" : undefined}
-                      className={`flex min-h-11 items-center rounded-xl px-3 text-sm transition-colors ${
+                      className={`flex min-h-11 items-center whitespace-nowrap rounded-xl px-3 text-sm transition-colors ${
                         active === item.href
                           ? "bg-white/[.09] text-white"
                           : "text-[#aeb5ca] hover:bg-white/[.06] hover:text-white"
@@ -192,7 +194,7 @@ export function Navigation({ locale }: { locale: Locale }) {
               key={item.href}
               href={item.href}
               aria-current={active === item.href ? "location" : undefined}
-              className={`rounded-full px-3 py-2 text-sm transition-colors ${
+              className={`whitespace-nowrap rounded-full px-3 py-2 text-sm transition-colors ${
                 active === item.href
                   ? "bg-white/[.09] text-white"
                   : "text-[#aeb5ca] hover:text-white"
@@ -206,7 +208,7 @@ export function Navigation({ locale }: { locale: Locale }) {
             download={
               locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
             }
-            className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-full border border-white/[.14] px-3 text-sm text-[#f2eee5] transition-colors hover:border-[#e7c98d]/55"
+            className="ml-2 inline-flex min-h-10 items-center gap-2 whitespace-nowrap rounded-full border border-white/[.14] px-3 text-sm text-[#f2eee5] transition-colors hover:border-[#e7c98d]/55"
           >
             {content.resume} <ArrowDownToLine aria-hidden="true" size={15} />
           </a>
@@ -222,7 +224,40 @@ export function Navigation({ locale }: { locale: Locale }) {
           </a>
         </div>
 
-        <div className="flex items-center lg:hidden">
+        <div className="hidden items-center gap-1 md:flex min-[1000px]:hidden">
+          <a
+            href={resumeHref}
+            download={
+              locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
+            }
+            className="inline-flex min-h-10 items-center gap-2 whitespace-nowrap rounded-full border border-white/[.14] px-3 text-sm text-[#f2eee5] transition-colors hover:border-[#e7c98d]/55"
+          >
+            {content.resume} <ArrowDownToLine aria-hidden="true" size={15} />
+          </a>
+          <a
+            href={languageHref}
+            hrefLang={otherLocale}
+            lang={otherLocale}
+            onClick={preserveCurrentSection}
+            aria-label={content.switchLanguage}
+            className="grid min-h-10 min-w-11 place-items-center rounded-full border border-white/[.14] px-3 font-mono text-xs font-medium tracking-[0.08em] text-[#f2eee5] transition-colors hover:border-[#e7c98d]/55"
+          >
+            {locale.toUpperCase()}
+          </a>
+          <button
+            type="button"
+            data-navigation-menu
+            className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/[.07]"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? content.close : content.open}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
+
+        <div className="flex items-center md:hidden">
           <a
             href={languageHref}
             hrefLang={otherLocale}
@@ -235,6 +270,7 @@ export function Navigation({ locale }: { locale: Locale }) {
           </a>
           <button
             type="button"
+            data-navigation-menu
             className="grid size-11 place-items-center rounded-full text-white"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -249,37 +285,63 @@ export function Navigation({ locale }: { locale: Locale }) {
       {open ? (
         <nav
           id="mobile-menu"
+          data-navigation-menu
           aria-label={content.mobileLabel}
-          className="pointer-events-auto mx-auto mt-2 max-w-[82rem] rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
+          className="pointer-events-auto mx-auto mt-2 max-w-[82rem] rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 text-left shadow-2xl backdrop-blur-xl min-[1000px]:hidden"
         >
-          {projectGroups.map((group) => (
-            <div key={group.label} className="py-1">
-              <p className="px-4 pb-1 pt-3 font-mono text-[0.66rem] uppercase tracking-[0.15em] text-[#69728b]">
-                {group.label}
-              </p>
-              {group.items.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={active === item.href ? "location" : undefined}
-                  className={`flex min-h-11 items-center rounded-2xl px-4 text-sm ${
-                    active === item.href
-                      ? "bg-white/[.07] text-white"
-                      : "text-[#c5cada] hover:bg-white/[.07]"
-                  }`}
+          <div className="min-[1000px]:hidden">
+            {projectGroups.map((group) => (
+              <details
+                key={group.label}
+                open={openProjectGroup === group.label}
+                data-project-dropdown
+                className="group py-1"
+              >
+                <summary
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setOpenProjectGroup((current) =>
+                      current === group.label ? null : group.label,
+                    );
+                  }}
+                  className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 whitespace-nowrap rounded-2xl px-4 font-mono text-[0.66rem] uppercase tracking-[0.15em] text-[#8b94ad] transition-colors hover:bg-white/[.07] hover:text-white [&::-webkit-details-marker]:hidden"
                 >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          ))}
+                  {group.label}
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={14}
+                    className="transition-transform group-open:rotate-180"
+                  />
+                </summary>
+                <div className="pb-1 text-left">
+                  {group.items.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => {
+                        setOpen(false);
+                        setOpenProjectGroup(null);
+                      }}
+                      aria-current={active === item.href ? "location" : undefined}
+                      className={`flex min-h-11 items-center whitespace-nowrap rounded-2xl px-4 text-sm ${
+                        active === item.href
+                          ? "bg-white/[.07] text-white"
+                          : "text-[#c5cada] hover:bg-white/[.07]"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
           {items.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="flex min-h-12 items-center rounded-2xl px-4 text-base text-[#d9dbea] hover:bg-white/[.07]"
+              className="flex min-h-12 items-center whitespace-nowrap rounded-2xl px-4 text-base text-[#d9dbea] hover:bg-white/[.07]"
             >
               {item.label}
             </a>
@@ -290,7 +352,7 @@ export function Navigation({ locale }: { locale: Locale }) {
               locale === "fr" ? "CV – Youssef Charif Hamidi.pdf" : true
             }
             onClick={() => setOpen(false)}
-            className="mt-2 flex min-h-12 items-center justify-between rounded-2xl bg-[#f3efe4] px-4 font-semibold text-[#090b17]"
+            className="mt-2 flex min-h-12 items-center justify-between whitespace-nowrap rounded-2xl bg-[#f3efe4] px-4 font-semibold text-[#090b17] md:hidden"
           >
             {content.downloadResume}{" "}
             <ArrowDownToLine aria-hidden="true" size={18} />

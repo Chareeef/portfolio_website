@@ -287,7 +287,7 @@ export function Navigation({ locale }: { locale: Locale }) {
           id="mobile-menu"
           data-navigation-menu
           aria-label={content.mobileLabel}
-          className="pointer-events-auto mx-auto mt-2 max-w-[82rem] rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 text-left shadow-2xl backdrop-blur-xl min-[1000px]:hidden"
+          className="pointer-events-auto mx-auto mt-2 max-h-[calc(100dvh-5.75rem)] max-w-[82rem] overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 text-left shadow-2xl backdrop-blur-xl min-[1000px]:hidden"
         >
           <div className="min-[1000px]:hidden">
             {projectGroups.map((group) => (

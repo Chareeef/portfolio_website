@@ -9,6 +9,43 @@ export const links = {
     "https://play.google.com/store/apps/details?id=com.mathvellum.app",
 } as const;
 
+export const collaborators = [
+  {
+    name: "Abdelrahman Hany Metawei",
+    href: "https://www.linkedin.com/in/abduhany",
+  },
+  {
+    name: "Julien Barbier",
+    href: "https://www.linkedin.com/in/julienbarbier",
+  },
+] as const;
+
+const codeLogCollaborators = [
+  {
+    name: "Mohamed Lamine Boukhalfa",
+    href: "https://www.linkedin.com/in/mohamed-lamine-boukhalfa",
+  },
+  {
+    name: "Khadija Ghadi",
+    href: "https://www.linkedin.com/in/khadija-ghadi-017737193",
+  },
+  {
+    name: "Harriet M Mugendi",
+    href: "https://www.linkedin.com/in/harriet-m-mugendi-149a006b",
+  },
+] as const;
+
+const hayatCollaborators = [
+  {
+    name: "Blain Muema",
+    href: "https://www.linkedin.com/in/blain-muema",
+  },
+  {
+    name: "Kenansa Meseret Nigusie",
+    href: "https://www.linkedin.com/in/kenc0de",
+  },
+] as const;
+
 export const remoteOtterOwnership = [
   {
     title: "Product architecture",
@@ -31,6 +68,7 @@ export const remoteOtterOwnership = [
 export const supportingProjects = [
   {
     name: "MemFlip",
+    anchor: "memflip",
     index: "01",
     description:
       "An AI-assisted study workspace for drafting editable flashcard decks, organising a searchable library and tracking recall across every completed revision.",
@@ -56,6 +94,7 @@ export const supportingProjects = [
   },
   {
     name: "Sadim AI",
+    anchor: "sadim-ai",
     index: "02",
     description:
       "A responsive AI chat application with streamed responses and persistent conversations.",
@@ -152,23 +191,51 @@ export const capabilities = [
 
 export const archiveProjects = [
   {
+    name: "CodeLog",
+    anchor: "codelog",
+    tools: ["React", "Flask", "MongoDB", "Redis", "JWT", "Nginx"],
+    repository: "https://github.com/Chareeef/CodeLog",
+    article: null,
+    collaborators: codeLogCollaborators,
+  },
+  {
+    name: "Solana Arbitrage Bot",
+    anchor: "solana-arbitrage-bot",
+    tools: [
+      "Rust",
+      "Tokio",
+      "Solana SDK",
+      "Yellowstone gRPC",
+      "Raydium",
+      "Meteora",
+      "Jupiter",
+    ],
+    repository: "https://github.com/Chareeef/solana-copy-trading-bot",
+    article:
+      "https://medium.com/@abdu.hany/building-a-solana-copy-trading-bot-from-our-first-lines-of-rust-to-profitable-automation-ad4f9377a400",
+    collaborators,
+  },
+  {
+    name: "Hayat",
+    anchor: "hayat",
+    tools: [
+      "Flask",
+      "MySQL",
+      "SQLAlchemy",
+      "JavaScript",
+      "Nginx",
+      "HAProxy",
+    ],
+    repository: "https://github.com/Chareeef/HAYAT",
+    article: null,
+    collaborators: hayatCollaborators,
+  },
+  {
     name: "Simple Shell",
-    type: "Unix command interpreter · C",
-    href: "https://github.com/Chareeef/simple_shell",
-  },
-  {
-    name: "Printf",
-    type: "Formatted output engine · C",
-    href: "https://github.com/Chareeef/printf",
-  },
-  {
-    name: "File Manager",
-    type: "Async backend service · Express, MongoDB, Redis",
-    href: "https://github.com/Chareeef/alx-files_manager",
-  },
-  {
-    name: "Tic-Tac-Toe AI",
-    type: "Minimax opponent · Python",
-    href: "https://github.com/Chareeef/tic-tac-toe_AI",
+    anchor: "simple-shell",
+    tools: ["C", "GCC", "Unix", "Valgrind"],
+    repository: "https://github.com/Chareeef/simple_shell",
+    article: null,
+    collaborators: [],
   },
 ] as const;

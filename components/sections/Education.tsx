@@ -1,4 +1,4 @@
-import { Award, BookOpen, GraduationCap } from "lucide-react";
+import { Award, BookOpen, ExternalLink, GraduationCap } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { copy, type Locale } from "@/lib/i18n";
@@ -8,6 +8,7 @@ export function Education({ locale }: { locale: Locale }) {
 
   return (
     <section
+      id="education"
       aria-labelledby="education-title"
       className="section section-rule bg-[#070916]"
     >
@@ -16,10 +17,9 @@ export function Education({ locale }: { locale: Locale }) {
           id="education-title"
           eyebrow={content.eyebrow}
           title={content.title}
-          description={content.description}
         />
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-[1.18fr_.82fr]">
+        <div className="mt-16 grid gap-10">
           <Reveal className="border-t border-white/10 pt-7">
             <div className="grid gap-5 sm:grid-cols-[3.5rem_1fr_auto]">
               <span className="grid size-12 place-items-center rounded-full border border-white/[.12] text-[#aaa5ef]">
@@ -83,6 +83,18 @@ export function Education({ locale }: { locale: Locale }) {
                 <p className="mt-4 text-base text-[#b2b8ca]">
                   {content.field}
                 </p>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#9da5bc]">
+                  {content.baccalaureateRecognition}
+                </p>
+                <a
+                  href="https://www.hespress.com/يوسف-حاميدي-تلميذ-من-ذوي-الاحتياجات-ا-1015291.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-sm text-[#aaa5ef] transition-colors hover:text-[#cbc7ff]"
+                >
+                  {content.baccalaureateArticle}
+                  <ExternalLink aria-hidden="true" size={15} />
+                </a>
               </div>
             </div>
           </Reveal>

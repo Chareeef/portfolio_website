@@ -35,6 +35,7 @@ export function MathVellumCaseStudy({ locale }: { locale: Locale }) {
 
   return (
     <section
+      id="mathvellum"
       aria-labelledby="mathvellum-title"
       className="section section-rule overflow-hidden bg-[#080a18]"
     >

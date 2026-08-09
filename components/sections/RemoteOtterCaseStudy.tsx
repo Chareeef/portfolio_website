@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { links } from "@/data/portfolio";
+import { collaborators, links } from "@/data/portfolio";
 import { copy, type Locale } from "@/lib/i18n";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
@@ -21,7 +21,7 @@ export function RemoteOtterCaseStudy({ locale }: { locale: Locale }) {
 
   return (
     <section
-      id="work"
+      id="remoteotter"
       aria-labelledby="remoteotter-title"
       className="section overflow-hidden"
     >
@@ -48,6 +48,23 @@ export function RemoteOtterCaseStudy({ locale }: { locale: Locale }) {
             {content.visit} <ArrowUpRight aria-hidden="true" size={16} />
           </a>
         </div>
+        <p className="mt-5 text-sm leading-6 text-[#8e96ae]">
+          {content.collaborators}{" "}
+          {collaborators.map((collaborator, index) => (
+            <span key={collaborator.href}>
+              {index > 0 && ` ${content.collaboratorConjunction} `}
+              <a
+                href={collaborator.href}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-[#c2c6d5] underline decoration-white/20 underline-offset-4 hover:text-white"
+              >
+                {collaborator.name}
+              </a>
+            </span>
+          ))}
+          .
+        </p>
 
         <div className="mt-12 grid items-start gap-12 lg:grid-cols-[1.1fr_.9fr]">
           <Reveal>

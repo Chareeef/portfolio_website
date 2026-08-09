@@ -10,6 +10,7 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
 
   return (
     <section
+      id="projects"
       aria-labelledby="supporting-title"
       className="section section-rule"
     >
@@ -25,6 +26,7 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
           {supportingProjects.map((project, index) => (
             <article
               key={project.name}
+              id={project.anchor}
               className="py-12 md:py-20"
             >
               <div className="grid gap-8 md:grid-cols-[0.78fr_1.22fr] md:gap-14 lg:gap-20">
@@ -125,39 +127,94 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-20">
-          <div className="grid gap-5 md:grid-cols-[.7fr_1.3fr]">
+          <div>
             <div>
-              <p className="eyebrow">{content.archiveEyebrow}</p>
-              <h3 className="mt-5 font-display text-3xl tracking-[-0.045em] md:text-4xl">
+              <h3 className="font-display text-3xl tracking-[-0.045em] md:text-4xl">
                 {content.archiveTitle}
               </h3>
             </div>
-            <div className="divide-y divide-white/10 border-y border-white/10">
+            <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
               {archiveProjects.map((project, index) => (
-                <a
+                <article
                   key={project.name}
-                  href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group grid min-h-20 grid-cols-[2.4rem_1fr_auto] items-center gap-3 text-sm"
+                  id={project.anchor}
+                  className="grid gap-4 py-7 sm:grid-cols-[2.4rem_1fr] sm:gap-3"
                 >
                   <span className="font-mono text-[0.66rem] text-[#626b84]">
                     0{index + 1}
                   </span>
-                  <span>
-                    <span className="font-semibold text-[#e5e4eb]">
+                  <div>
+                    <h4 className="font-semibold text-[#e5e4eb]">
                       {project.name}
-                    </span>
-                    <span className="mt-1 block text-xs leading-5 text-[#7f879f] sm:inline sm:pl-4">
-                      {content.archiveTypes[index]}
-                    </span>
-                  </span>
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    size={17}
-                    className="text-[#687089] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#e7c98d]"
-                  />
-                </a>
+                    </h4>
+                    <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8f97ad]">
+                      {content.archiveDescriptions[index]}
+                    </p>
+                    {project.collaborators.length > 0 && (
+                      <p className="mt-3 text-sm leading-6 text-[#8f97ad]">
+                        {content.collaborators}{" "}
+                        {project.collaborators.map((collaborator, collaboratorIndex) => (
+                          <span key={collaborator.href}>
+                            {collaboratorIndex > 0 &&
+                              (collaboratorIndex === project.collaborators.length - 1
+                                ? ` ${content.collaboratorConjunction} `
+                                : ", ")}
+                            <a
+                              href={collaborator.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="font-medium text-[#c2c6d5] underline decoration-white/20 underline-offset-4 hover:text-white"
+                            >
+                              {collaborator.name}
+                            </a>
+                          </span>
+                        ))}
+                        .
+                      </p>
+                    )}
+                    <div className="mt-4 flex flex-wrap gap-x-3 gap-y-2">
+                      {project.tools.map((tool) => (
+                        <span
+                          key={tool}
+                          className="font-mono text-[0.66rem] text-[#7f879f]"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-5 flex flex-wrap gap-x-6">
+                      <a
+                        href={project.repository}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
+                      >
+                        <Github aria-hidden="true" size={16} />
+                        {content.repository}
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          size={15}
+                          className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        />
+                      </a>
+                      {project.article && (
+                        <a
+                          href={project.article}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#e5cf9c] hover:text-white"
+                        >
+                          {content.article}
+                          <ArrowUpRight
+                            aria-hidden="true"
+                            size={15}
+                            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
           </div>

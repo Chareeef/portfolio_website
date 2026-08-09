@@ -82,8 +82,8 @@ export default async function Home({ params }: LocalePageProps) {
         <MathVellumCaseStudy locale={locale} />
         <SupportingProjects locale={locale} />
         <Capabilities locale={locale} />
-        <Mission locale={locale} />
         <Education locale={locale} />
+        <Mission locale={locale} />
         <FinalHorizon locale={locale} />
       </main>
       <Footer locale={locale} />

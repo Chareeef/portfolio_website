@@ -16,7 +16,6 @@ export function Capabilities({ locale }: { locale: Locale }) {
       aria-labelledby="capabilities-title"
       className="section section-rule overflow-hidden bg-[#080b19]"
     >
-      <div className="absolute inset-y-0 left-1/2 w-px bg-white/[0.035]" />
       <div className="shell relative">
         <SectionHeading
           id="capabilities-title"

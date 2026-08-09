@@ -26,7 +26,7 @@ export function HeroContent({ locale }: { locale: Locale }) {
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
-            <a className="button-primary" href="#work">
+            <a className="button-primary" href="#remoteotter">
               {content.work} <ArrowRight aria-hidden="true" size={18} />
             </a>
             <a className="button-secondary" href={links.email}>

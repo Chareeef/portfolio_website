@@ -1,18 +1,42 @@
 "use client";
 
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
-import { Menu, X, ArrowDownToLine } from "lucide-react";
+import { Menu, X, ArrowDownToLine, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { links } from "@/data/portfolio";
 import { copy, type Locale } from "@/lib/i18n";
 
+type NavigationItem = { label: string; href: string };
+type NavigationGroup = { label: string; items: NavigationItem[] };
+
 export function Navigation({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const [openProjectGroup, setOpenProjectGroup] = useState<string | null>(null);
   const [active, setActive] = useState("");
   const content = copy[locale].navigation;
-  const items = useMemo(
+  const items = useMemo<NavigationItem[]>(
     () => content.items.map(([label, href]) => ({ label, href })),
     [content.items],
+  );
+  const projectGroups = useMemo<NavigationGroup[]>(
+    () => [
+      {
+        label: content.flagshipProjects,
+        items: content.flagshipItems.map(([label, href]) => ({ label, href })),
+      },
+      {
+        label: content.otherProjects,
+        items: content.otherProjectItems.map(([label, href]) => ({
+          label,
+          href,
+        })),
+      },
+    ],
+    [content],
+  );
+  const observedItems = useMemo(
+    () => [...projectGroups.flatMap((group) => group.items), ...items],
+    [items, projectGroups],
   );
   const otherLocale = locale === "en" ? "fr" : "en";
   const languageHref = `/${otherLocale}`;
@@ -25,7 +49,7 @@ export function Navigation({ locale }: { locale: Locale }) {
   };
 
   useEffect(() => {
-    const sections = items
+    const sections = observedItems
       .map((item) => document.querySelector(item.href))
       .filter((section): section is Element => Boolean(section));
     const sectionEntries = new Map<Element, IntersectionObserverEntry>();
@@ -49,18 +73,35 @@ export function Navigation({ locale }: { locale: Locale }) {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, [items]);
+  }, [observedItems]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open && !openProjectGroup) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        setOpenProjectGroup(null);
+      }
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (
+        openProjectGroup &&
+        event.target instanceof Element &&
+        !event.target.closest("[data-project-dropdown]")
+      ) {
+        setOpenProjectGroup(null);
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open, openProjectGroup]);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
@@ -86,7 +127,66 @@ export function Navigation({ locale }: { locale: Locale }) {
           </span>
         </a>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
+          {projectGroups.map((group) => {
+            const groupIsActive = group.items.some(
+              (item) => item.href === active,
+            );
+
+            return (
+              <details
+                key={group.label}
+                open={openProjectGroup === group.label}
+                data-project-dropdown
+                className="group relative"
+              >
+                <summary
+                  onClick={(event) => {
+                    event.preventDefault();
+
+                    if (!groupIsActive) {
+                      setOpenProjectGroup(null);
+                      window.location.hash = group.items[0].href;
+                      return;
+                    }
+
+                    setOpenProjectGroup((current) =>
+                      current === group.label ? null : group.label,
+                    );
+                  }}
+                  className={`flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors [&::-webkit-details-marker]:hidden ${
+                    groupIsActive
+                      ? "bg-white/[.09] text-white"
+                      : "text-[#aeb5ca] hover:text-white"
+                  }`}
+                >
+                  {group.label}
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={14}
+                    className="transition-transform group-open:rotate-180"
+                  />
+                </summary>
+                <div className="absolute left-0 top-[calc(100%+.65rem)] min-w-56 rounded-2xl border border-white/10 bg-[#080b19]/95 p-2 shadow-2xl backdrop-blur-xl">
+                  {group.items.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpenProjectGroup(null)}
+                      aria-current={active === item.href ? "location" : undefined}
+                      className={`flex min-h-11 items-center rounded-xl px-3 text-sm transition-colors ${
+                        active === item.href
+                          ? "bg-white/[.09] text-white"
+                          : "text-[#aeb5ca] hover:bg-white/[.06] hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            );
+          })}
           {items.map((item) => (
             <a
               key={item.href}
@@ -122,7 +222,7 @@ export function Navigation({ locale }: { locale: Locale }) {
           </a>
         </div>
 
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center lg:hidden">
           <a
             href={languageHref}
             hrefLang={otherLocale}
@@ -150,8 +250,30 @@ export function Navigation({ locale }: { locale: Locale }) {
         <nav
           id="mobile-menu"
           aria-label={content.mobileLabel}
-          className="pointer-events-auto mx-auto mt-2 max-w-[82rem] rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 shadow-2xl backdrop-blur-xl md:hidden"
+          className="pointer-events-auto mx-auto mt-2 max-w-[82rem] rounded-3xl border border-white/10 bg-[#080b19]/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
         >
+          {projectGroups.map((group) => (
+            <div key={group.label} className="py-1">
+              <p className="px-4 pb-1 pt-3 font-mono text-[0.66rem] uppercase tracking-[0.15em] text-[#69728b]">
+                {group.label}
+              </p>
+              {group.items.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active === item.href ? "location" : undefined}
+                  className={`flex min-h-11 items-center rounded-2xl px-4 text-sm ${
+                    active === item.href
+                      ? "bg-white/[.07] text-white"
+                      : "text-[#c5cada] hover:bg-white/[.07]"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          ))}
           {items.map((item) => (
             <a
               key={item.href}

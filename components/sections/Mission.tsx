@@ -8,7 +8,7 @@ export function Mission({ locale }: { locale: Locale }) {
 
   return (
     <section
-      id="about"
+      id="mission-method"
       aria-labelledby="mission-title"
       className="section section-rule"
     >

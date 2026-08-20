@@ -206,8 +206,8 @@ export const archiveProjects = [
     name: "Solana Copy-Trading Bot",
     anchor: "solana-copy-trading-bot",
     description: {
-      en: "A Solana copy-trading bot that monitored selected wallets in real time, reconstructed swaps across Pump.fun, Raydium, Meteora and Jupiter, and combined low-latency transaction delivery with automated exits. After several iterations it became profitable and served as our production-grade introduction to Rust and Solana before we pivoted to arbitrage.",
-      fr: "Un bot de copy-trading sur Solana qui suivait en temps réel des portefeuilles sélectionnés, reconstruisait les swaps sur Pump.fun, Raydium, Meteora et Jupiter, puis combinait une diffusion de transactions à faible latence avec des sorties automatisées. Après plusieurs itérations, il est devenu rentable et nous a servi d’introduction concrète à Rust et Solana avant notre pivot vers l’arbitrage.",
+      en: "A Solana copy-trading bot that monitored selected wallets in real time, reconstructed swaps across Pump.fun, Raydium, Meteora and Jupiter, and combined low-latency transaction delivery with automated exits. After several iterations, it became profitable and served as our production-grade introduction to Rust and Solana.",
+      fr: "Un bot de copy-trading sur Solana qui suivait en temps réel des portefeuilles sélectionnés, reconstruisait les swaps sur Pump.fun, Raydium, Meteora et Jupiter, puis combinait une diffusion de transactions à faible latence avec des sorties automatisées. Après plusieurs itérations, il est devenu rentable et nous a servi d’introduction concrète à Rust et Solana.",
     },
     tools: [
       "Rust",
@@ -222,28 +222,6 @@ export const archiveProjects = [
     repository: "https://github.com/Chareeef/solana-copy-trading-bot",
     article:
       "https://medium.com/@abdu.hany/building-a-solana-copy-trading-bot-from-our-first-lines-of-rust-to-profitable-automation-ad4f9377a400",
-    collaborators,
-  },
-  {
-    name: "Solana Arbitrage Bot",
-    anchor: "solana-arbitrage-bot",
-    description: {
-      en: "A separate private Solana arbitrage system that compares prices across multiple AMM pool types, computes the optimal trade size, executes the buy and sell legs atomically, and rejects routes that are not profitable after fees. The architecture includes an Anchor on-chain program, Jito-aware transaction delivery and optional Kamino flash loans.",
-      fr: "Un système d’arbitrage Solana distinct et privé qui compare les prix entre plusieurs types de pools AMM, calcule la taille optimale du trade, exécute atomiquement les étapes d’achat et de vente, puis rejette les routes non rentables après frais. L’architecture comprend un programme on-chain Anchor, une diffusion compatible Jito et des flash loans Kamino optionnels.",
-    },
-    tools: [
-      "Rust",
-      "Anchor",
-      "Tokio",
-      "Solana SDK",
-      "Raydium",
-      "Meteora",
-      "Whirlpool",
-      "Jito",
-      "Kamino",
-    ],
-    repository: null,
-    article: null,
     collaborators,
   },
   {

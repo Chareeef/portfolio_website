@@ -148,7 +148,7 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
                       {project.name}
                     </h4>
                     <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8f97ad]">
-                      {content.archiveDescriptions[index]}
+                      {project.description[locale]}
                     </p>
                     {project.collaborators.length > 0 && (
                       <p className="mt-3 text-sm leading-6 text-[#8f97ad]">
@@ -183,20 +183,27 @@ export function SupportingProjects({ locale }: { locale: Locale }) {
                       ))}
                     </div>
                     <div className="mt-5 flex flex-wrap gap-x-6">
-                      <a
-                        href={project.repository}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
-                      >
-                        <Github aria-hidden="true" size={16} />
-                        {content.repository}
-                        <ArrowUpRight
-                          aria-hidden="true"
-                          size={15}
-                          className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                        />
-                      </a>
+                      {project.repository ? (
+                        <a
+                          href={project.repository}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#adb3c7] hover:text-white"
+                        >
+                          <Github aria-hidden="true" size={16} />
+                          {content.repository}
+                          <ArrowUpRight
+                            aria-hidden="true"
+                            size={15}
+                            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          />
+                        </a>
+                      ) : (
+                        <span className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#7f879f]">
+                          <Github aria-hidden="true" size={16} />
+                          {locale === "fr" ? "Dépôt privé" : "Private repository"}
+                        </span>
+                      )}
                       {project.article && (
                         <a
                           href={project.article}

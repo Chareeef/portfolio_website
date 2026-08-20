@@ -193,14 +193,22 @@ export const archiveProjects = [
   {
     name: "CodeLog",
     anchor: "codelog",
+    description: {
+      en: "A journaling platform for software engineers to record daily progress, maintain coding streaks and engage with the community through posts, comments and likes.",
+      fr: "Une plateforme de journal destinée aux ingénieurs logiciel pour consigner leurs progrès quotidiens, maintenir leurs séries de programmation et interagir grâce aux publications, commentaires et mentions J’aime.",
+    },
     tools: ["React", "Flask", "MongoDB", "Redis", "JWT", "Nginx"],
     repository: "https://github.com/Chareeef/CodeLog",
     article: null,
     collaborators: codeLogCollaborators,
   },
   {
-    name: "Solana Arbitrage Bot",
-    anchor: "solana-arbitrage-bot",
+    name: "Solana Copy-Trading Bot",
+    anchor: "solana-copy-trading-bot",
+    description: {
+      en: "A Solana copy-trading bot that monitored selected wallets in real time, reconstructed swaps across Pump.fun, Raydium, Meteora and Jupiter, and combined low-latency transaction delivery with automated exits. After several iterations it became profitable and served as our production-grade introduction to Rust and Solana before we pivoted to arbitrage.",
+      fr: "Un bot de copy-trading sur Solana qui suivait en temps réel des portefeuilles sélectionnés, reconstruisait les swaps sur Pump.fun, Raydium, Meteora et Jupiter, puis combinait une diffusion de transactions à faible latence avec des sorties automatisées. Après plusieurs itérations, il est devenu rentable et nous a servi d’introduction concrète à Rust et Solana avant notre pivot vers l’arbitrage.",
+    },
     tools: [
       "Rust",
       "Tokio",
@@ -209,6 +217,7 @@ export const archiveProjects = [
       "Raydium",
       "Meteora",
       "Jupiter",
+      "SWQoS",
     ],
     repository: "https://github.com/Chareeef/solana-copy-trading-bot",
     article:
@@ -216,8 +225,34 @@ export const archiveProjects = [
     collaborators,
   },
   {
+    name: "Solana Arbitrage Bot",
+    anchor: "solana-arbitrage-bot",
+    description: {
+      en: "A separate private Solana arbitrage system that compares prices across multiple AMM pool types, computes the optimal trade size, executes the buy and sell legs atomically, and rejects routes that are not profitable after fees. The architecture includes an Anchor on-chain program, Jito-aware transaction delivery and optional Kamino flash loans.",
+      fr: "Un système d’arbitrage Solana distinct et privé qui compare les prix entre plusieurs types de pools AMM, calcule la taille optimale du trade, exécute atomiquement les étapes d’achat et de vente, puis rejette les routes non rentables après frais. L’architecture comprend un programme on-chain Anchor, une diffusion compatible Jito et des flash loans Kamino optionnels.",
+    },
+    tools: [
+      "Rust",
+      "Anchor",
+      "Tokio",
+      "Solana SDK",
+      "Raydium",
+      "Meteora",
+      "Whirlpool",
+      "Jito",
+      "Kamino",
+    ],
+    repository: null,
+    article: null,
+    collaborators,
+  },
+  {
     name: "Hayat",
     anchor: "hayat",
+    description: {
+      en: "A blood-donation platform connecting donors with transfusion centres, making it easier to discover nearby centres and view their blood inventory needs.",
+      fr: "Une plateforme de don de sang qui met en relation les donneurs et les centres de transfusion, facilite la recherche de centres à proximité et rend visibles leurs besoins en stocks de sang.",
+    },
     tools: [
       "Flask",
       "MySQL",
@@ -233,6 +268,10 @@ export const archiveProjects = [
   {
     name: "Simple Shell",
     anchor: "simple-shell",
+    description: {
+      en: "A Unix command interpreter built from scratch with process execution, PATH resolution, environment-variable handling and careful memory management.",
+      fr: "Un interpréteur de commandes Unix développé de zéro, avec exécution des processus, résolution du PATH, gestion des variables d’environnement et maîtrise rigoureuse de la mémoire.",
+    },
     tools: ["C", "GCC", "Unix", "Valgrind"],
     repository: "https://github.com/Chareeef/simple_shell",
     article: null,
